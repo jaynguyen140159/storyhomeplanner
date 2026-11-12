@@ -737,12 +737,15 @@ gsap.from('.ex-row', { y:40, opacity:0, stagger:.07, duration:.9, ease:'power3.o
 gsap.to('.film', { clipPath:'inset(0% 0% round 28px)', ease:'none', scrollTrigger:{ trigger:'#phim', start:'top 80%', end:'top 15%', scrub:.6 } });
 
 /* Cursor label on zoomable */
-var cur = $('#cur'), cx = gsap.quickTo(cur, 'x', { duration:.25, ease:'power3' }), cy = gsap.quickTo(cur, 'y', { duration:.25, ease:'power3' });
-window.addEventListener('mousemove', function(e){ cx(e.clientX); cy(e.clientY); });
-$$('.jr-card').forEach(function(el){
-  el.addEventListener('mouseenter', function(){ gsap.to(cur, { scale:1, duration:.3 }); });
-  el.addEventListener('mouseleave', function(){ gsap.to(cur, { scale:0, duration:.25 }); });
-});
+var cur = $('#cur'), curOn = false;
+gsap.set(cur, { scale:0, opacity:0 });
+var cx = gsap.quickTo(cur, 'x', { duration:.25, ease:'power3' }), cy = gsap.quickTo(cur, 'y', { duration:.25, ease:'power3' });
+function curShow(on){ if (on === curOn) return; curOn = on; gsap.to(cur, { scale:on ? 1 : 0, opacity:on ? 1 : 0, duration:on ? .3 : .2, overwrite:true }); }
+/* Nhãn "Mở" chỉ hiện khi con trỏ thật sự nằm trên một thẻ bước; cuộn trang hay rời thẻ là ẩn ngay */
+window.addEventListener('mousemove', function(e){ cx(e.clientX); cy(e.clientY); curShow(!Z.open && !!(e.target.closest && e.target.closest('.jr-card'))); });
+window.addEventListener('scroll', function(){ curShow(false); }, { passive:true });
+document.addEventListener('mouseleave', function(){ curShow(false); });
+window.addEventListener('blur', function(){ curShow(false); });
 
 /* ================= ZOOM: bấm để phóng to và mở câu chuyện ================= */
 var Z = { open:false, kind:null, i:0, src:null, busy:false };
@@ -773,7 +776,7 @@ function openZoom(el){
   Z.kind = el.dataset.kind; Z.i = +el.dataset.i; Z.src = el.classList.contains('hs-chip') ? $$('.hot')[Z.i] : el;
   fill(item(Z.kind, Z.i));
   document.documentElement.style.overflow = 'hidden';
-  gsap.to(cur, { scale:0, duration:.2 });
+  curShow(false);
   var from = srcRect(Z.src);
   if (Z.kind === 'spec') { from = srcRect(Z.src.querySelector('.th')); }
   var tl = gsap.timeline({ onComplete:function(){ Z.busy = false; } });
