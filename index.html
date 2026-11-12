@@ -79,17 +79,33 @@ section { position:relative; }
 #la-gi h2 { font-size:clamp(28px,7.4vw,128px); margin:16px 0; white-space:nowrap; }
 #la-gi p { max-width:620px; margin:0 auto; color:#eee6da; font-size:clamp(15px,1.5vw,19px); }
 @media (min-width:680px){ #la-gi p { max-width:none; white-space:nowrap; font-size:clamp(12px,1.6vw,19px); } }
-.ctx { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.8vw,26px); padding:clamp(70px,10vh,130px) var(--pad) clamp(90px,13vh,170px); align-items:start; }
-.ctx-card { position:relative; aspect-ratio:3/4; border-radius:26px; overflow:hidden; background:#15110e; }
-.ctx-card:nth-child(2) { margin-top:clamp(30px,6vw,90px); }
-.ctx-card:nth-child(3) { margin-top:clamp(60px,12vw,180px); }
-.ctx-card img { position:absolute; left:0; top:-12%; width:100%; height:124%; max-width:none; object-fit:cover; }
-.ctx-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.94) 8%,rgba(8,6,4,.25) 55%,rgba(8,6,4,.15)); }
-.ctx-card .c { position:absolute; z-index:2; left:clamp(18px,2vw,30px); right:clamp(18px,2vw,30px); bottom:clamp(18px,2vw,30px); }
-.ctx-n { position:absolute; right:0; bottom:100%; font:400 clamp(60px,7vw,110px)/1 'Cormorant Garamond',serif; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.5); margin-bottom:10px; }
-.ctx-card h3 { font-size:clamp(20px,2.1vw,32px); margin:12px 0 10px; color:#fff; }
-.ctx-card p { margin:0; color:#e4ddd0; font-size:14px; line-height:1.55; }
-@media (max-width:860px){ .ctx{ grid-template-columns:1fr; } .ctx-card{ aspect-ratio:4/3; margin-top:0 !important; } }
+.ctx-wrap { padding:clamp(70px,10vh,120px) var(--pad) clamp(80px,11vh,140px); }
+.ctx-head { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:28px; }
+.ctx-head h2 { font-size:clamp(28px,3.6vw,56px); margin-top:14px; }
+.ctx-head p { margin:0; color:var(--mute); font-size:14px; max-width:320px; }
+.ctx { display:flex; gap:14px; height:min(68svh,620px); min-height:420px; }
+.ctx-card { position:relative; flex:1 1 0; min-width:0; border-radius:24px; overflow:hidden; background:#15110e; cursor:pointer; transition:flex-grow .8s cubic-bezier(.2,.7,.2,1), filter .6s; }
+.ctx-card img { position:absolute; inset:0; width:100%; height:100%; max-width:none; object-fit:cover; scale:1.03; transition:scale 1.6s cubic-bezier(.2,.7,.2,1); }
+.ctx-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.95) 6%,rgba(8,6,4,.3) 55%,rgba(8,6,4,.3)); }
+.ctx-n { position:absolute; z-index:2; top:20px; left:26px; font:400 clamp(54px,6vw,96px)/1 'Cormorant Garamond',serif; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.6); transform-origin:0 0; transition:color .5s, -webkit-text-stroke-color .5s, transform .8s cubic-bezier(.2,.7,.2,1); }
+.ctx-card .c { position:absolute; z-index:2; left:26px; right:26px; bottom:26px; }
+.ctx-card .c::before { content:''; display:block; width:0; height:1px; background:var(--gold); margin-bottom:16px; transition:width .8s cubic-bezier(.2,.7,.2,1); }
+.ctx-card h3 { font-size:clamp(19px,1.9vw,30px); margin:12px 0 0; color:#fff; }
+.ctx-card p { margin:0; color:#e4ddd0; font-size:14px; line-height:1.55; max-width:420px; max-height:0; opacity:0; overflow:hidden; transform:translateY(14px); transition:max-height .7s cubic-bezier(.2,.7,.2,1), opacity .5s, transform .7s cubic-bezier(.2,.7,.2,1), margin-top .7s; }
+.ctx-more { position:absolute; z-index:2; top:26px; right:26px; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.6); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; transition:transform .7s cubic-bezier(.2,.7,.2,1), background .4s, border-color .4s, color .4s; }
+.ctx.has-on .ctx-card:not(.on) { filter:brightness(.5) saturate(.6); }
+.ctx-card.on { flex-grow:2.4; }
+.ctx-card.on img { scale:1.12; }
+.ctx-card.on .ctx-n { color:var(--gold); -webkit-text-stroke-color:var(--gold); transform:translateY(-4px) scale(1.08); }
+.ctx-card.on .c::before { width:64px; }
+.ctx-card.on p { max-height:140px; opacity:1; transform:none; margin-top:12px; }
+.ctx-card.on .ctx-more { transform:rotate(45deg); background:var(--gold); border-color:var(--gold); color:#1a120a; }
+@media (max-width:860px){
+  .ctx-head { flex-direction:column; align-items:flex-start; }
+  .ctx { flex-direction:column; height:auto; min-height:0; }
+  .ctx-card { flex:none; height:300px; transition:height .6s cubic-bezier(.2,.7,.2,1), filter .6s; }
+  .ctx-card.on { height:340px; }
+}
 /* Journey */
 #hanh-trinh { background:var(--bg2); }
 .jr-head { padding:clamp(80px,12vh,140px) var(--pad) 40px; display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; }
@@ -303,10 +319,13 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
     <p>Nghệ thuật cá nhân hóa không gian sống — biến dinh thự thành di sản độc bản của riêng gia đình bạn.</p>
   </div>
 </section>
-<div class="ctx">
-  <article class="ctx-card"><img src="assets/img/vv-044.jpg" alt="" loading="lazy"><div class="c"><span class="ctx-n">01</span><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Ở New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư.</p></div></article>
-  <article class="ctx-card"><img src="assets/img/vv-021.jpg" alt="" loading="lazy"><div class="c"><span class="ctx-n">02</span><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Thường chỉ được mời ở bước cuối, và thiếu tiếng nói độc lập.</p></div></article>
-  <article class="ctx-card"><img src="assets/img/vv-047.jpg" alt="" loading="lazy"><div class="c"><span class="ctx-n">03</span><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ từ ý tưởng đến vận hành.</p></div></article>
+<div class="ctx-wrap">
+  <div class="ctx-head"><div><span class="kick">Ba bối cảnh</span><h2 class="disp">Vì sao cần <span class="gold">Homestylist</span></h2></div><p>Rê chuột hoặc chạm vào từng thẻ.</p></div>
+  <div class="ctx" id="ctx">
+    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-044.jpg" alt="" loading="lazy"><span class="ctx-n">01</span><span class="ctx-more" aria-hidden="true">+</span><div class="c"><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Ở New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư.</p></div></article>
+    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-021.jpg" alt="" loading="lazy"><span class="ctx-n">02</span><span class="ctx-more" aria-hidden="true">+</span><div class="c"><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Thường chỉ được mời ở bước cuối, và thiếu tiếng nói độc lập.</p></div></article>
+    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-047.jpg" alt="" loading="lazy"><span class="ctx-n">03</span><span class="ctx-more" aria-hidden="true">+</span><div class="c"><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ từ ý tưởng đến vận hành.</p></div></article>
+  </div>
 </div>
 
 <!-- 3. JOURNEY -->
@@ -622,11 +641,23 @@ wt.to('#la-gi .win', { clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none' }, 0
   .to('#la-gi .win img', { scale:1, ease:'none' }, 0)
   .from('#la-gi .txt > *', { y:60, opacity:0, stagger:.12, ease:'power2.out' }, .15);
 
-/* Ba bối cảnh: thẻ ảnh so le, ảnh trôi chậm bên trong */
-$$('.ctx-card').forEach(function(c, i){
-  gsap.from(c, { y:90, opacity:0, duration:1.1, ease:'power3.out', delay:i*.12, scrollTrigger:{ trigger:'.ctx', start:'top 80%' } });
-  gsap.fromTo(c.querySelector('img'), { yPercent:-6 }, { yPercent:6, ease:'none', scrollTrigger:{ trigger:c, start:'top bottom', end:'bottom top', scrub:true } });
-});
+/* Ba bối cảnh: thẻ giãn nở khi rê chuột / chạm */
+(function(){
+  var box = $('#ctx'), cs = $$('.ctx-card');
+  function set(c){ cs.forEach(function(x){ x.classList.toggle('on', x === c); }); box.classList.toggle('has-on', !!c); }
+  cs.forEach(function(c){
+    c.addEventListener('mouseenter', function(){ set(c); });
+    c.addEventListener('focus', function(){ set(c); });
+    c.addEventListener('click', function(){ if (window.matchMedia('(hover:none)').matches) set(c.classList.contains('on') ? null : c); });
+    var img = c.querySelector('img'), qx = gsap.quickTo(img, 'xPercent', { duration:.8, ease:'power3' }), qy = gsap.quickTo(img, 'yPercent', { duration:.8, ease:'power3' });
+    c.addEventListener('mousemove', function(e){ var r = c.getBoundingClientRect(); qx(((e.clientX - r.left) / r.width - .5) * -3); qy(((e.clientY - r.top) / r.height - .5) * -3); });
+    c.addEventListener('mouseleave', function(){ qx(0); qy(0); });
+  });
+  box.addEventListener('mouseleave', function(){ set(null); });
+  if (window.matchMedia('(hover:none)').matches) set(cs[0]);
+  gsap.from(cs, { y:80, opacity:0, duration:1.1, ease:'power3.out', stagger:.14, scrollTrigger:{ trigger:box, start:'top 82%' } });
+  gsap.from('.ctx-head > *', { y:40, opacity:0, duration:1, stagger:.1, ease:'power3.out', scrollTrigger:{ trigger:'.ctx-head', start:'top 88%' } });
+})();
 /* Generic reveals */
 $$('.rv').forEach(function(el, i){ gsap.from(el, { y:50, opacity:0, duration:1, ease:'power3.out', delay:(i%3)*.1, scrollTrigger:{ trigger:el, start:'top 88%' } }); });
 $$('.jr-head, .hs-head, .ex-head, #cam-nhan h2, #lien-he .ct, #ctForm').forEach(function(el){ gsap.from(el.children, { y:40, opacity:0, duration:1, stagger:.1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 85%' } }); });
