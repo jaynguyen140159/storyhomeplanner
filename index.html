@@ -32,10 +32,14 @@ section { position:relative; }
 .no-js #loader { display:none; }
 
 /* Top bar */
-#bar { position:fixed; top:0; left:0; right:0; z-index:90; display:flex; align-items:center; justify-content:space-between; padding:18px var(--pad); mix-blend-mode:difference; pointer-events:none; }
-#bar a { pointer-events:auto; text-decoration:none; }
-#bar .logo { font-family:'SVN-Mightiest',serif; letter-spacing:.24em; font-size:15px; text-transform:uppercase; }
-#bar .cta { font:600 11px 'Montserrat'; letter-spacing:.24em; text-transform:uppercase; border-bottom:1px solid currentColor; padding-bottom:4px; }
+#bar { position:fixed; top:0; left:0; right:0; z-index:90; display:flex; align-items:center; justify-content:space-between; padding:16px var(--pad); background:linear-gradient(to bottom,rgba(6,5,4,.7),rgba(6,5,4,0)); transition:background .4s, padding .4s; }
+#bar.solid { background:rgba(10,8,7,.86); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); padding:10px var(--pad); border-bottom:1px solid var(--line); }
+#bar a { text-decoration:none; }
+#bar .logo { font-family:'SVN-Mightiest',serif; letter-spacing:.2em; font-size:clamp(17px,1.7vw,24px); line-height:1.15; text-transform:uppercase; color:#fff; }
+#bar .logo b { font-weight:400; color:var(--gold); }
+#bar .cta { font:700 11px/1 'Montserrat'; letter-spacing:.22em; text-transform:uppercase; background:var(--gold); color:#1a120a; padding:14px 26px; border-radius:999px; box-shadow:0 6px 24px rgba(222,155,96,.35); transition:background .3s, transform .3s; white-space:nowrap; }
+#bar .cta:hover { background:#f2b986; transform:translateY(-1px); }
+@media (max-width:520px){ #bar .logo{ font-size:14px; letter-spacing:.14em; } #bar .cta{ padding:12px 18px; } }
 #prog { position:fixed; top:0; left:0; height:2px; width:100%; background:var(--gold); transform-origin:0 50%; transform:scaleX(0); z-index:95; }
 #chapNav { position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:80; display:flex; flex-direction:column; gap:14px; }
 #chapNav a { position:relative; width:9px; height:9px; border-radius:50%; border:1px solid var(--gold); display:block; transition:background .3s, transform .3s; }
@@ -51,7 +55,7 @@ section { position:relative; }
 #hero .shade { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.92),rgba(8,6,4,.15) 55%,rgba(8,6,4,.45)); }
 #hero .copy { position:relative; padding:0 var(--pad) clamp(70px,11vh,120px); width:100%; }
 #hero h1 { font-size:clamp(46px,10.5vw,170px); margin:14px 0 18px; }
-#hero h1 .ln { display:block; overflow:hidden; padding-top:.22em; margin-top:-.16em; }
+#hero h1 .ln { display:block; overflow:hidden; padding-top:.34em; margin-top:-.26em; }
 #hero h1 .ln > span { display:block; }
 #hero p { max-width:520px; color:#e6dfd3; margin:0 0 26px; }
 .scrollcue { position:absolute; right:var(--pad); bottom:38px; font:600 10px 'Montserrat'; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:12px; }
@@ -72,14 +76,20 @@ section { position:relative; }
 #la-gi .win img { width:100%; height:100%; object-fit:cover; transform:scale(1.25); }
 #la-gi .win::after { content:''; position:absolute; inset:0; background:rgba(8,6,4,.5); }
 #la-gi .txt { position:relative; text-align:center; padding:0 var(--pad); max-width:1100px; }
-#la-gi h2 { font-size:clamp(40px,8vw,128px); margin:16px 0; }
+#la-gi h2 { font-size:clamp(28px,7.4vw,128px); margin:16px 0; white-space:nowrap; }
 #la-gi p { max-width:620px; margin:0 auto; color:#eee6da; font-size:clamp(15px,1.5vw,19px); }
-.facts { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.fact { background:var(--bg); padding:clamp(34px,5vw,70px) var(--pad); }
-.fact h3 { font-size:clamp(22px,2.4vw,34px); margin:14px 0 12px; }
-.fact p { margin:0; color:var(--mute); font-size:15px; }
-@media (max-width:860px){ .facts{ grid-template-columns:1fr; } }
-
+@media (min-width:680px){ #la-gi p { max-width:none; white-space:nowrap; font-size:clamp(12px,1.6vw,19px); } }
+.ctx { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.8vw,26px); padding:clamp(70px,10vh,130px) var(--pad) clamp(90px,13vh,170px); align-items:start; }
+.ctx-card { position:relative; aspect-ratio:3/4; border-radius:26px; overflow:hidden; background:#15110e; }
+.ctx-card:nth-child(2) { margin-top:clamp(30px,6vw,90px); }
+.ctx-card:nth-child(3) { margin-top:clamp(60px,12vw,180px); }
+.ctx-card img { position:absolute; left:0; top:-12%; width:100%; height:124%; max-width:none; object-fit:cover; }
+.ctx-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.94) 8%,rgba(8,6,4,.25) 55%,rgba(8,6,4,.15)); }
+.ctx-card .c { position:absolute; z-index:2; left:clamp(18px,2vw,30px); right:clamp(18px,2vw,30px); bottom:clamp(18px,2vw,30px); }
+.ctx-n { position:absolute; right:0; bottom:100%; font:400 clamp(60px,7vw,110px)/1 'Cormorant Garamond',serif; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.5); margin-bottom:10px; }
+.ctx-card h3 { font-size:clamp(20px,2.1vw,32px); margin:12px 0 10px; color:#fff; }
+.ctx-card p { margin:0; color:#e4ddd0; font-size:14px; line-height:1.55; }
+@media (max-width:860px){ .ctx{ grid-template-columns:1fr; } .ctx-card{ aspect-ratio:4/3; margin-top:0 !important; } }
 /* Journey */
 #hanh-trinh { background:var(--bg2); }
 .jr-head { padding:clamp(80px,12vh,140px) var(--pad) 40px; display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; }
@@ -134,10 +144,14 @@ section { position:relative; }
 .hs-stage { position:relative; overflow:hidden; margin:0 var(--pad); border-radius:28px; }
 .hs-stage > .pic { position:relative; will-change:transform; }
 .hs-stage img { width:100%; height:auto; }
-.hot { position:absolute; transform:translate(-50%,-50%); width:46px; height:46px; border-radius:50%; border:0; padding:0; background:rgba(222,155,96,.95); color:#1a120a; cursor:pointer; font:700 18px/46px 'Montserrat'; text-align:center; box-shadow:0 0 0 0 rgba(222,155,96,.6); animation:pulse 2.4s infinite; }
-.hot span { position:absolute; left:50%; top:calc(100% + 10px); transform:translateX(-50%); white-space:nowrap; font:600 10px 'Montserrat'; letter-spacing:.2em; text-transform:uppercase; color:#fff; background:rgba(0,0,0,.65); padding:6px 12px; border-radius:999px; backdrop-filter:blur(6px); }
-@keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(222,155,96,.65);} 70%{ box-shadow:0 0 0 22px rgba(222,155,96,0);} 100%{ box-shadow:0 0 0 0 rgba(222,155,96,0);} }
-@media (max-width:700px){ .hs-stage{ margin:0 12px; border-radius:18px; } .hs-stage > .pic{ width:190%; margin-left:-45%; } .hot{ width:36px; height:36px; line-height:36px; font-size:15px; } .hot span{ display:none; } }
+.hot { position:absolute; transform:translate(-50%,-50%); width:34px; height:34px; border-radius:50%; padding:0; cursor:pointer; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.75); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); font-size:0; color:transparent; transition:background .3s, border-color .3s; animation:pulse 2.8s infinite; }
+.hot::before { content:''; position:absolute; left:50%; top:50%; width:8px; height:8px; margin:-4px 0 0 -4px; border-radius:50%; background:#fff; transition:background .3s, transform .3s; }
+.hot:hover, .hot:focus-visible { background:rgba(222,155,96,.3); border-color:var(--gold); }
+.hot:hover::before, .hot:focus-visible::before { background:var(--gold); transform:scale(1.3); }
+.hot span { position:absolute; left:50%; top:calc(100% + 10px); transform:translateX(-50%) translateY(-4px); white-space:nowrap; font:600 10px 'Montserrat'; letter-spacing:.2em; text-transform:uppercase; color:#fff; background:rgba(10,8,7,.55); padding:7px 13px; border-radius:999px; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); opacity:0; pointer-events:none; transition:opacity .3s, transform .3s; }
+.hot:hover span, .hot:focus-visible span { opacity:1; transform:translateX(-50%); }
+@keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(255,255,255,.4);} 70%{ box-shadow:0 0 0 14px rgba(255,255,255,0);} 100%{ box-shadow:0 0 0 0 rgba(255,255,255,0);} }
+@media (max-width:700px){ .hs-stage{ margin:0 12px; border-radius:18px; } .hs-stage > .pic{ width:190%; margin-left:-45%; } .hot{ width:30px; height:30px; } .hot span{ display:none; } }
 .hs-list { display:none; }
 @media (max-width:700px){ .hs-list{ display:flex; flex-wrap:wrap; gap:8px; padding:18px 12px 0; } .hs-list button{ border:1px solid var(--line); background:transparent; border-radius:999px; padding:9px 14px; font:600 10px 'Montserrat'; letter-spacing:.16em; text-transform:uppercase; } }
 
@@ -157,9 +171,12 @@ section { position:relative; }
 .ex-row .r { display:block; font:300 13px 'Montserrat'; color:var(--mute); text-transform:none; margin-top:6px; letter-spacing:0; }
 .ex-row:hover .t { transform:translateX(18px); color:var(--gold); }
 .ex-row .open span { display:none; }
-#exFloat { position:fixed; left:0; top:0; width:300px; height:380px; border-radius:18px; overflow:hidden; pointer-events:none; z-index:70; opacity:0; transform:translate(-50%,-50%) scale(.7); }
-#exFloat img { width:100%; height:100%; object-fit:cover; }
-@media (hover:none){ #exFloat{ display:none; } }
+.ex-row .th { display:block; width:120px; height:76px; border-radius:12px; overflow:hidden; opacity:.55; filter:saturate(.5); transition:opacity .4s, filter .4s; }
+.ex-row .th img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
+.ex-row:hover .th { opacity:1; filter:none; }
+.ex-row:hover .th img { transform:scale(1.08); }
+.ex-row .end { display:flex; align-items:center; gap:18px; }
+@media (max-width:600px){ .ex-row .th{ width:72px; height:52px; } .ex-row .open{ display:none; } }
 @media (max-width:600px){ .ex-row{ grid-template-columns:40px 1fr auto; gap:12px; padding:18px 0; } }
 
 /* Voices */
@@ -237,8 +254,8 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 <div id="loader"><span class="disp">Khởi Minh Homestyling</span><b id="loadN">0</b></div>
 <div id="prog"></div>
 <header id="bar">
-  <a class="logo" href="#hero">Khởi Minh Homestyling</a>
-  <a class="cta" href="#lien-he">Liên hệ</a>
+  <a class="logo" href="#hero">Khởi Minh <b>Homestyling</b></a>
+  <a class="cta" href="#lien-he">Liên hệ tư vấn</a>
 </header>
 <nav id="chapNav" aria-label="Các chương">
   <a href="#hero"><span>Mở đầu</span></a>
@@ -259,7 +276,7 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
     <div class="shade"></div>
   </div>
   <div class="copy">
-    <span class="kick">Câu chuyện một dinh thự</span>
+    <span class="kick">Nghệ thuật cố vấn &amp; kiến tạo dinh thự</span>
     <h1 class="disp"><span class="ln"><span>Kiến tạo</span></span><span class="ln"><span>di sản <span class="gold">độc bản</span></span></span></h1>
     <p>Từ câu hỏi đầu tiên đến buổi tối đầu tiên trong ngôi nhà — hành trình của Viên Villa.</p>
     <a class="btn fill" href="#mo-dau">Bắt đầu câu chuyện ↓</a>
@@ -286,10 +303,10 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
     <p>Nghệ thuật cá nhân hóa không gian sống — biến dinh thự thành di sản độc bản của riêng gia đình bạn.</p>
   </div>
 </section>
-<div class="facts">
-  <div class="fact rv"><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Tại New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư và nhà thầu.</p></div>
-  <div class="fact rv"><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Homestyling thường chỉ xuất hiện ở bước sắp xếp cuối cùng, thiếu tiếng nói độc lập.</p></div>
-  <div class="fact rv"><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ trong mọi quyết định — từ ý tưởng đến vận hành.</p></div>
+<div class="ctx">
+  <article class="ctx-card"><img src="assets/img/vv-044.jpg" alt="" loading="lazy"><div class="c"><span class="ctx-n">01</span><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Ở New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư.</p></div></article>
+  <article class="ctx-card"><img src="assets/img/vv-021.jpg" alt="" loading="lazy"><div class="c"><span class="ctx-n">02</span><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Thường chỉ được mời ở bước cuối, và thiếu tiếng nói độc lập.</p></div></article>
+  <article class="ctx-card"><img src="assets/img/vv-047.jpg" alt="" loading="lazy"><div class="c"><span class="ctx-n">03</span><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ từ ý tưởng đến vận hành.</p></div></article>
 </div>
 
 <!-- 3. JOURNEY -->
@@ -325,7 +342,6 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
   </div>
   <div id="exList"></div>
 </section>
-<div id="exFloat"><img alt="" id="exFloatImg"></div>
 
 <!-- 6. VOICES -->
 <section id="cam-nhan">
@@ -560,7 +576,7 @@ document.body.classList.remove('no-js');
   $('#jrLetters').innerHTML = STEP_META.map(function(m){ return '<span>'+m.L+'</span>'; }).join('');
   $('#hsHots').innerHTML = ROOMS.map(function(r, i){ return '<button type="button" class="hot zoomable" data-kind="room" data-i="'+i+'" style="left:'+r.x+'%;top:'+r.y+'%" aria-label="'+r.t+'">+<span>'+r.t+'</span></button>'; }).join('');
   $('#hsList').innerHTML = ROOMS.map(function(r, i){ return '<button type="button" data-kind="room" data-i="'+i+'" class="hs-chip">'+r.t+'</button>'; }).join('');
-  $('#exList').innerHTML = specialistsData.map(function(s, i){ return '<button type="button" class="ex-row zoomable" data-kind="spec" data-i="'+i+'"><span class="n">'+s.number+'</span><span class="t">'+s.title+'<span class="r">'+s.role+'</span></span><span class="open"><i>+</i></span></button>'; }).join('');
+  $('#exList').innerHTML = specialistsData.map(function(s, i){ return '<button type="button" class="ex-row zoomable" data-kind="spec" data-i="'+i+'"><span class="n">'+s.number+'</span><span class="t">'+s.title+'<span class="r">'+s.role+'</span></span><span class="end"><span class="th"><img src="'+s.image+'" alt="" loading="lazy"></span><span class="open"><i>+</i></span></span></button>'; }).join('');
   var q = $('#quote'); q.innerHTML = q.textContent.split(' ').map(function(w){ return '<span class="w">'+w+'</span>'; }).join(' ');
 })();
 
@@ -569,14 +585,20 @@ if (!window.gsap) { var l = $('#loader'); if (l) l.style.display = 'none'; $$('#
 else (function(){
 gsap.registerPlugin(ScrollTrigger);
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var hv = $('#heroVideo'); hv.muted = true; var hp = hv.play(); if (hp && hp.catch) hp.catch(function(){});
+var hv = $('#heroVideo'); hv.muted = true; hv.defaultMuted = true; hv.setAttribute('muted','');
+var heroGo = function(){ if (hv.paused) { hv.muted = true; var p = hv.play(); if (p && p.catch) p.catch(function(){}); } };
+heroGo(); ['loadeddata','canplay','canplaythrough'].forEach(function(ev){ hv.addEventListener(ev, heroGo); });
+document.addEventListener('visibilitychange', heroGo); window.addEventListener('pageshow', heroGo);
+['pointerdown','touchstart','scroll','keydown','mousemove'].forEach(function(ev){ window.addEventListener(ev, heroGo, { once:true, passive:true }); });
+var heroTry = setInterval(function(){ if (!hv.paused) clearInterval(heroTry); else heroGo(); }, 700); setTimeout(function(){ clearInterval(heroTry); }, 12000);
+ScrollTrigger.create({ start:0, end:'max', onUpdate:function(s){ $('#bar').classList.toggle('solid', s.scroll() > 80); } });
 
 /* Loader + hero intro */
 var cnt = {v:0};
 var intro = gsap.timeline({ defaults:{ ease:'power3.out' } });
 intro.to(cnt, { v:100, duration: reduce ? 0.1 : 1.1, ease:'power1.inOut', onUpdate:function(){ $('#loadN').textContent = Math.round(cnt.v); } })
      .to('#loader', { yPercent:-100, duration:.9, ease:'power4.inOut' })
-     .set('#loader', { display:'none' })
+     .set('#loader', { display:'none' }).add(heroGo)
      .from('#hero video', { scale:1.25, duration:2.2 }, '-=.9')
      .from('#hero h1 .ln > span', { yPercent:110, duration:1.2, stagger:.14 }, '-=1.8')
      .from('#hero .kick, #hero p, #hero .btn, .scrollcue', { y:24, opacity:0, duration:.9, stagger:.1 }, '-=1.1');
@@ -600,6 +622,11 @@ wt.to('#la-gi .win', { clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none' }, 0
   .to('#la-gi .win img', { scale:1, ease:'none' }, 0)
   .from('#la-gi .txt > *', { y:60, opacity:0, stagger:.12, ease:'power2.out' }, .15);
 
+/* Ba bối cảnh: thẻ ảnh so le, ảnh trôi chậm bên trong */
+$$('.ctx-card').forEach(function(c, i){
+  gsap.from(c, { y:90, opacity:0, duration:1.1, ease:'power3.out', delay:i*.12, scrollTrigger:{ trigger:'.ctx', start:'top 80%' } });
+  gsap.fromTo(c.querySelector('img'), { yPercent:-6 }, { yPercent:6, ease:'none', scrollTrigger:{ trigger:c, start:'top bottom', end:'bottom top', scrub:true } });
+});
 /* Generic reveals */
 $$('.rv').forEach(function(el, i){ gsap.from(el, { y:50, opacity:0, duration:1, ease:'power3.out', delay:(i%3)*.1, scrollTrigger:{ trigger:el, start:'top 88%' } }); });
 $$('.jr-head, .hs-head, .ex-head, #cam-nhan h2, #lien-he .ct, #ctForm').forEach(function(el){ gsap.from(el.children, { y:40, opacity:0, duration:1, stagger:.1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 85%' } }); });
@@ -635,13 +662,6 @@ gsap.fromTo('#mqText', { xPercent:5 }, { xPercent:-45, ease:'none', scrollTrigge
 
 /* Experts: rows + floating image */
 gsap.from('.ex-row', { y:40, opacity:0, stagger:.07, duration:.9, ease:'power3.out', scrollTrigger:{ trigger:'#exList', start:'top 82%' } });
-var fl = $('#exFloat'), fx = gsap.quickTo(fl, 'x', { duration:.5, ease:'power3' }), fy = gsap.quickTo(fl, 'y', { duration:.5, ease:'power3' });
-$$('.ex-row').forEach(function(r){
-  r.addEventListener('mouseenter', function(){ $('#exFloatImg').src = specialistsData[+r.dataset.i].image; gsap.to(fl, { opacity:1, scale:1, duration:.4 }); });
-  r.addEventListener('mouseleave', function(){ gsap.to(fl, { opacity:0, scale:.7, duration:.3 }); });
-});
-window.addEventListener('mousemove', function(e){ fx(e.clientX + 190); fy(e.clientY); });
-
 /* Film */
 gsap.to('.film', { clipPath:'inset(0% 0% round 28px)', ease:'none', scrollTrigger:{ trigger:'#phim', start:'top 80%', end:'top 15%', scrub:.6 } });
 
@@ -682,12 +702,12 @@ function openZoom(el){
   Z.kind = el.dataset.kind; Z.i = +el.dataset.i; Z.src = el.classList.contains('hs-chip') ? $$('.hot')[Z.i] : el;
   fill(item(Z.kind, Z.i));
   document.documentElement.style.overflow = 'hidden';
-  gsap.to(cur, { scale:0, duration:.2 }); gsap.to(fl, { opacity:0, duration:.2 });
+  gsap.to(cur, { scale:0, duration:.2 });
   var from = srcRect(Z.src);
-  if (Z.kind === 'spec') { from = { top:window.innerHeight/2 - 190, left:Math.min(window.innerWidth - 320, from.left + from.width*0.55), width:300, height:380, borderRadius:18 }; }
+  if (Z.kind === 'spec') { from = srcRect(Z.src.querySelector('.th')); }
   var tl = gsap.timeline({ onComplete:function(){ Z.busy = false; } });
   tl.set(zoom, { visibility:'visible' }).set(zMedia, Object.assign({ '--sh':0 }, from));
-  if (Z.kind === 'room') { var r = ROOMS[Z.i]; tl.to('#hsPic', { scale:2.6, transformOrigin:r.x+'% '+r.y+'%', duration:.95, ease:'power3.inOut' }, 0); }
+  if (Z.kind === 'room') { var r = ROOMS[Z.i]; tl.to('.hot', { opacity:0, duration:.25 }, 0); tl.to('#hsPic', { scale:2.6, transformOrigin:r.x+'% '+r.y+'%', duration:.95, ease:'power3.inOut' }, 0); }
   tl.to('.zbg', { opacity:1, duration:.6 }, 0)
     .to(zMedia, { top:0, left:0, width:'100vw', height:'100vh', borderRadius:0, duration: reduce ? .01 : .95, ease:'power3.inOut' }, 0)
     .to(zMedia, { '--sh':1, duration:.5 }, '-=.35')
@@ -697,14 +717,14 @@ function openZoom(el){
 function closeZoom(instant){
   if (!Z.open || Z.busy) return; Z.busy = true;
   var to = srcRect(Z.src);
-  if (Z.kind === 'spec') { to = { top:to.top, left:to.left, width:to.width, height:to.height, borderRadius:0, opacity:0 }; }
+  if (Z.kind === 'spec') { to = srcRect(Z.src.querySelector('.th')); }
   var tl = gsap.timeline({ onComplete:function(){ gsap.set(zoom, { visibility:'hidden' }); gsap.set(zMedia, { opacity:1 }); zMedia.innerHTML = ''; Z.open = false; Z.busy = false; document.documentElement.style.overflow = ''; } });
   tl.to('#zClose, #zNav', { opacity:0, duration:.2 }, 0)
     .to(zText.children, { opacity:0, y:-16, duration:.25, stagger:.02 }, 0)
     .to(zMedia, { '--sh':0, duration:.25 }, 0)
     .to(zMedia, Object.assign({ duration: instant || reduce ? .01 : .8, ease:'power3.inOut' }, to), .15)
     .to('.zbg', { opacity:0, duration:.5 }, .3);
-  if (Z.kind === 'room') tl.to('#hsPic', { scale:1, duration:.8, ease:'power3.inOut' }, .15);
+  if (Z.kind === 'room') { tl.to('#hsPic', { scale:1, duration:.8, ease:'power3.inOut' }, .15); tl.to('.hot', { opacity:1, duration:.4 }, .8); }
 }
 function stepZoom(d){
   if (!Z.open || Z.busy) return; Z.busy = true;
