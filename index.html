@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khởi Minh Homestyling — Câu chuyện Viên Villa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family:'SVN-Mightiest'; src:url('SVN-Mightiest.otf') format('opentype'); font-display:swap; }
+:root { --bg:#0B0908; --bg2:#14100D; --ink:#F4EFE7; --mute:#B9B0A3; --gold:#DE9B60; --gold2:#8E6334; --line:rgba(222,155,96,.28); --pad:clamp(20px,5vw,72px); }
+*,*::before,*::after { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--ink); font:300 16px/1.65 'Montserrat',system-ui,sans-serif; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+img,video { display:block; max-width:100%; }
+button { font:inherit; color:inherit; }
+a { color:inherit; }
+.disp { font-family:'SVN-Mightiest',Georgia,serif; font-weight:400; text-transform:uppercase; line-height:1.05; letter-spacing:.01em; margin:0; }
+.ital { font:italic 500 1em 'Cormorant Garamond',Georgia,serif; text-transform:none; }
+.kick { display:block; font:700 11px/1 'Montserrat',sans-serif; letter-spacing:.32em; text-transform:uppercase; color:var(--gold); }
+.gold { color:var(--gold); }
+.btn { display:inline-flex; align-items:center; gap:10px; padding:16px 30px; border-radius:999px; border:1px solid var(--gold); background:transparent; color:var(--ink); font:600 11px/1 'Montserrat',sans-serif; letter-spacing:.24em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .35s,color .35s; }
+.btn:hover, .btn.fill { background:var(--gold); color:#1a120a; }
+.btn.fill:hover { background:#f0b47f; }
+section { position:relative; }
+
+/* Loader */
+#loader { position:fixed; inset:0; z-index:500; background:#070605; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
+#loader .disp { font-size:clamp(22px,4vw,44px); letter-spacing:.3em; }
+#loader b { font:500 13px 'Montserrat'; letter-spacing:.3em; color:var(--gold); }
+.no-js #loader { display:none; }
+
+/* Top bar */
+#bar { position:fixed; top:0; left:0; right:0; z-index:90; display:flex; align-items:center; justify-content:space-between; padding:18px var(--pad); mix-blend-mode:difference; pointer-events:none; }
+#bar a { pointer-events:auto; text-decoration:none; }
+#bar .logo { font-family:'SVN-Mightiest',serif; letter-spacing:.24em; font-size:15px; text-transform:uppercase; }
+#bar .cta { font:600 11px 'Montserrat'; letter-spacing:.24em; text-transform:uppercase; border-bottom:1px solid currentColor; padding-bottom:4px; }
+#prog { position:fixed; top:0; left:0; height:2px; width:100%; background:var(--gold); transform-origin:0 50%; transform:scaleX(0); z-index:95; }
+#chapNav { position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:80; display:flex; flex-direction:column; gap:14px; }
+#chapNav a { position:relative; width:9px; height:9px; border-radius:50%; border:1px solid var(--gold); display:block; transition:background .3s, transform .3s; }
+#chapNav a.on { background:var(--gold); transform:scale(1.35); }
+#chapNav a span { position:absolute; right:20px; top:50%; transform:translateY(-50%); white-space:nowrap; font:600 10px 'Montserrat'; letter-spacing:.2em; text-transform:uppercase; color:var(--ink); opacity:0; pointer-events:none; transition:opacity .3s; background:rgba(0,0,0,.6); padding:5px 10px; border-radius:999px; }
+#chapNav a:hover span { opacity:1; }
+@media (max-width:899px){ #chapNav{ display:none; } }
+
+/* Hero */
+#hero { height:100svh; min-height:600px; overflow:hidden; display:flex; align-items:flex-end; }
+#hero .media { position:absolute; inset:0; }
+#hero video { width:100%; height:100%; object-fit:cover; }
+#hero .shade { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.92),rgba(8,6,4,.15) 55%,rgba(8,6,4,.45)); }
+#hero .copy { position:relative; padding:0 var(--pad) clamp(70px,11vh,120px); width:100%; }
+#hero h1 { font-size:clamp(46px,10.5vw,170px); margin:14px 0 18px; }
+#hero h1 .ln { display:block; overflow:hidden; padding-top:.22em; margin-top:-.16em; }
+#hero h1 .ln > span { display:block; }
+#hero p { max-width:520px; color:#e6dfd3; margin:0 0 26px; }
+.scrollcue { position:absolute; right:var(--pad); bottom:38px; font:600 10px 'Montserrat'; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:12px; }
+.scrollcue i { display:block; width:1px; height:54px; background:linear-gradient(var(--gold),transparent); }
+@media (max-width:700px){ .scrollcue{ display:none; } }
+
+/* Prologue */
+#mo-dau { min-height:100svh; display:flex; align-items:center; padding:120px var(--pad); }
+#mo-dau .in { max-width:1180px; margin:0 auto; }
+#mo-dau .quote { font-size:clamp(28px,4.6vw,68px); line-height:1.16; margin:22px 0 28px; }
+#mo-dau .quote .w { opacity:.14; display:inline-block; }
+#mo-dau .who { color:var(--mute); font-size:14px; letter-spacing:.06em; }
+#mo-dau .turn { margin-top:44px; font-size:clamp(20px,2.4vw,32px); color:var(--gold); }
+
+/* What */
+#la-gi { height:100svh; min-height:620px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+#la-gi .win { position:absolute; inset:0; clip-path:inset(24% 32% 24% 32% round 26px); will-change:clip-path; }
+#la-gi .win img { width:100%; height:100%; object-fit:cover; transform:scale(1.25); }
+#la-gi .win::after { content:''; position:absolute; inset:0; background:rgba(8,6,4,.5); }
+#la-gi .txt { position:relative; text-align:center; padding:0 var(--pad); max-width:1100px; }
+#la-gi h2 { font-size:clamp(40px,8vw,128px); margin:16px 0; }
+#la-gi p { max-width:620px; margin:0 auto; color:#eee6da; font-size:clamp(15px,1.5vw,19px); }
+.facts { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.fact { background:var(--bg); padding:clamp(34px,5vw,70px) var(--pad); }
+.fact h3 { font-size:clamp(22px,2.4vw,34px); margin:14px 0 12px; }
+.fact p { margin:0; color:var(--mute); font-size:15px; }
+@media (max-width:860px){ .facts{ grid-template-columns:1fr; } }
+
+/* Journey */
+#hanh-trinh { background:var(--bg2); }
+.jr-head { padding:clamp(80px,12vh,140px) var(--pad) 40px; display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; }
+.jr-head h2 { font-size:clamp(38px,6.5vw,104px); margin-top:16px; }
+.jr-head p { max-width:380px; color:var(--mute); margin:0; font-size:15px; }
+.jr-pin { overflow:hidden; }
+.jr-track { display:flex; align-items:stretch; gap:22px; padding:10px var(--pad) 26px; width:max-content; }
+.jr-chap { flex:none; width:min(70vw,360px); display:flex; flex-direction:column; justify-content:center; padding-right:10px; }
+.jr-chap .n { font-family:'SVN-Mightiest',serif; font-size:clamp(90px,13vw,190px); line-height:.8; color:var(--gold); }
+.jr-chap h3 { font-size:clamp(28px,3vw,44px); margin:20px 0 10px; }
+.jr-chap p { color:var(--mute); margin:0; font-size:15px; }
+.jr-card { position:relative; flex:none; width:min(80vw,420px); height:min(66svh,620px); min-height:440px; border-radius:24px; overflow:hidden; background:#000; border:0; padding:0; text-align:left; cursor:pointer; color:#fff; }
+.jr-card video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.7,.2,1); }
+.jr-card:hover video { transform:scale(1.07); }
+.jr-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.94) 6%,rgba(8,6,4,.18) 55%,rgba(8,6,4,.35)); }
+.jr-card .L { position:absolute; z-index:2; top:4px; right:20px; font:400 clamp(110px,13vw,180px)/1 'Cormorant Garamond',serif; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.6); }
+.jr-card .b { position:absolute; z-index:2; left:24px; right:24px; bottom:24px; }
+.jr-card .b small { font:700 10px 'Montserrat'; letter-spacing:.26em; color:var(--gold); }
+.jr-card .b h4 { font-family:'SVN-Mightiest',serif; font-weight:400; text-transform:uppercase; font-size:38px; line-height:1.05; margin:8px 0 2px; }
+.jr-card .b em { display:block; font:italic 500 21px 'Cormorant Garamond',serif; color:#ecc9a0; margin-bottom:14px; }
+.open { display:inline-flex; align-items:center; gap:10px; font:600 10px 'Montserrat'; letter-spacing:.24em; text-transform:uppercase; }
+.open i { width:34px; height:34px; border-radius:50%; border:1px solid var(--gold); display:inline-flex; align-items:center; justify-content:center; font-style:normal; color:var(--gold); transition:background .3s,color .3s; }
+.jr-card:hover .open i, .ex-row:hover .open i { background:var(--gold); color:#1a120a; }
+.jr-foot { display:flex; align-items:center; gap:18px; padding:8px var(--pad) clamp(60px,9vh,110px); }
+.jr-letters { display:flex; gap:clamp(8px,1.6vw,22px); font-family:'SVN-Mightiest',serif; font-size:clamp(18px,2.2vw,30px); color:rgba(255,255,255,.25); }
+.jr-letters span.on { color:var(--gold); }
+.jr-line { flex:1; height:1px; background:rgba(255,255,255,.16); position:relative; }
+.jr-line i { position:absolute; inset:0; background:var(--gold); transform-origin:0 50%; transform:scaleX(0); }
+@media (max-width:899px){
+  .jr-track { flex-direction:column; width:auto; }
+  .jr-chap, .jr-card { width:100%; }
+  .jr-chap { padding:26px 0 4px; }
+  .jr-card { height:74svh; }
+  .jr-foot { display:none; }
+}
+
+@media (min-width:900px){
+  #hanh-trinh { height:100svh; min-height:560px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
+  .jr-head { padding:64px var(--pad) 18px; }
+  .jr-head h2 { font-size:clamp(30px,4.2vw,68px); }
+  .jr-head h2 br { display:none; }
+  .jr-card { height:min(54svh,560px); min-height:300px; }
+  .jr-card .b h4 { font-size:clamp(26px,2.6vw,38px); }
+  .jr-chap .n { font-size:clamp(70px,9vw,150px); }
+  .jr-foot { padding:6px var(--pad) 0; }
+}
+/* House */
+#ngoi-nha { padding:clamp(80px,12vh,140px) 0 0; }
+.hs-head { padding:0 var(--pad) 40px; text-align:center; }
+.hs-head h2 { font-size:clamp(38px,6.5vw,104px); margin:16px 0 14px; }
+.hs-head p { color:var(--mute); margin:0 auto; max-width:520px; font-size:15px; }
+.hs-stage { position:relative; overflow:hidden; margin:0 var(--pad); border-radius:28px; }
+.hs-stage > .pic { position:relative; will-change:transform; }
+.hs-stage img { width:100%; height:auto; }
+.hot { position:absolute; transform:translate(-50%,-50%); width:46px; height:46px; border-radius:50%; border:0; padding:0; background:rgba(222,155,96,.95); color:#1a120a; cursor:pointer; font:700 18px/46px 'Montserrat'; text-align:center; box-shadow:0 0 0 0 rgba(222,155,96,.6); animation:pulse 2.4s infinite; }
+.hot span { position:absolute; left:50%; top:calc(100% + 10px); transform:translateX(-50%); white-space:nowrap; font:600 10px 'Montserrat'; letter-spacing:.2em; text-transform:uppercase; color:#fff; background:rgba(0,0,0,.65); padding:6px 12px; border-radius:999px; backdrop-filter:blur(6px); }
+@keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(222,155,96,.65);} 70%{ box-shadow:0 0 0 22px rgba(222,155,96,0);} 100%{ box-shadow:0 0 0 0 rgba(222,155,96,0);} }
+@media (max-width:700px){ .hs-stage{ margin:0 12px; border-radius:18px; } .hs-stage > .pic{ width:190%; margin-left:-45%; } .hot{ width:36px; height:36px; line-height:36px; font-size:15px; } .hot span{ display:none; } }
+.hs-list { display:none; }
+@media (max-width:700px){ .hs-list{ display:flex; flex-wrap:wrap; gap:8px; padding:18px 12px 0; } .hs-list button{ border:1px solid var(--line); background:transparent; border-radius:999px; padding:9px 14px; font:600 10px 'Montserrat'; letter-spacing:.16em; text-transform:uppercase; } }
+
+/* Marquee */
+.mq { overflow:hidden; padding:clamp(60px,10vh,120px) 0; white-space:nowrap; }
+.mq .disp { display:inline-block; font-size:clamp(60px,12vw,200px); color:transparent; -webkit-text-stroke:1px rgba(222,155,96,.55); will-change:transform; }
+
+/* Experts */
+#chuyen-gia { padding:0 var(--pad) clamp(80px,12vh,140px); }
+.ex-head { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:34px; }
+.ex-head h2 { font-size:clamp(34px,5.4vw,84px); margin-top:16px; }
+.ex-head p { max-width:380px; color:var(--mute); margin:0; font-size:15px; }
+.ex-row { display:grid; grid-template-columns:70px 1fr auto; align-items:center; gap:20px; width:100%; padding:24px 0; border:0; border-top:1px solid var(--line); background:transparent; text-align:left; cursor:pointer; }
+.ex-row:last-child { border-bottom:1px solid var(--line); }
+.ex-row .n { font:500 13px 'Montserrat'; letter-spacing:.2em; color:var(--gold); }
+.ex-row .t { font-family:'SVN-Mightiest',serif; text-transform:uppercase; font-size:clamp(20px,3vw,42px); line-height:1.1; transition:transform .5s cubic-bezier(.2,.7,.2,1), color .3s; }
+.ex-row .r { display:block; font:300 13px 'Montserrat'; color:var(--mute); text-transform:none; margin-top:6px; letter-spacing:0; }
+.ex-row:hover .t { transform:translateX(18px); color:var(--gold); }
+.ex-row .open span { display:none; }
+#exFloat { position:fixed; left:0; top:0; width:300px; height:380px; border-radius:18px; overflow:hidden; pointer-events:none; z-index:70; opacity:0; transform:translate(-50%,-50%) scale(.7); }
+#exFloat img { width:100%; height:100%; object-fit:cover; }
+@media (hover:none){ #exFloat{ display:none; } }
+@media (max-width:600px){ .ex-row{ grid-template-columns:40px 1fr auto; gap:12px; padding:18px 0; } }
+
+/* Voices */
+#cam-nhan { padding:clamp(80px,12vh,140px) var(--pad); background:var(--bg2); }
+#cam-nhan h2 { font-size:clamp(34px,5.4vw,84px); margin:16px 0 44px; }
+.vc { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.vc figure { margin:0; padding:34px 30px; border:1px solid var(--line); border-radius:24px; display:flex; flex-direction:column; justify-content:space-between; gap:26px; }
+.vc blockquote { margin:0; font:italic 400 clamp(19px,1.7vw,24px)/1.45 'Cormorant Garamond',serif; color:#efe8dc; }
+.vc figcaption b { display:block; font-weight:600; font-size:14px; }
+.vc figcaption span { font-size:12px; color:var(--mute); }
+@media (max-width:960px){ .vc{ grid-template-columns:1fr; } }
+
+/* Film */
+#phim { padding:clamp(80px,12vh,140px) var(--pad); }
+.film { position:relative; display:block; width:100%; aspect-ratio:21/9; border-radius:28px; overflow:hidden; border:0; padding:0; cursor:pointer; background:#000; clip-path:inset(12% 14% round 28px); }
+.film img { width:100%; height:100%; object-fit:cover; }
+.film::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.6),transparent 60%); }
+.film .play { position:absolute; z-index:2; left:50%; top:50%; transform:translate(-50%,-50%); width:96px; height:96px; border-radius:50%; background:var(--gold); color:#1a120a; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 16px rgba(222,155,96,.2); }
+.film .lab { position:absolute; z-index:2; left:28px; bottom:22px; color:#fff; font:italic 500 clamp(20px,2.6vw,32px) 'Cormorant Garamond',serif; }
+@media (max-width:700px){ .film{ aspect-ratio:4/3; } }
+
+/* Contact */
+#lien-he { padding:clamp(80px,12vh,150px) var(--pad); display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,6vw,90px); align-items:start; }
+#lien-he h2 { font-size:clamp(38px,6vw,96px); margin:16px 0 22px; }
+#lien-he .lead { color:var(--mute); max-width:460px; margin:0 0 30px; }
+.ct a { display:block; text-decoration:none; font-size:clamp(20px,2.2vw,30px); font-weight:400; margin-bottom:6px; }
+.ct small { display:block; color:var(--mute); font-size:12px; margin-top:22px; max-width:440px; }
+form { display:grid; gap:16px; }
+label { display:grid; gap:8px; font:600 10px 'Montserrat'; letter-spacing:.2em; text-transform:uppercase; color:var(--mute); }
+input,textarea { width:100%; background:transparent; border:0; border-bottom:1px solid var(--line); padding:12px 0; color:var(--ink); font:300 16px 'Montserrat'; outline:none; border-radius:0; }
+input:focus,textarea:focus { border-color:var(--gold); }
+input::placeholder,textarea::placeholder { color:#6f675d; }
+#okNote { display:none; color:#9fd8a8; font-size:14px; }
+@media (max-width:860px){ #lien-he{ grid-template-columns:1fr; } }
+footer { border-top:1px solid var(--line); padding:44px var(--pad) 36px; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; font-size:13px; color:var(--mute); }
+footer b { display:block; font:700 10px 'Montserrat'; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
+@media (max-width:760px){ footer{ grid-template-columns:1fr; } }
+
+/* Zoom overlay */
+#zoom { position:fixed; inset:0; z-index:300; visibility:hidden; }
+#zoom .zbg { position:absolute; inset:0; background:#060504; opacity:0; }
+#zoom .zmedia { position:fixed; overflow:hidden; background:#000; }
+#zoom .zmedia img, #zoom .zmedia video { width:100%; height:100%; object-fit:cover; }
+#zoom .zmedia::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(6,5,4,.92) 0%,rgba(6,5,4,.55) 42%,rgba(6,5,4,.1) 75%); opacity:var(--sh,0); }
+#zoom .ztext { position:absolute; left:var(--pad); bottom:clamp(40px,9vh,100px); width:min(560px,calc(100% - 2*var(--pad))); max-height:76svh; overflow:auto; }
+#zoom .ztext > * { opacity:0; }
+#zoom h3 { font-size:clamp(30px,4.4vw,64px); margin:14px 0 6px; }
+#zoom .zsub { font:italic 500 clamp(20px,2vw,26px) 'Cormorant Garamond',serif; color:#ecc9a0; margin:0 0 16px; }
+#zoom .zdesc { margin:0 0 18px; color:#efe8dc; }
+#zoom ul { list-style:none; margin:0 0 18px; padding:0; display:grid; gap:10px; }
+#zoom li { display:flex; gap:12px; font-size:14px; color:#e2dacd; }
+#zoom li::before { content:'✦'; color:var(--gold); }
+#zoom .zq { font:italic 400 19px/1.45 'Cormorant Garamond',serif; border-left:2px solid var(--gold); padding-left:16px; margin:0 0 22px; color:#f1e9dc; }
+#zoom .zclose { position:absolute; top:22px; right:var(--pad); width:54px; height:54px; border-radius:50%; border:1px solid var(--gold); background:rgba(0,0,0,.4); color:var(--gold); font-size:26px; line-height:1; cursor:pointer; opacity:0; }
+#zoom .znav { position:absolute; right:var(--pad); bottom:clamp(40px,9vh,100px); display:flex; gap:10px; opacity:0; }
+#zoom .znav button { width:54px; height:54px; border-radius:50%; border:1px solid var(--gold); background:rgba(0,0,0,.4); color:var(--gold); cursor:pointer; font-size:18px; }
+#zoom .znav button:hover, #zoom .zclose:hover { background:var(--gold); color:#1a120a; }
+@media (max-width:700px){ #zoom .zmedia::after{ background:linear-gradient(to top,rgba(6,5,4,.96) 30%,rgba(6,5,4,.35) 75%); } #zoom .znav{ bottom:auto; top:22px; right:auto; left:var(--pad); } #zoom .znav button{ width:46px; height:46px; } }
+
+/* Film modal */
+#filmModal { position:fixed; inset:0; z-index:400; background:rgba(0,0,0,.94); display:flex; align-items:center; justify-content:center; padding:20px; }
+#filmModal[hidden] { display:none; }
+#filmModal video { width:min(1280px,100%); max-height:86svh; border-radius:14px; }
+#filmModal button { position:absolute; top:14px; right:22px; background:none; border:0; color:#fff; font-size:42px; cursor:pointer; }
+
+/* Cursor label */
+#cur { position:fixed; left:0; top:0; z-index:350; width:92px; height:92px; margin:-46px 0 0 -46px; border-radius:50%; background:var(--gold); color:#1a120a; display:flex; align-items:center; justify-content:center; font:700 10px 'Montserrat'; letter-spacing:.18em; text-transform:uppercase; pointer-events:none; transform:scale(0); }
+@media (hover:none){ #cur{ display:none; } }
+@media (prefers-reduced-motion:reduce){ .hot{ animation:none; } }
+</style>
+</head>
+<body class="no-js">
+
+<div id="loader"><span class="disp">Khởi Minh Homestyling</span><b id="loadN">0</b></div>
+<div id="prog"></div>
+<header id="bar">
+  <a class="logo" href="#hero">Khởi Minh Homestyling</a>
+  <a class="cta" href="#lien-he">Liên hệ</a>
+</header>
+<nav id="chapNav" aria-label="Các chương">
+  <a href="#hero"><span>Mở đầu</span></a>
+  <a href="#mo-dau"><span>Câu hỏi</span></a>
+  <a href="#la-gi"><span>Homestyling là gì</span></a>
+  <a href="#hanh-trinh"><span>Hành trình MANSION</span></a>
+  <a href="#ngoi-nha"><span>Bước vào ngôi nhà</span></a>
+  <a href="#chuyen-gia"><span>Chuyên gia</span></a>
+  <a href="#cam-nhan"><span>Cảm nhận</span></a>
+  <a href="#lien-he"><span>Câu chuyện của bạn</span></a>
+</nav>
+
+<main>
+<!-- 0. HERO -->
+<section id="hero">
+  <div class="media">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg"><source src="hero-villa.mp4" type="video/mp4"></video>
+    <div class="shade"></div>
+  </div>
+  <div class="copy">
+    <span class="kick">Câu chuyện một dinh thự</span>
+    <h1 class="disp"><span class="ln"><span>Kiến tạo</span></span><span class="ln"><span>di sản <span class="gold">độc bản</span></span></span></h1>
+    <p>Từ câu hỏi đầu tiên đến buổi tối đầu tiên trong ngôi nhà — hành trình của Viên Villa.</p>
+    <a class="btn fill" href="#mo-dau">Bắt đầu câu chuyện ↓</a>
+  </div>
+  <div class="scrollcue"><span>Cuộn</span><i></i></div>
+</section>
+
+<!-- 1. PROLOGUE -->
+<section id="mo-dau">
+  <div class="in">
+    <span class="kick">Mở đầu · Một câu hỏi</span>
+    <p class="disp quote" id="quote">“Chúng tôi từng nghĩ mình biết rõ mình muốn gì — cho đến khi có 13 phiên bản 3D trong tay mà vẫn không tự tin khởi công.”</p>
+    <div class="who">Ms. Vân Anh — Gia chủ Viên Villa</div>
+    <p class="ital turn">Đó là lúc Homestyling bước vào.</p>
+  </div>
+</section>
+
+<!-- 2. WHAT -->
+<section id="la-gi">
+  <div class="win"><img src="assets/img/vv-009.jpg" alt="Phòng khách Viên Villa"></div>
+  <div class="txt">
+    <span class="kick">Chương mở</span>
+    <h2 class="disp">Homestyling <span class="gold">là gì?</span></h2>
+    <p>Nghệ thuật cá nhân hóa không gian sống — biến dinh thự thành di sản độc bản của riêng gia đình bạn.</p>
+  </div>
+</section>
+<div class="facts">
+  <div class="fact rv"><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Tại New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư và nhà thầu.</p></div>
+  <div class="fact rv"><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Homestyling thường chỉ xuất hiện ở bước sắp xếp cuối cùng, thiếu tiếng nói độc lập.</p></div>
+  <div class="fact rv"><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ trong mọi quyết định — từ ý tưởng đến vận hành.</p></div>
+</div>
+
+<!-- 3. JOURNEY -->
+<section id="hanh-trinh">
+  <div class="jr-head">
+    <div><span class="kick">Hành trình MANSION</span><h2 class="disp">7 bước,<br><span class="gold">3 chương</span></h2></div>
+    <p>Bấm vào từng bước để phóng to và đọc câu chuyện phía sau.</p>
+  </div>
+  <div class="jr-pin"><div class="jr-track" id="jrTrack"></div></div>
+  <div class="jr-foot"><div class="jr-letters" id="jrLetters"></div><div class="jr-line"><i id="jrLine"></i></div></div>
+</section>
+
+<!-- 4. HOUSE -->
+<section id="ngoi-nha">
+  <div class="hs-head">
+    <span class="kick">Chương kết · Ngôi nhà</span>
+    <h2 class="disp">Bước vào <span class="gold">Viên Villa</span></h2>
+    <p>Chạm vào một điểm trên ngôi nhà để đi vào không gian đó.</p>
+  </div>
+  <div class="hs-stage" id="hsStage">
+    <div class="pic" id="hsPic"><img src="assets/img/vv-064.jpg" alt="Mặt tiền Viên Villa"><div id="hsHots"></div></div>
+  </div>
+  <div class="hs-list" id="hsList"></div>
+</section>
+
+<div class="mq"><span class="disp" id="mqText">Di sản độc bản · Viên Villa · Di sản độc bản · Viên Villa · Di sản độc bản · </span></div>
+
+<!-- 5. EXPERTS -->
+<section id="chuyen-gia">
+  <div class="ex-head">
+    <div><span class="kick">Những người phía sau</span><h2 class="disp">9 nhóm <span class="gold">chuyên gia</span></h2></div>
+    <p>Độc lập 100% — không hoa hồng nhà thầu. Bấm vào từng nhóm để xem vai trò của họ.</p>
+  </div>
+  <div id="exList"></div>
+</section>
+<div id="exFloat"><img alt="" id="exFloatImg"></div>
+
+<!-- 6. VOICES -->
+<section id="cam-nhan">
+  <span class="kick">Sau hành trình</span>
+  <h2 class="disp">Lời của <span class="gold">người trong cuộc</span></h2>
+  <div class="vc">
+    <figure class="rv"><blockquote>“Họ không chỉ lắng nghe, mà còn giúp tôi khám phá những điều chúng tôi chưa từng nghĩ tới. Dinh thự của tôi giờ là một di sản thực thụ cho các thế hệ sau.”</blockquote><figcaption><b>Ms. Vân Anh</b><span>Gia chủ Viên Villa</span></figcaption></figure>
+    <figure class="rv"><blockquote>“Họ không cạnh tranh với tôi, mà trở thành cánh tay phải, giúp tôi hiểu rõ gia chủ hơn và đồng hành cùng tôi sáng tạo nên những thiết kế hoàn hảo.”</blockquote><figcaption><b>Ms. Hương Đào</b><span>Founder KGM Asia · Tư vấn nội thất House of Legacy</span></figcaption></figure>
+    <figure class="rv"><blockquote>“Họ giúp chủ nhà lựa chọn và kiểm định từng chi tiết, từ vật liệu đến tiến độ, khiến công việc của chúng tôi trở nên dễ dàng hơn.”</blockquote><figcaption><b>Mr. David Larson</b><span>Tổng thầu thi công Viên Villa · Falcon Vietnam</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- 7. FILM -->
+<section id="phim">
+  <button type="button" class="film" id="filmBtn" aria-label="Xem phim Viên Villa">
+    <img src="assets/video/vien-villa-film.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+    <span class="lab">Xem trọn câu chuyện — phim Viên Villa, 4 phút</span>
+  </button>
+</section>
+
+<!-- 8. CONTACT -->
+<section id="lien-he">
+  <div class="ct">
+    <span class="kick">Chương tiếp theo</span>
+    <h2 class="disp">Câu chuyện <span class="gold">của bạn</span></h2>
+    <p class="lead">Mỗi dinh thự bắt đầu bằng một cuộc trò chuyện. Hãy kể cho chúng tôi nghe về ngôi nhà bạn đang nghĩ tới.</p>
+    <a href="tel:+84904662339">0904 662 339</a>
+    <a href="mailto:homestyling@khoiminhcst.vn">homestyling@khoiminhcst.vn</a>
+    <small>Cam kết bảo mật tuyệt đối: mọi thông tin danh tính, tư gia và bản vẽ quy hoạch đều được bảo vệ theo thỏa thuận NDA.</small>
+  </div>
+  <form id="ctForm">
+    <label>Họ &amp; tên gia chủ *<input type="text" id="fName" required placeholder="Ví dụ: Nguyễn Minh Hoàng"></label>
+    <label>Số điện thoại *<input type="tel" id="fPhone" required placeholder="090 123 4567"></label>
+    <label>Email<input type="email" id="fMail" placeholder="gia_chu@domain.com"></label>
+    <label>Mong muốn của gia đình<textarea id="fMsg" rows="3" placeholder="Diện tích, phong cách yêu thích, ngân sách kỳ vọng..."></textarea></label>
+    <button type="submit" class="btn fill" id="fBtn" style="justify-self:start">Gửi yêu cầu cố vấn →</button>
+    <p id="okNote">✓ Yêu cầu của quý khách đã được ghi nhận. Chuyên gia cố vấn của Khởi Minh sẽ chủ động liên hệ trong vòng 24 giờ làm việc.</p>
+  </form>
+</section>
+</main>
+
+<footer>
+  <div><b>Văn phòng Hà Nội</b>6 Lê Thánh Tông, Quận Hoàn Kiếm, Hà Nội<br>09:00 – 18:00 (theo lịch hẹn trước)</div>
+  <div><b>Văn phòng TP. Hồ Chí Minh</b>L17-11, Tầng 17, Vincom Center, 72 Lê Thánh Tôn, Quận 1, TP. HCM<br>09:00 – 18:00 (theo lịch hẹn trước)</div>
+  <div><b>Kênh thượng khách</b>Hotline 24/7: 0904 662 339<br>homestyling@khoiminhcst.vn</div>
+  <div class="c">© 2026 Khởi Minh Homestyling. Bảo lưu toàn bộ quyền tác giả &amp; thương hiệu.</div>
+</footer>
+
+<!-- Zoom overlay -->
+<div id="zoom" role="dialog" aria-modal="true" aria-label="Câu chuyện">
+  <div class="zbg"></div>
+  <div class="zmedia" id="zMedia"></div>
+  <div class="ztext" id="zText"></div>
+  <div class="znav" id="zNav"><button type="button" id="zPrev" aria-label="Trước">←</button><button type="button" id="zNext" aria-label="Sau">→</button></div>
+  <button type="button" class="zclose" id="zClose" aria-label="Đóng">×</button>
+</div>
+<div id="filmModal" hidden><button type="button" id="filmClose" aria-label="Đóng">×</button><video id="filmVideo" muted playsinline controls preload="none" poster="assets/video/vien-villa-film.jpg"></video></div>
+<div id="cur">Mở</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* ================= DỮ LIỆU ================= */
+var STEPS = [{"kick": "Khởi tạo Bản ngã", "title": "MANIFEST – Biểu Lộ Bản Ngã Gia Chủ", "desc": "Mọi dinh thự kiệt tác đều khởi sinh từ con người sở hữu nó. Khởi Minh lắng nghe sâu sắc câu chuyện gia tộc, thói quen sinh hoạt, quan niệm phong thủy và mỹ cảm tiềm ẩn của từng thành viên để phác thảo \"ADN kiến trúc\" độc bản.", "bullets": ["Khám phá tâm lý & phong cách sống chuyên sâu (Lifestyle Profile gia tộc)", "Thiết lập ma trận nhu cầu công năng & xúc cảm riêng tư cho từng thế hệ", "Định vị bài toán kiến trúc tổng quát và tiêu chuẩn khắt khe cho dự án"]}, {"kick": "Đồng bộ Tầm nhìn", "title": "ALIGN – Hòa Quyện Dự Án & Chuẩn Mực Ban QLDA", "desc": "Chúng tôi đối chiếu bản ngã gia chủ với địa thế khu đất, hướng gió, tầm nhìn panorama và các yếu tố vi khí hậu tự nhiên. Khởi Minh đóng vai trò cố vấn chiến lược, đồng bộ hóa tầm nhìn cùng Ban quản lý dự án để đảm bảo tiêu chuẩn khắt khe nhất ngay từ ngày đầu.", "bullets": ["Phân tích địa hình, vi khí hậu, hướng nắng gió & cảnh quan sinh thái thực địa", "Thiết lập \"Hiến chương Tiêu chuẩn Kỹ thuật & Mỹ thuật\" độc quyền", "Quy chuẩn hóa quy trình điều phối & bảo mật thông tin tư gia tuyệt đối"]}, {"kick": "Định vị Không gian", "title": "NAVIGATE – Dẫn Lối & Tỷ Lệ Vàng Không Gian", "desc": "Không áp đặt phong cách rập khuôn, Khởi Minh dẫn dắt và phản biện các đơn vị thiết kế để tìm ra phương án mặt bằng hoàn hảo. Từng cao độ trần, trục nhìn liên hoàn và sự chuyển tiếp liền mạch giữa thiên nhiên và nội thất đều được cân chỉnh theo tỷ lệ vàng thị giác.", "bullets": ["Cố vấn sơ đồ không gian phân lớp (Spatial Hierarchy) riêng tư & tiếp đón", "Khai phóng trục thị giác vô cực kết nối mặt nước, sân vườn và thông tầng", "Tối ưu hóa vi khí hậu thông minh, giảm bức xạ nhiệt và đón gió tươi tự nhiên"]}, {"kick": "Chạm khắc & Vật liệu", "title": "SCULPT – Chạm Khắc & Giám Tuyển Vật Liệu Độc Bản", "desc": "Gọt giũa và hoàn thiện chi tiết đến từng milimet. Chúng tôi trực tiếp đồng hành cùng gia chủ tuyển chọn những khối đá cẩm thạch tự nhiên, thớ gỗ quý lâu năm và hệ vách kính vượt khổ, biến mỗi chi tiết thô ráp thành một tác phẩm điêu khắc sống động.", "bullets": ["Giám tuyển vật liệu quý hiếm từ các mỏ đá tự nhiên và xưởng thủ công Ý, Pháp", "Mô phỏng chuyển động ánh sáng tự nhiên và nhân tạo 3D chân thực theo thời gian thực", "Kiểm soát hồ sơ thiết kế kỹ thuật chi tiết, triệt tiêu mọi rủi ro và xung đột thi công"]}, {"kick": "Giám sát Hiện thực", "title": "IMPRINT – Ghi Dấu Giám Sát & Hiện Thực Hóa Thi Công", "desc": "Hiện thực hóa bản vẽ tinh xảo mà không bị hao hụt hay sai lệch. Đội ngũ chuyên gia của Khởi Minh hiện diện trên công trường, thực hiện quyền giám sát tác giả độc lập và khắt khe kiểm định từng mối nối, ron đá, lớp hoàn thiện của các nhà thầu thi công.", "bullets": ["Giám sát tác giả độc lập, bảo vệ 100% quyền lợi và tối ưu ngân sách cho gia chủ", "Nghiệm thu từng hạng mục mẫu thực tế (Mock-up 1:1) trước khi thi công đại trà", "Kiểm soát sai số hoàn thiện cơ khí và bề mặt ở mức khắt khe nhất (< 2mm)"]}, {"kick": "Giám tuyển Nghệ thuật", "title": "OUTFIT – Điểm Trang Giám Tuyển & Nghệ Thuật Đa Giác Quan", "desc": "Nâng tầm không gian sống thành một bảo tàng nghệ thuật tư nhân. Chúng tôi lựa chọn và sắp đặt từng món đồ nội thất may đo độc bản (Bespoke), tác phẩm hội họa, điêu khắc, kết hợp kịch bản mùi hương và âm học chạm tới mọi giác quan của người thưởng lãm.", "bullets": ["Giám tuyển tác phẩm nghệ thuật, tranh & tượng điêu khắc có chứng chỉ xuất xứ quốc tế", "Nội thất thửa riêng bespoke mang chữ ký và monogram độc quyền của gia chủ", "Hệ thống kịch bản chiếu sáng nghệ thuật và hương thơm tư gia độc bản"]}, {"kick": "Bồi đắp Truyền đời", "title": "NOURISH – Bồi Đắp Vận Hành & Bảo Tồn Di Sản Truyền Đời", "desc": "Một dinh thự chỉ thực sự hoàn thiện khi được vận hành êm ái và tràn đầy sinh khí. Khởi Minh chuyển giao toàn bộ cẩm nang kỹ thuật, đào tạo đội ngũ quản gia và định kỳ đồng hành bảo dưỡng, giữ cho công trình luôn bền đẹp và gia tăng giá trị qua nhiều thế hệ.", "bullets": ["Bàn giao \"Sổ tay Vận hành Dinh thự\" và hồ sơ kỹ thuật số hoàn công chi tiết", "Quy trình bảo trì định kỳ cho vật liệu xa xỉ và hệ thống cơ điện điều khiển thông minh", "Đồng hành cố vấn nâng cấp và làm mới không gian theo từng cột mốc phát triển của gia đình"]}];
+var STEP_META = [
+  {L:'M', en:'Manifest', vi:'Biểu lộ bản ngã', v:'v-owner', chap:0},
+  {L:'A', en:'Align',    vi:'Hòa quyện',       v:'s-align', chap:0},
+  {L:'N', en:'Navigate', vi:'Dẫn lối',         v:'v-top',   chap:1},
+  {L:'S', en:'Sculpt',   vi:'Chạm khắc',       v:'s-sculpt',chap:1},
+  {L:'I', en:'Imprint',  vi:'Ghi dấu',         v:'s-imprint',chap:2},
+  {L:'O', en:'Outfit',   vi:'Điểm trang',      v:'s-outfit',chap:2},
+  {L:'N', en:'Nourish',  vi:'Bồi đắp',         v:'v-lake',  chap:2}
+];
+var CHAPS = [
+  {n:'01', t:'Kế hoạch',   d:'Đọc đất, đọc người — hiểu gia chủ và địa thế trước khi có bản vẽ.'},
+  {n:'02', t:'Ý tưởng',    d:'Vạch trục không gian, chọn từng lớp đá, gỗ và ánh sáng.'},
+  {n:'03', t:'Hoàn thiện', d:'Giám sát, điểm trang và đồng hành khi ngôi nhà bắt đầu được sống.'}
+];
+var ROOMS = [
+  {x:53, y:71, t:'Phòng khách', sub:'Nơi cả nhà gặp nhau', img:'assets/img/vv-168.jpg', d:'Trần cao hai tầng, cây xanh và ánh sáng tự nhiên đi suốt chiều dài phòng. Mọi lối đi trong nhà đều dẫn về đây.'},
+  {x:66, y:81, t:'Bàn ăn', sub:'Bữa cơm của ba thế hệ', img:'assets/img/vv-141.jpg', d:'Một bàn dài cho cả gia đình, mở thẳng ra hồ bơi và khu vườn. Bếp ở ngay phía sau.'},
+  {x:24, y:82, t:'Hồ bơi', sub:'Mặt nước tĩnh', video:'v-pool', img:'assets/img/vv-043.jpg', d:'Hồ bơi nằm dưới mái hiên, nối phòng khách với mặt hồ tự nhiên phía xa.'},
+  {x:52, y:50, t:'Phòng ngủ chính', sub:'Khoảng riêng trên cao', img:'assets/img/vv-101.jpg', d:'Trần gỗ, tường đá và một cửa kính lớn nhìn ra tán cây. Phòng tắm mở liền với phòng ngủ.'},
+  {x:76, y:40, t:'Hành lang kính', sub:'Ánh sáng đi qua nhà', img:'assets/img/vv-028.jpg', d:'Khối kính nối hai cánh nhà, để nắng và bóng cây thay đổi theo giờ trong ngày.'},
+  {x:38, y:92, t:'Khu vườn', sub:'Thiên nhiên bao quanh', img:'assets/img/vv-035.jpg', d:'Lối đá, cây bụi và thảm cỏ dẫn từ cổng vào nhà, giữ cho ngôi nhà luôn nằm giữa màu xanh.'}
+];
+var specialistsData = [
+                {
+                    id: 0,
+                    number: "01",
+                    title: "Kiến trúc sư & Homestylist",
+                    role: "Định hình phong cách & Cấu trúc cảm xúc",
+                    image: "assets/img/vv-040.jpg",
+                    description: "Không chỉ dừng lại ở bản vẽ phối cảnh 3D khô khan, chúng tôi nghiên cứu nhịp thở và nếp sống của từng thành viên để định hình phong cách không gian đồng điệu với khí chất và vị thế của chủ nhân.",
+                    deliverables: [
+                        "Cân bằng hoàn hảo giữa khối kiến trúc nguyên bản và nghệ thuật homestyling",
+                        "Đảm bảo tỷ lệ vàng thị giác trong từng tầm nhìn từ sảnh đến tư phòng",
+                        "Giám sát chuẩn mực thi công thực tế đạt 100% tinh thần thiết kế"
+                    ],
+                    quote: "Kiến trúc là phần xác, còn Homestyling chính là linh hồn làm bừng sáng dinh thự."
+                },
+                {
+                    id: 1,
+                    number: "02",
+                    title: "Chuyên gia Tâm lý học Không gian",
+                    role: "Thấu hiểu chiều sâu & Gắn kết 3 thế hệ",
+                    image: "assets/img/vv-111.jpg",
+                    description: "Khảo sát sâu sắc thói quen tâm lý, nhịp sinh hoạt và nhu cầu riêng tư của từng thế hệ trong gia đình: từ không gian thiền định của ông bà, phòng làm việc tĩnh lặng của gia chủ, đến khu vực sáng tạo tự do cho con trẻ.",
+                    deliverables: [
+                        "Hóa giải xung đột luồng di chuyển và tối ưu hóa cách âm giữa các thế hệ",
+                        "Bố trí các 'điểm neo cảm xúc' giúp gia đình luôn quây quần kết nối",
+                        "Tạo dựng các khoảng thở bình an giúp giải tỏa áp lực đỉnh cao"
+                    ],
+                    quote: "Một dinh thự chỉ thực sự hoàn mỹ khi mỗi người bước vào đều cảm thấy được chở che và thuộc về."
+                },
+                {
+                    id: 2,
+                    number: "03",
+                    title: "Thiết kế Ánh sáng & Âm thanh",
+                    role: "Đánh thức giác quan & Nhịp sinh học",
+                    image: "assets/img/vv-008.jpg",
+                    description: "Ánh sáng không chỉ để thắp sáng mà là một thứ nghệ thuật điêu khắc không gian. Chúng tôi kết hợp ánh sáng Circadian rhythm (nhịp sinh học tự nhiên) cùng hệ thống âm thanh vòm ẩn tường mang đến trải nghiệm thính giác thượng đỉnh.",
+                    deliverables: [
+                        "Kịch bản chiếu sáng thích ứng linh hoạt theo từng khung giờ và sự kiện",
+                        "Giấu nguồn sáng tinh tế, triệt tiêu hoàn toàn hiện tượng chói mắt",
+                        "Tích hợp hệ thống âm thanh vô hình chuẩn phòng hòa nhạc tư gia"
+                    ],
+                    quote: "Ánh sáng tinh tế biến những bức tường vô tri thành một tác phẩm nghệ thuật sống động mỗi hoàng hôn."
+                },
+                {
+                    id: 3,
+                    number: "04",
+                    title: "Nghệ nhân Thủ công & Vật liệu Hiếm",
+                    role: "Chế tác độc bản & Giá trị truyền đời",
+                    image: "assets/img/vv-164.jpg",
+                    description: "Tìm kiếm và kết nối trực tiếp với các xưởng nghệ nhân thủ công hàng đầu tại Florence, Paris hay làng nghề sơn mài truyền thống Việt Nam để tạo tác những món đồ nội thất chỉ dành riêng cho bạn.",
+                    deliverables: [
+                        "Khắc họa gia huy, chữ ký gia chủ trên chất liệu đồng, da bò tót hoặc gỗ quý",
+                        "Đảm bảo mỗi món nội thất là một tác phẩm 'One-of-a-kind' duy nhất trên đời",
+                        "Chứng chỉ nguồn gốc vật liệu và cam kết bảo hành di sản nhiều thập kỷ"
+                    ],
+                    quote: "Xa xỉ đích thực không nằm ở mức giá, mà nằm ở thời gian và bàn tay nghệ nhân thổi hồn vào vật phẩm."
+                },
+                {
+                    id: 4,
+                    number: "05",
+                    title: "Giám tuyển Nghệ thuật (Art Curator)",
+                    role: "Lựa chọn tinh hoa & Khẳng định vị thế",
+                    image: "assets/img/vv-125.jpg",
+                    description: "Hợp tác cùng Khởi Minh Arts & Crafts để tư vấn sưu tầm tranh ảnh, điêu khắc, cổ vật phù hợp với phong cách kiến trúc và gu thẩm mỹ riêng của gia đình, gia tăng giá trị tài sản qua năm tháng.",
+                    deliverables: [
+                        "Sắp đặt vị trí tác phẩm nghệ thuật chuẩn bảo tàng quốc tế",
+                        "Tư vấn đầu tư tác phẩm từ các nghệ sĩ đương đại danh tiếng",
+                        "Hồ sơ xuất xứ (Provenance) minh bạch cho từng tác phẩm sưu tầm"
+                    ],
+                    quote: "Một bức tranh đúng vị trí sẽ nâng tầm toàn bộ khí chất của không gian sống."
+                },
+                {
+                    id: 5,
+                    number: "06",
+                    title: "Stylist Tủ đồ & Không gian Thời trang",
+                    role: "Tôn vinh cá nhân & Bảo quản chuyên nghiệp",
+                    image: "assets/img/vv-047.jpg",
+                    description: "Quy hoạch không gian Walk-in Closet như một boutique Haute Couture cá nhân. Thiết kế chuẩn mực về độ ẩm, ánh sáng, hệ thống tủ trưng bày đồng hồ, túi xách quý giá.",
+                    deliverables: [
+                        "Kiểm soát độ ẩm và nhiệt độ chuyên biệt bảo quản da và lụa cao cấp",
+                        "Phân loại công năng khoa học giúp tiết kiệm thời gian chuẩn bị trang phục",
+                        "Gương và ánh sáng hoàn màu CRI > 98 chuẩn sàn diễn quốc tế"
+                    ],
+                    quote: "Walk-in closet là nơi gia chủ bắt đầu và khép lại một ngày đầy bản lĩnh."
+                },
+                {
+                    id: 6,
+                    number: "07",
+                    title: "Chuyên gia Cảnh quan & Vi khí hậu",
+                    role: "Hơi thở thiên nhiên & Phong thủy an lành",
+                    image: "assets/img/vv-035.jpg",
+                    description: "Kiến tạo cảnh quan sân vườn, hồ cảnh quan và điều hòa vi khí hậu để thiên nhiên len lỏi vào từng gian phòng, mang lại năng lượng trong lành và vượng khí phong thủy.",
+                    deliverables: [
+                        "Lựa chọn cây đại thụ bản địa có tuổi thọ cao và dáng thế vượng khí",
+                        "Hệ thống tuần hoàn nước và tạo sương làm mát tự nhiên cho tư gia",
+                        "Góc thưởng trà, ngắm cảnh ngoài trời hòa quyện trọn vẹn với thiên nhiên"
+                    ],
+                    quote: "Khu vườn chính là bức tranh thiên nhiên chuyển động theo từng mùa của dinh thự."
+                },
+                {
+                    id: 7,
+                    number: "08",
+                    title: "Chuyên gia Ẩm thực & Catering Độc bản",
+                    role: "Trải nghiệm ẩm thực & Yến tiệc tư gia",
+                    image: "assets/img/vv-143.jpg",
+                    description: "Tư vấn quy hoạch khu bếp biểu diễn (show kitchen) và bếp ướt (heavy kitchen) tiêu chuẩn sao Michelin, đáp ứng mọi quy mô yến tiệc riêng tư hay tiếp đón nguyên thủ, đối tác.",
+                    deliverables: [
+                        "Thiết kế hầm rượu vang kiểm soát nhiệt độ và độ ẩm tiêu chuẩn Sommelier",
+                        "Bố trí công năng chuẩn bị yến tiệc kín đáo, bảo mật và chỉn chu",
+                        "Setup bàn tiệc và bộ đồ ăn gốm sứ độc bản từ các thương hiệu quý tộc"
+                    ],
+                    quote: "Bàn tiệc tư gia là nơi tình thân thăng hoa và những thỏa thuận lịch sử ra đời."
+                },
+                {
+                    id: 8,
+                    number: "09",
+                    title: "Đạo diễn Trải nghiệm & Lễ hội Gia tộc",
+                    role: "Khoảnh khắc đáng nhớ & Di sản ký ức",
+                    image: "assets/img/vv-141.jpg",
+                    description: "Đồng hành tổ chức các sự kiện khánh thành dinh thự, lễ kỷ niệm gia tộc hoặc tiệc thưởng tranh kín, biến mỗi khoảnh khắc tại dinh thự trở thành ký ức vô giá.",
+                    deliverables: [
+                        "Kịch bản đón khách và dạ tiệc riêng tư tôn vinh phong cách gia chủ",
+                        "Sản xuất phim tài liệu kiến tạo dinh thự lưu giữ cho thế hệ con cháu",
+                        "Dịch vụ Quản gia cao cấp (Private Butler) đào tạo tiêu chuẩn 5 sao"
+                    ],
+                    quote: "Giá trị tối thượng của dinh thự là nơi lưu giữ những ký ức rực rỡ nhất của gia đình bạn."
+                }
+            ];
+/* ================= DỰNG NỘI DUNG ================= */
+var $ = function(s, r){ return (r||document).querySelector(s); };
+var $$ = function(s, r){ return [].slice.call((r||document).querySelectorAll(s)); };
+document.body.classList.remove('no-js');
+
+(function build(){
+  var tr = $('#jrTrack'), html = '', last = -1;
+  STEP_META.forEach(function(m, i){
+    if (m.chap !== last) { var c = CHAPS[m.chap]; last = m.chap;
+      html += '<div class="jr-chap"><span class="n">'+c.n+'</span><span class="kick" style="margin-top:22px">Chương '+(m.chap+1)+'</span><h3 class="disp">'+c.t+'</h3><p>'+c.d+'</p></div>'; }
+    html += '<button type="button" class="jr-card zoomable" data-kind="step" data-i="'+i+'">'
+      + '<video muted loop playsinline preload="metadata" poster="assets/video/'+m.v+'.jpg"><source src="assets/video/'+m.v+'.mp4" type="video/mp4"></video>'
+      + '<span class="L" aria-hidden="true">'+m.L+'</span>'
+      + '<span class="b"><small>BƯỚC 0'+(i+1)+' / 07</small><h4>'+m.en+'</h4><em>'+m.vi+'</em><span class="open"><i>+</i>Mở câu chuyện</span></span></button>';
+  });
+  tr.innerHTML = html;
+  $('#jrLetters').innerHTML = STEP_META.map(function(m){ return '<span>'+m.L+'</span>'; }).join('');
+  $('#hsHots').innerHTML = ROOMS.map(function(r, i){ return '<button type="button" class="hot zoomable" data-kind="room" data-i="'+i+'" style="left:'+r.x+'%;top:'+r.y+'%" aria-label="'+r.t+'">+<span>'+r.t+'</span></button>'; }).join('');
+  $('#hsList').innerHTML = ROOMS.map(function(r, i){ return '<button type="button" data-kind="room" data-i="'+i+'" class="hs-chip">'+r.t+'</button>'; }).join('');
+  $('#exList').innerHTML = specialistsData.map(function(s, i){ return '<button type="button" class="ex-row zoomable" data-kind="spec" data-i="'+i+'"><span class="n">'+s.number+'</span><span class="t">'+s.title+'<span class="r">'+s.role+'</span></span><span class="open"><i>+</i></span></button>'; }).join('');
+  var q = $('#quote'); q.innerHTML = q.textContent.split(' ').map(function(w){ return '<span class="w">'+w+'</span>'; }).join(' ');
+})();
+
+/* ================= KHÔNG CÓ GSAP: vẫn đọc được ================= */
+if (!window.gsap) { var l = $('#loader'); if (l) l.style.display = 'none'; $$('#quote .w').forEach(function(w){ w.style.opacity = 1; }); $('#la-gi .win').style.clipPath = 'none'; $('.film').style.clipPath = 'none'; }
+else (function(){
+gsap.registerPlugin(ScrollTrigger);
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hv = $('#heroVideo'); hv.muted = true; var hp = hv.play(); if (hp && hp.catch) hp.catch(function(){});
+
+/* Loader + hero intro */
+var cnt = {v:0};
+var intro = gsap.timeline({ defaults:{ ease:'power3.out' } });
+intro.to(cnt, { v:100, duration: reduce ? 0.1 : 1.1, ease:'power1.inOut', onUpdate:function(){ $('#loadN').textContent = Math.round(cnt.v); } })
+     .to('#loader', { yPercent:-100, duration:.9, ease:'power4.inOut' })
+     .set('#loader', { display:'none' })
+     .from('#hero video', { scale:1.25, duration:2.2 }, '-=.9')
+     .from('#hero h1 .ln > span', { yPercent:110, duration:1.2, stagger:.14 }, '-=1.8')
+     .from('#hero .kick, #hero p, #hero .btn, .scrollcue', { y:24, opacity:0, duration:.9, stagger:.1 }, '-=1.1');
+
+/* Progress + chapter dots */
+gsap.to('#prog', { scaleX:1, ease:'none', scrollTrigger:{ start:0, end:'max', scrub:.3 } });
+$$('#chapNav a').forEach(function(a){ var t = $(a.getAttribute('href')); if (!t) return;
+  ScrollTrigger.create({ trigger:t, start:'top center', end:'bottom center', onToggle:function(s){ a.classList.toggle('on', s.isActive); } }); });
+
+/* Hero parallax out */
+gsap.to('#hero .media', { yPercent:18, scale:1.08, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true } });
+gsap.to('#hero .copy', { yPercent:-22, opacity:0, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'70% top', scrub:true } });
+
+/* Prologue: words light up */
+gsap.to('#quote .w', { opacity:1, stagger:.08, ease:'none', scrollTrigger:{ trigger:'#mo-dau', start:'top 65%', end:'center 45%', scrub:.6 } });
+gsap.from('#mo-dau .who, #mo-dau .turn', { y:30, opacity:0, stagger:.2, duration:1, scrollTrigger:{ trigger:'#mo-dau .who', start:'top 85%' } });
+
+/* What: window opens */
+var wt = gsap.timeline({ scrollTrigger:{ trigger:'#la-gi', start:'top top', end:'+=120%', scrub:.6, pin:true } });
+wt.to('#la-gi .win', { clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none' }, 0)
+  .to('#la-gi .win img', { scale:1, ease:'none' }, 0)
+  .from('#la-gi .txt > *', { y:60, opacity:0, stagger:.12, ease:'power2.out' }, .15);
+
+/* Generic reveals */
+$$('.rv').forEach(function(el, i){ gsap.from(el, { y:50, opacity:0, duration:1, ease:'power3.out', delay:(i%3)*.1, scrollTrigger:{ trigger:el, start:'top 88%' } }); });
+$$('.jr-head, .hs-head, .ex-head, #cam-nhan h2, #lien-he .ct, #ctForm').forEach(function(el){ gsap.from(el.children, { y:40, opacity:0, duration:1, stagger:.1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 85%' } }); });
+
+/* Journey: horizontal pin on desktop */
+var mm = gsap.matchMedia();
+var cards = $$('.jr-card'), letters = $$('#jrLetters span');
+function setLetter(p){ var k = Math.min(6, Math.floor(p * 7)); letters.forEach(function(s, i){ s.classList.toggle('on', i <= k); }); }
+mm.add('(min-width: 900px)', function(){
+  var tr = $('#jrTrack');
+  var dist = function(){ return Math.max(0, tr.scrollWidth - window.innerWidth); };
+  var tw = gsap.to(tr, { x:function(){ return -dist(); }, ease:'none',
+    scrollTrigger:{ trigger:'#hanh-trinh', start:'top top', end:function(){ return '+=' + dist(); }, pin:'#hanh-trinh', pinSpacing:true, scrub:.7, invalidateOnRefresh:true,
+      onUpdate:function(s){ gsap.set('#jrLine', { scaleX:s.progress }); setLetter(s.progress); } } });
+  cards.forEach(function(c){
+    gsap.from(c.querySelector('.L'), { xPercent:60, opacity:0, ease:'none', scrollTrigger:{ trigger:c, containerAnimation:tw, start:'left 95%', end:'left 45%', scrub:true } });
+    ScrollTrigger.create({ trigger:c, containerAnimation:tw, start:'left 90%', end:'right 10%', onToggle:function(s){ var v = c.querySelector('video'); if (s.isActive) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); } else v.pause(); } });
+  });
+});
+mm.add('(max-width: 899px)', function(){
+  cards.forEach(function(c){
+    gsap.from(c, { y:60, opacity:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:c, start:'top 88%' } });
+    ScrollTrigger.create({ trigger:c, start:'top 80%', end:'bottom 20%', onToggle:function(s){ var v = c.querySelector('video'); if (s.isActive) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); } else v.pause(); } });
+  });
+});
+
+/* House */
+gsap.from('#hsStage', { scale:.86, borderRadius:60, ease:'none', scrollTrigger:{ trigger:'#hsStage', start:'top 95%', end:'top 25%', scrub:.6 } });
+gsap.from('.hot', { scale:0, stagger:.12, duration:.7, ease:'back.out(2)', scrollTrigger:{ trigger:'#hsStage', start:'top 45%' } });
+
+/* Marquee */
+gsap.fromTo('#mqText', { xPercent:5 }, { xPercent:-45, ease:'none', scrollTrigger:{ trigger:'.mq', start:'top bottom', end:'bottom top', scrub:.5 } });
+
+/* Experts: rows + floating image */
+gsap.from('.ex-row', { y:40, opacity:0, stagger:.07, duration:.9, ease:'power3.out', scrollTrigger:{ trigger:'#exList', start:'top 82%' } });
+var fl = $('#exFloat'), fx = gsap.quickTo(fl, 'x', { duration:.5, ease:'power3' }), fy = gsap.quickTo(fl, 'y', { duration:.5, ease:'power3' });
+$$('.ex-row').forEach(function(r){
+  r.addEventListener('mouseenter', function(){ $('#exFloatImg').src = specialistsData[+r.dataset.i].image; gsap.to(fl, { opacity:1, scale:1, duration:.4 }); });
+  r.addEventListener('mouseleave', function(){ gsap.to(fl, { opacity:0, scale:.7, duration:.3 }); });
+});
+window.addEventListener('mousemove', function(e){ fx(e.clientX + 190); fy(e.clientY); });
+
+/* Film */
+gsap.to('.film', { clipPath:'inset(0% 0% round 28px)', ease:'none', scrollTrigger:{ trigger:'#phim', start:'top 80%', end:'top 15%', scrub:.6 } });
+
+/* Cursor label on zoomable */
+var cur = $('#cur'), cx = gsap.quickTo(cur, 'x', { duration:.25, ease:'power3' }), cy = gsap.quickTo(cur, 'y', { duration:.25, ease:'power3' });
+window.addEventListener('mousemove', function(e){ cx(e.clientX); cy(e.clientY); });
+$$('.jr-card, .film').forEach(function(el){
+  el.addEventListener('mouseenter', function(){ cur.textContent = el.classList.contains('film') ? 'Xem' : 'Mở'; gsap.to(cur, { scale:1, duration:.3 }); });
+  el.addEventListener('mouseleave', function(){ gsap.to(cur, { scale:0, duration:.25 }); });
+});
+
+/* ================= ZOOM: bấm để phóng to và mở câu chuyện ================= */
+var Z = { open:false, kind:null, i:0, src:null, busy:false };
+var zoom = $('#zoom'), zMedia = $('#zMedia'), zText = $('#zText');
+function item(kind, i){
+  if (kind === 'step') { var m = STEP_META[i], s = STEPS[i];
+    return { kick:'Bước 0'+(i+1)+' / 07 · '+CHAPS[m.chap].t, title:m.en, sub:m.vi+' — '+s.kick, desc:s.desc, list:s.bullets, video:m.v, n:7 }; }
+  if (kind === 'room') { var r = ROOMS[i];
+    return { kick:'Viên Villa · 0'+(i+1)+' / 0'+ROOMS.length, title:r.t, sub:r.sub, desc:r.d, img:r.img, video:r.video, n:ROOMS.length }; }
+  var sp = specialistsData[i];
+  return { kick:'Chuyên gia '+sp.number+' / 09', title:sp.title, sub:sp.role, desc:sp.description, list:sp.deliverables, quote:sp.quote, img:sp.image, n:9 };
+}
+function fill(it){
+  zMedia.innerHTML = it.video
+    ? '<video muted loop playsinline autoplay poster="assets/video/'+it.video+'.jpg"><source src="assets/video/'+it.video+'.mp4" type="video/mp4"></video>'
+    : '<img src="'+it.img+'" alt="">';
+  var v = zMedia.querySelector('video'); if (v) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+  zText.innerHTML = '<span class="kick">'+it.kick+'</span><h3 class="disp">'+it.title+'</h3><p class="zsub">'+it.sub+'</p><p class="zdesc">'+it.desc+'</p>'
+    + (it.list ? '<ul>'+it.list.map(function(b){ return '<li><span>'+b+'</span></li>'; }).join('')+'</ul>' : '')
+    + (it.quote ? '<p class="zq">“'+it.quote+'”</p>' : '')
+    + '<a class="btn fill" href="#lien-he" id="zCta">Đặt lịch cố vấn →</a>';
+  $('#zCta').addEventListener('click', function(){ closeZoom(true); });
+}
+function srcRect(el){ var r = el.getBoundingClientRect(); return { top:r.top, left:r.left, width:r.width, height:r.height, borderRadius:parseFloat(getComputedStyle(el).borderRadius) || 0 }; }
+function textIn(){ gsap.fromTo(zText.children, { y:34, opacity:0 }, { y:0, opacity:1, duration:.7, stagger:.07, ease:'power3.out' }); }
+function openZoom(el){
+  if (Z.busy || Z.open) return; Z.busy = true; Z.open = true;
+  Z.kind = el.dataset.kind; Z.i = +el.dataset.i; Z.src = el.classList.contains('hs-chip') ? $$('.hot')[Z.i] : el;
+  fill(item(Z.kind, Z.i));
+  document.documentElement.style.overflow = 'hidden';
+  gsap.to(cur, { scale:0, duration:.2 }); gsap.to(fl, { opacity:0, duration:.2 });
+  var from = srcRect(Z.src);
+  if (Z.kind === 'spec') { from = { top:window.innerHeight/2 - 190, left:Math.min(window.innerWidth - 320, from.left + from.width*0.55), width:300, height:380, borderRadius:18 }; }
+  var tl = gsap.timeline({ onComplete:function(){ Z.busy = false; } });
+  tl.set(zoom, { visibility:'visible' }).set(zMedia, Object.assign({ '--sh':0 }, from));
+  if (Z.kind === 'room') { var r = ROOMS[Z.i]; tl.to('#hsPic', { scale:2.6, transformOrigin:r.x+'% '+r.y+'%', duration:.95, ease:'power3.inOut' }, 0); }
+  tl.to('.zbg', { opacity:1, duration:.6 }, 0)
+    .to(zMedia, { top:0, left:0, width:'100vw', height:'100vh', borderRadius:0, duration: reduce ? .01 : .95, ease:'power3.inOut' }, 0)
+    .to(zMedia, { '--sh':1, duration:.5 }, '-=.35')
+    .add(textIn, '-=.3')
+    .to('#zClose, #zNav', { opacity:1, duration:.4 }, '-=.1');
+}
+function closeZoom(instant){
+  if (!Z.open || Z.busy) return; Z.busy = true;
+  var to = srcRect(Z.src);
+  if (Z.kind === 'spec') { to = { top:to.top, left:to.left, width:to.width, height:to.height, borderRadius:0, opacity:0 }; }
+  var tl = gsap.timeline({ onComplete:function(){ gsap.set(zoom, { visibility:'hidden' }); gsap.set(zMedia, { opacity:1 }); zMedia.innerHTML = ''; Z.open = false; Z.busy = false; document.documentElement.style.overflow = ''; } });
+  tl.to('#zClose, #zNav', { opacity:0, duration:.2 }, 0)
+    .to(zText.children, { opacity:0, y:-16, duration:.25, stagger:.02 }, 0)
+    .to(zMedia, { '--sh':0, duration:.25 }, 0)
+    .to(zMedia, Object.assign({ duration: instant || reduce ? .01 : .8, ease:'power3.inOut' }, to), .15)
+    .to('.zbg', { opacity:0, duration:.5 }, .3);
+  if (Z.kind === 'room') tl.to('#hsPic', { scale:1, duration:.8, ease:'power3.inOut' }, .15);
+}
+function stepZoom(d){
+  if (!Z.open || Z.busy) return; Z.busy = true;
+  var it0 = item(Z.kind, Z.i); Z.i = (Z.i + d + it0.n) % it0.n;
+  var list = Z.kind === 'step' ? $$('.jr-card') : Z.kind === 'room' ? $$('.hot') : $$('.ex-row'); Z.src = list[Z.i];
+  if (Z.kind === 'room') { var r = ROOMS[Z.i]; gsap.set('#hsPic', { transformOrigin:r.x+'% '+r.y+'%' }); }
+  gsap.timeline({ onComplete:function(){ Z.busy = false; } })
+    .to(zText.children, { opacity:0, x:-30*d, duration:.25, stagger:.02 })
+    .to(zMedia, { clipPath: d > 0 ? 'inset(0 100% 0 0)' : 'inset(0 0 0 100%)', duration:.45, ease:'power3.in' }, 0)
+    .add(function(){ fill(item(Z.kind, Z.i)); })
+    .fromTo(zMedia, { clipPath: d > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' }, { clipPath:'inset(0 0% 0 0%)', duration:.6, ease:'power3.out' })
+    .add(textIn, '-=.35');
+}
+document.addEventListener('click', function(e){ var el = e.target.closest('.zoomable, .hs-chip'); if (el) openZoom(el); });
+$('#zClose').addEventListener('click', function(){ closeZoom(); });
+$('#zPrev').addEventListener('click', function(){ stepZoom(-1); });
+$('#zNext').addEventListener('click', function(){ stepZoom(1); });
+document.addEventListener('keydown', function(e){ if (!Z.open) return; if (e.key === 'Escape') closeZoom(); if (e.key === 'ArrowRight') stepZoom(1); if (e.key === 'ArrowLeft') stepZoom(-1); });
+window.__zoom = { open:openZoom, close:closeZoom, step:stepZoom, state:Z };
+
+window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
+})();
+
+/* ================= PHIM (luôn tắt tiếng) + FORM ================= */
+(function(){
+  var m = document.getElementById('filmModal'), v = document.getElementById('filmVideo');
+  function close(){ m.hidden = true; v.pause(); document.documentElement.style.overflow = ''; }
+  document.getElementById('filmBtn').addEventListener('click', function(){ if (!v.getAttribute('src')) v.setAttribute('src', 'assets/video/vien-villa-film.mp4'); v.muted = true; m.hidden = false; document.documentElement.style.overflow = 'hidden'; var p = v.play(); if (p && p.catch) p.catch(function(){}); });
+  document.getElementById('filmClose').addEventListener('click', close);
+  m.addEventListener('click', function(e){ if (e.target === m) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !m.hidden) close(); });
+  document.getElementById('ctForm').addEventListener('submit', function(e){ e.preventDefault(); var b = document.getElementById('fBtn'); b.disabled = true; b.textContent = 'Đang ghi nhận...'; setTimeout(function(){ b.style.display = 'none'; document.getElementById('okNote').style.display = 'block'; }, 900); });
+})();
+</script>
+</body>
+</html>
