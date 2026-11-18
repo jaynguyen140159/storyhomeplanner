@@ -39,7 +39,7 @@ section { position:relative; }
 #bar .logo b { font-weight:400; color:var(--gold); }
 #bar .cta { font:700 11px/1 'Montserrat'; letter-spacing:.22em; text-transform:uppercase; background:var(--gold); color:#1a120a; padding:14px 26px; border-radius:999px; box-shadow:0 6px 24px rgba(222,155,96,.35); transition:background .3s, transform .3s; white-space:nowrap; }
 #bar .cta:hover { background:#f2b986; transform:translateY(-1px); }
-@media (max-width:520px){ #bar .logo{ font-size:14px; letter-spacing:.14em; } #bar .cta{ padding:12px 18px; } }
+@media (max-width:560px){ #bar .logo{ font-size:13px; letter-spacing:.12em; } #bar .cta{ padding:12px 20px; } .cta-long{ display:none; } #bar{ padding:12px var(--pad); } }
 #prog { position:fixed; top:0; left:0; height:2px; width:100%; background:var(--gold); transform-origin:0 50%; transform:scaleX(0); z-index:95; }
 #chapNav { position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:80; display:flex; flex-direction:column; gap:14px; }
 #chapNav a { position:relative; width:9px; height:9px; border-radius:50%; border:1px solid var(--gold); display:block; transition:background .3s, transform .3s; }
@@ -140,13 +140,16 @@ section { position:relative; }
 .jr-card:hover .open i, .ex-row:hover .open i { background:rgba(222,155,96,.32); border-color:var(--gold); color:var(--gold); }
 @media (min-width:900px){ .jr-card .L { left:50%; right:auto; } }
 @media (max-width:899px){
-  .jr-track { flex-direction:column; width:auto; gap:22px; }
-  .jr-track > .jr-chap, .jr-track > .jr-card { margin-right:0; }
+  #hanh-trinh .jr-head { padding:64px var(--pad) 18px; }
   .jr-foot { display:none !important; }
-  .jr-chap, .jr-card { width:100%; }
-  .jr-chap { padding:26px 0 4px; width:100%; }
+  .jr-pin { overflow:visible; }
+  .jr-track { flex-direction:row; width:auto; gap:14px; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:6px var(--pad) 24px; scroll-padding-left:var(--pad); scrollbar-width:none; overscroll-behavior-x:contain; }
+  .jr-track::-webkit-scrollbar { display:none; }
+  .jr-track > .jr-chap, .jr-track > .jr-card { margin-right:0; }
+  .jr-track > .jr-chap { width:62vw; padding:0 4px; scroll-snap-align:start; }
+  .jr-track > .jr-card { width:78vw; max-width:360px; height:min(64svh,520px); min-height:380px; scroll-snap-align:center; }
   .jr-chap .n { color:var(--gold); }
-  .jr-card { height:74svh; }
+}
 }
 
 @media (min-width:900px){
@@ -172,9 +175,9 @@ section { position:relative; }
 .hot span { position:absolute; left:50%; top:calc(100% + 10px); transform:translateX(-50%) translateY(-4px); white-space:nowrap; font:600 10px 'Montserrat'; letter-spacing:.2em; text-transform:uppercase; color:#fff; background:rgba(10,8,7,.55); padding:7px 13px; border-radius:999px; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); opacity:0; pointer-events:none; transition:opacity .3s, transform .3s; }
 .hot:hover span, .hot:focus-visible span { opacity:1; transform:translateX(-50%); }
 @keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(255,255,255,.4);} 70%{ box-shadow:0 0 0 14px rgba(255,255,255,0);} 100%{ box-shadow:0 0 0 0 rgba(255,255,255,0);} }
-@media (max-width:700px){ .hs-stage{ margin:0 12px; border-radius:18px; } .hs-stage > .pic{ width:190%; margin-left:-45%; } .hot{ width:30px; height:30px; } .hot span{ display:none; } }
+@media (max-width:700px){ .hs-stage{ margin:0 12px; border-radius:18px; } .hot{ width:28px; height:28px; } .hot::after{ content:''; position:absolute; inset:-10px; } .hot span{ display:none; } }
 .hs-list { display:none; }
-@media (max-width:700px){ .hs-list{ display:flex; flex-wrap:wrap; gap:8px; padding:18px 12px 0; } .hs-list button{ border:1px solid var(--line); background:transparent; border-radius:999px; padding:9px 14px; font:600 10px 'Montserrat'; letter-spacing:.16em; text-transform:uppercase; } }
+@media (max-width:700px){ .hs-list{ display:flex; flex-wrap:wrap; gap:8px; padding:18px 12px 0; } .hs-list button{ border:1px solid var(--line); background:transparent; border-radius:999px; padding:12px 16px; min-height:40px; font:600 10px 'Montserrat'; letter-spacing:.16em; text-transform:uppercase; } }
 
 /* Experts */
 #chuyen-gia { padding:clamp(30px,5vh,60px) var(--pad) clamp(80px,12vh,140px); }
@@ -280,7 +283,7 @@ h1, h2, h3, .disp { text-wrap:balance; }
 <div id="prog"></div>
 <header id="bar">
   <a class="logo" href="#hero">Khởi Minh <b>Homestyling</b></a>
-  <a class="cta" href="#lien-he">Liên hệ tư vấn</a>
+  <a class="cta" href="#lien-he">Liên hệ<span class="cta-long"> tư vấn</span></a>
 </header>
 <nav id="chapNav" aria-label="Các chương">
   <a href="#hero"><span>Mở đầu</span></a>
@@ -342,7 +345,7 @@ h1, h2, h3, .disp { text-wrap:balance; }
 <section id="hanh-trinh">
   <div class="jr-head">
     <div><span class="mansion-top disp" id="mansionTop" aria-label="Mansion"></span><h2 class="disp">7 bước</h2></div>
-    <p>Bấm vào từng bước để phóng to và đọc câu chuyện phía sau.</p>
+    <p>Chạm vào từng bước để phóng to và đọc câu chuyện phía sau.</p>
   </div>
   <div class="jr-pin"><div class="jr-track" id="jrTrack"></div></div>
   <div class="jr-foot"><div class="jr-legend" id="jrLegend"></div></div>
@@ -606,7 +609,11 @@ if (!window.gsap) { var l = $('#loader'); if (l) l.style.display = 'none'; $$('#
 else (function(){
 gsap.registerPlugin(ScrollTrigger);
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var hv = $('#heroVideo'); hv.muted = true; hv.defaultMuted = true; hv.setAttribute('muted','');
+var coarse = window.matchMedia('(hover:none)').matches;
+ScrollTrigger.config({ ignoreMobileResize:true });
+var hv = $('#heroVideo');
+if (window.innerWidth < 700 && !hv.dataset.m) { hv.dataset.m = 1; var srcEl = hv.querySelector('source'); if (srcEl) { srcEl.src = 'hero-villa-m.mp4'; hv.load(); } }
+hv.muted = true; hv.defaultMuted = true; hv.setAttribute('muted','');
 var heroGo = function(){ if (hv.paused) { hv.muted = true; var p = hv.play(); if (p && p.catch) p.catch(function(){}); } };
 heroGo(); ['loadeddata','canplay','canplaythrough'].forEach(function(ev){ hv.addEventListener(ev, heroGo); });
 document.addEventListener('visibilitychange', heroGo); window.addEventListener('pageshow', heroGo);
@@ -651,7 +658,7 @@ wt.to('#la-gi .win', { clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none' }, 0
   var box = $('#ctx'), cs = $$('.ctx-card');
   function set(c){ cs.forEach(function(x){ x.classList.toggle('on', x === c); }); }
   cs.forEach(function(c){
-    c.addEventListener('mouseenter', function(){ set(c); });
+    c.addEventListener('mouseenter', function(){ if (!coarse) set(c); });
     c.addEventListener('focus', function(){ set(c); });
     c.addEventListener('click', function(){ if (window.matchMedia('(hover:none)').matches) set(c.classList.contains('on') ? null : c); });
     var img = c.querySelector('img'), qx = gsap.quickTo(img, 'xPercent', { duration:.8, ease:'power3' }), qy = gsap.quickTo(img, 'yPercent', { duration:.8, ease:'power3' });
@@ -659,7 +666,7 @@ wt.to('#la-gi .win', { clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none' }, 0
     c.addEventListener('mouseleave', function(){ qx(0); qy(0); });
   });
   box.addEventListener('mouseleave', function(){ set(null); });
-  if (window.matchMedia('(hover:none)').matches) set(cs[0]);
+  if (coarse) set(cs[0]);
   gsap.from(cs, { y:80, opacity:0, duration:1.1, ease:'power3.out', stagger:.14, scrollTrigger:{ trigger:box, start:'top 82%' } });
   gsap.from('.ctx-head > *', { y:40, opacity:0, duration:1, stagger:.1, ease:'power3.out', scrollTrigger:{ trigger:'.ctx-head', start:'top 88%' } });
 })();
@@ -715,13 +722,21 @@ mm.add('(min-width: 900px)', function(){
   return function(){ if (off) off(); };
 });
 mm.add('(max-width: 899px)', function(){
-  cards.forEach(function(c, k){
-    var L = c.querySelector('.L');
-    gsap.from(c, { y:60, opacity:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:c, start:'top 88%' } });
-    ScrollTrigger.create({ trigger:c, start:'top 62%', onEnter:function(){ gsap.to(L, { color:GOLD, duration:.6 }); letters[k].classList.add('on'); }, onLeaveBack:function(){ gsap.to(L, { color:'rgba(222,155,96,0)', duration:.4 }); letters[k].classList.remove('on'); } });
-  });
+  var tr = $('#jrTrack'), ticking = false, state = [];
+  function upd(){
+    ticking = false; var vw = window.innerWidth;
+    cards.forEach(function(c, k){
+      var on = c.getBoundingClientRect().left < vw * .82;
+      if (state[k] === on) return; state[k] = on;
+      letters[k].classList.toggle('on', on);
+      gsap.to(c.querySelector('.L'), { color:on ? GOLD : 'rgba(222,155,96,0)', duration:.5, overwrite:true });
+    });
+  }
+  var onScroll = function(){ if (!ticking) { ticking = true; requestAnimationFrame(upd); } };
+  tr.addEventListener('scroll', onScroll, { passive:true });
+  upd();
   var off = playWhenSeen();
-  return function(){ if (off) off(); };
+  return function(){ tr.removeEventListener('scroll', onScroll); if (off) off(); };
 });
 
 /* House */
@@ -735,7 +750,7 @@ gsap.from('.ex-row', { y:40, opacity:0, stagger:.07, duration:.9, ease:'power3.o
   var box = $('#vc'), figs = $$('.vc figure');
   function set(f){ figs.forEach(function(x){ x.classList.toggle('on', x === f); }); box.classList.toggle('has-on', !!f); }
   figs.forEach(function(f){
-    f.addEventListener('mouseenter', function(){ set(f); });
+    f.addEventListener('mouseenter', function(){ if (!coarse) set(f); });
     f.addEventListener('click', function(){ if (window.matchMedia('(hover:none), (max-width:960px)').matches) set(f.classList.contains('on') ? null : f); });
   });
   box.addEventListener('mouseleave', function(){ set(null); });
@@ -799,7 +814,7 @@ function openZoom(el){
   tl.set(zoom, { visibility:'visible' }).set(zMedia, Object.assign({ '--sh':0 }, from));
   if (Z.kind === 'room') { var r = ROOMS[Z.i]; tl.to('.hot', { opacity:0, duration:.25 }, 0); tl.to('#hsPic', { scale:2.6, transformOrigin:r.x+'% '+r.y+'%', duration:.95, ease:'power3.inOut' }, 0); }
   tl.to('.zbg', { opacity:1, duration:.6 }, 0)
-    .to(zMedia, { top:0, left:0, width:'100vw', height:'100vh', borderRadius:0, duration: reduce ? .01 : .95, ease:'power3.inOut' }, 0)
+    .to(zMedia, { top:0, left:0, width:window.innerWidth, height:window.innerHeight, borderRadius:0, duration: reduce ? .01 : .95, ease:'power3.inOut' }, 0)
     .to(zMedia, { '--sh':1, duration:.5 }, '-=.35')
     .add(textIn, '-=.3')
     .to('#zClose, #zNav, #zRooms, #zThumbs', { opacity:1, duration:.4 }, '-=.1');
