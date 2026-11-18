@@ -112,12 +112,13 @@ section { position:relative; }
 .mansion-top span { color:rgba(255,255,255,.22); transition:color .6s; }
 .mansion-top span.on { color:var(--gold); }
 .jr-head p { max-width:380px; color:var(--mute); margin:0; font-size:14px; }
-.jr-foot { display:flex; justify-content:flex-end; padding:2px var(--pad) clamp(18px,3vh,36px); }
-.jr-legend { display:grid; grid-template-columns:auto auto; column-gap:16px; row-gap:6px; align-content:start; justify-content:end; min-height:84px; }
-.jr-legend .lg { display:contents; font:600 11px/1.4 'Montserrat',sans-serif; letter-spacing:.22em; text-transform:uppercase; color:#e4ddd0; }
-.jr-legend .lg b, .jr-legend .lg span { opacity:0; text-align:left; }
-.jr-legend .lg b { text-align:right; }
+.jr-foot { padding:6px var(--pad) clamp(20px,3.5vh,40px); }
+.jr-legend { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; min-height:28px; }
+.jr-legend .lg { display:flex; align-items:baseline; gap:16px; font:600 11px/1.4 'Montserrat',sans-serif; letter-spacing:.22em; text-transform:uppercase; color:#e4ddd0; }
+.jr-legend .lg b, .jr-legend .lg span { opacity:0; }
 .jr-legend .lg b { color:var(--gold); font-weight:700; }
+.jr-legend .lg:nth-child(2) { justify-content:center; }
+.jr-legend .lg:nth-child(3) { justify-content:flex-end; }
 .jr-pin { overflow:hidden; }
 .jr-track { display:flex; align-items:stretch; gap:0; padding:10px var(--pad) 26px; width:max-content; }
 .jr-track > .jr-chap, .jr-track > .jr-card { margin-right:22px; }
@@ -707,7 +708,7 @@ mm.add('(min-width: 900px)', function(){
       var lgLine = lg[chapNo++];                                               /* chương đã qua: rời hàng thẻ, xuất hiện ở bảng chương phía trên */
       tl.fromTo(el, { width:function(){ return fullW(el); }, marginRight:GAP }, { width:0, marginRight:0, duration:1 }, t0)
         .to(el.children, { opacity:0, duration:.4 }, t0);
-      if (lgLine) tl.fromTo(lgLine.children, { opacity:0, x:40 }, { opacity:1, x:0, duration:.8, stagger:.08 }, t0);
+      if (lgLine) tl.fromTo(lgLine.children, { opacity:0, y:14 }, { opacity:1, y:0, duration:.8, stagger:.08 }, t0);
     }
   });
   var off = playWhenSeen();
