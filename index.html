@@ -95,12 +95,10 @@ section { position:relative; }
 .ctx-card .c::before { content:''; display:block; width:0; height:1px; background:var(--gold); margin-bottom:16px; transition:width .8s cubic-bezier(.2,.7,.2,1); }
 .ctx-card h3 { font-size:clamp(18px,1.6vw,26px); margin:12px 0 0; color:#fff; }
 .ctx-card p { margin:0; color:#e4ddd0; font-size:14px; line-height:1.55; max-width:360px; max-height:0; opacity:0; overflow:hidden; transform:translateY(14px); transition:max-height .7s cubic-bezier(.2,.7,.2,1), opacity .5s, transform .7s cubic-bezier(.2,.7,.2,1), margin-top .7s; }
-.ctx-more { position:absolute; z-index:2; top:26px; right:26px; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; transition:transform .7s cubic-bezier(.2,.7,.2,1), background .4s, border-color .4s, color .4s; }
 .ctx-card.on img { scale:1.12; filter:brightness(1); }
 .ctx-card.on .ctx-n { color:var(--gold); -webkit-text-stroke-color:var(--gold); transform:translateY(-4px) scale(1.08); }
 .ctx-card.on .c::before { width:64px; }
 .ctx-card.on p { max-height:120px; opacity:1; transform:none; margin-top:12px; }
-.ctx-card.on .ctx-more { transform:rotate(45deg); background:rgba(222,155,96,.32); border-color:var(--gold); color:var(--gold); }
 @media (max-width:860px){
   .ctx-head { flex-direction:column; align-items:flex-start; }
   .ctx { flex-direction:column; height:auto; min-height:0; }
@@ -115,8 +113,10 @@ section { position:relative; }
 .mansion-top span.on { color:var(--gold); }
 .jr-head p { max-width:380px; color:var(--mute); margin:0; font-size:14px; }
 .jr-side { display:flex; flex-direction:column; align-items:flex-end; gap:12px; text-align:right; }
-.jr-legend { display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-height:84px; }
-.jr-legend .lg { display:flex; gap:14px; opacity:0; font:600 11px/1.4 'Montserrat',sans-serif; letter-spacing:.22em; text-transform:uppercase; color:#e4ddd0; }
+.jr-legend { display:grid; grid-template-columns:auto auto; column-gap:16px; row-gap:6px; align-content:start; justify-content:end; min-height:84px; }
+.jr-legend .lg { display:contents; font:600 11px/1.4 'Montserrat',sans-serif; letter-spacing:.22em; text-transform:uppercase; color:#e4ddd0; }
+.jr-legend .lg b, .jr-legend .lg span { opacity:0; text-align:left; }
+.jr-legend .lg b { text-align:right; }
 .jr-legend .lg b { color:var(--gold); font-weight:700; }
 .jr-pin { overflow:hidden; }
 .jr-track { display:flex; align-items:stretch; gap:0; padding:10px var(--pad) 26px; width:max-content; }
@@ -156,7 +156,7 @@ section { position:relative; }
   .jr-chap .n { font-size:clamp(56px,7vw,104px); }
 }
 /* House */
-#ngoi-nha { padding:clamp(80px,12vh,140px) 0 0; }
+#ngoi-nha { padding:clamp(80px,12vh,140px) 0 clamp(40px,6vh,70px); }
 .hs-head { padding:0 var(--pad) 40px; text-align:center; }
 .hs-head h2 { font-size:clamp(28px,4.2vw,64px); margin:16px 0 14px; }
 .hs-head p { color:var(--mute); margin:0 auto; max-width:520px; font-size:15px; }
@@ -175,7 +175,7 @@ section { position:relative; }
 @media (max-width:700px){ .hs-list{ display:flex; flex-wrap:wrap; gap:8px; padding:18px 12px 0; } .hs-list button{ border:1px solid var(--line); background:transparent; border-radius:999px; padding:9px 14px; font:600 10px 'Montserrat'; letter-spacing:.16em; text-transform:uppercase; } }
 
 /* Experts */
-#chuyen-gia { padding:0 var(--pad) clamp(80px,12vh,140px); }
+#chuyen-gia { padding:clamp(30px,5vh,60px) var(--pad) clamp(80px,12vh,140px); }
 .ex-head { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:34px; }
 .ex-head h2 { font-size:clamp(28px,3.8vw,58px); margin-top:16px; }
 .ex-head p { max-width:380px; color:var(--mute); margin:0; font-size:15px; }
@@ -330,9 +330,9 @@ h1, h2, h3, .disp { text-wrap:balance; }
 <div class="ctx-wrap">
   <div class="ctx-head"><div><span class="kick">Ba bối cảnh</span><h2 class="disp">Vì sao cần <span class="gold">Homestylist</span></h2></div><p>Rê chuột hoặc chạm vào từng thẻ.</p></div>
   <div class="ctx" id="ctx">
-    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-044.jpg" alt="" loading="lazy"><span class="ctx-n">01</span><span class="ctx-more" aria-hidden="true">+</span><div class="c"><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Ở New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư.</p></div></article>
-    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-021.jpg" alt="" loading="lazy"><span class="ctx-n">02</span><span class="ctx-more" aria-hidden="true">+</span><div class="c"><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Thường chỉ được mời ở bước cuối, và thiếu tiếng nói độc lập.</p></div></article>
-    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-047.jpg" alt="" loading="lazy"><span class="ctx-n">03</span><span class="ctx-more" aria-hidden="true">+</span><div class="c"><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ từ ý tưởng đến vận hành.</p></div></article>
+    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-044.jpg" alt="" loading="lazy"><span class="ctx-n">01</span><div class="c"><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Ở New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư.</p></div></article>
+    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-021.jpg" alt="" loading="lazy"><span class="ctx-n">02</span><div class="c"><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Thường chỉ được mời ở bước cuối, và thiếu tiếng nói độc lập.</p></div></article>
+    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-047.jpg" alt="" loading="lazy"><span class="ctx-n">03</span><div class="c"><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ từ ý tưởng đến vận hành.</p></div></article>
   </div>
 </div>
 
@@ -705,7 +705,7 @@ mm.add('(min-width: 900px)', function(){
       var lgLine = lg[chapNo++];                                               /* chương đã qua: rời hàng thẻ, xuất hiện ở bảng chương phía trên */
       tl.fromTo(el, { width:function(){ return fullW(el); }, marginRight:GAP }, { width:0, marginRight:0, duration:1 }, t0)
         .to(el.children, { opacity:0, duration:.4 }, t0);
-      if (lgLine) tl.fromTo(lgLine, { opacity:0, x:40 }, { opacity:1, x:0, duration:.8 }, t0);
+      if (lgLine) tl.fromTo(lgLine.children, { opacity:0, x:40 }, { opacity:1, x:0, duration:.8, stagger:.08 }, t0);
     }
   });
   var off = playWhenSeen();
