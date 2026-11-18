@@ -107,22 +107,21 @@ section { position:relative; }
 #hanh-trinh { background:var(--bg2); }
 .jr-head { padding:clamp(80px,12vh,140px) var(--pad) 40px; display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; }
 .jr-head h2 { font-size:clamp(28px,4.2vw,64px); margin-top:8px; }
-.mansion-top { display:block; font-size:clamp(18px,2vw,30px); letter-spacing:.55em; color:var(--gold); }
+.mansion-top { display:flex; gap:clamp(8px,1.2vw,18px); font-size:clamp(26px,3.2vw,50px); line-height:1.1; }
+.mansion-top span { color:rgba(255,255,255,.22); transition:color .6s; }
+.mansion-top span.on { color:var(--gold); }
 .jr-head p { max-width:380px; color:var(--mute); margin:0; font-size:15px; }
 .jr-pin { overflow:hidden; }
 .jr-track { display:flex; align-items:stretch; gap:22px; padding:10px var(--pad) 26px; width:max-content; }
-.jr-chap { flex:none; width:min(70vw,360px); display:flex; flex-direction:column; justify-content:center; padding-right:10px; transform-origin:0 50%; transform:scale(.62); opacity:.3; transition:transform .9s cubic-bezier(.2,.7,.2,1), opacity .7s; }
-.jr-chap.act { transform:scale(1); opacity:1; }
-.jr-chap .n { transition:color .6s; }
-.jr-chap:not(.act) .n { color:rgba(255,255,255,.55); }
-.jr-chap .n { font-family:'SVN-Mightiest',serif; font-size:clamp(64px,9vw,130px); line-height:.8; color:var(--gold); }
+.jr-chap { flex:none; width:min(70vw,360px); display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
+.jr-chap .n { font-family:'SVN-Mightiest',serif; font-size:clamp(56px,7vw,104px); line-height:.8; color:rgba(255,255,255,.3); white-space:nowrap; }
 .jr-chap h3 { font-size:clamp(22px,2.2vw,34px); margin:20px 0 10px; }
 .jr-chap p { color:var(--mute); margin:0; font-size:15px; }
 .jr-card { position:relative; flex:none; width:min(80vw,420px); height:min(66svh,620px); min-height:440px; border-radius:24px; overflow:hidden; background:#000; border:0; padding:0; text-align:left; cursor:pointer; color:#fff; }
 .jr-card video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.7,.2,1); }
 .jr-card:hover video { transform:scale(1.07); }
 .jr-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.94) 6%,rgba(8,6,4,.18) 55%,rgba(8,6,4,.35)); }
-.jr-card .L { position:absolute; z-index:2; top:4px; right:20px; font:400 clamp(110px,13vw,180px)/1 'Cormorant Garamond',serif; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.6); }
+.jr-card .L { position:absolute; z-index:2; top:4px; left:50%; font:400 clamp(110px,12vw,160px)/1 'Cormorant Garamond',serif; color:rgba(222,155,96,0); -webkit-text-stroke:1px rgba(255,255,255,.6); transform:translateX(-50%); white-space:nowrap; }
 .jr-card .b { position:absolute; z-index:2; left:24px; right:24px; bottom:24px; }
 .jr-card .b small { font:700 10px 'Montserrat'; letter-spacing:.26em; color:var(--gold); }
 .jr-card .b h4 { font-family:'SVN-Mightiest',serif; font-weight:400; text-transform:uppercase; font-size:30px; line-height:1.05; margin:8px 0 2px; }
@@ -130,15 +129,12 @@ section { position:relative; }
 .open { display:inline-flex; align-items:center; gap:10px; font:600 10px 'Montserrat'; letter-spacing:.24em; text-transform:uppercase; }
 .open i { width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-style:normal; transition:background .3s, color .3s, border-color .3s; }
 .jr-card:hover .open i, .ex-row:hover .open i { background:rgba(222,155,96,.32); border-color:var(--gold); color:var(--gold); }
-.jr-foot { display:flex; align-items:center; gap:18px; padding:8px var(--pad) clamp(60px,9vh,110px); }
-.jr-letters { display:flex; gap:clamp(8px,1.6vw,22px); font-family:'SVN-Mightiest',serif; font-size:clamp(18px,2.2vw,30px); color:rgba(255,255,255,.25); }
-.jr-letters span.on { color:var(--gold); }
 @media (max-width:899px){
   .jr-track { flex-direction:column; width:auto; }
   .jr-chap, .jr-card { width:100%; }
-  .jr-chap { padding:26px 0 4px; transform:none; opacity:1; }
+  .jr-chap { padding:26px 0 4px; width:100%; }
+  .jr-chap .n { color:var(--gold); }
   .jr-card { height:74svh; }
-  .jr-foot { display:none; }
 }
 
 @media (min-width:900px){
@@ -148,7 +144,6 @@ section { position:relative; }
   .jr-card { height:min(54svh,560px); min-height:300px; }
   .jr-card .b h4 { font-size:clamp(22px,2vw,30px); }
   .jr-chap .n { font-size:clamp(56px,7vw,104px); }
-  .jr-foot { padding:6px var(--pad) 0; }
 }
 /* House */
 #ngoi-nha { padding:clamp(80px,12vh,140px) 0 0; }
@@ -169,10 +164,6 @@ section { position:relative; }
 .hs-list { display:none; }
 @media (max-width:700px){ .hs-list{ display:flex; flex-wrap:wrap; gap:8px; padding:18px 12px 0; } .hs-list button{ border:1px solid var(--line); background:transparent; border-radius:999px; padding:9px 14px; font:600 10px 'Montserrat'; letter-spacing:.16em; text-transform:uppercase; } }
 
-/* Marquee */
-.mq { overflow:hidden; padding:clamp(60px,10vh,120px) 0; white-space:nowrap; }
-.mq .disp { display:inline-block; font-size:clamp(46px,8vw,130px); color:transparent; -webkit-text-stroke:1px rgba(222,155,96,.55); will-change:transform; }
-
 /* Experts */
 #chuyen-gia { padding:0 var(--pad) clamp(80px,12vh,140px); }
 .ex-head { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:34px; }
@@ -191,10 +182,10 @@ section { position:relative; }
 /* Voices */
 #cam-nhan { padding:clamp(80px,12vh,140px) var(--pad); background:var(--bg2); }
 #cam-nhan h2 { font-size:clamp(28px,3.8vw,58px); margin:16px 0 40px; }
-.vc { display:flex; gap:14px; height:min(60svh,520px); min-height:380px; }
-.vc figure { position:relative; flex:1 1 0; min-width:0; margin:0; padding:30px 28px; border:1px solid var(--line); border-radius:24px; display:flex; flex-direction:column; justify-content:space-between; gap:20px; overflow:hidden; background:rgba(255,255,255,0); transition:flex-grow .8s cubic-bezier(.2,.7,.2,1), border-color .5s, background .5s; cursor:default; }
-.vc figure::before { content:'“'; position:absolute; top:4px; right:22px; font:400 120px/1 'Cormorant Garamond',serif; color:var(--gold); opacity:.18; transition:opacity .5s; }
-.vc blockquote { margin:0; font:italic 400 clamp(16px,1.35vw,19px)/1.5 'Cormorant Garamond',serif; color:#c9c1b4; transition:font-size .7s cubic-bezier(.2,.7,.2,1), color .5s; }
+.vc { display:flex; gap:14px; height:clamp(280px,21vw,310px); }
+.vc figure { position:relative; flex:1 1 0; min-width:0; margin:0; padding:30px 28px; border:1px solid var(--line); border-radius:24px; display:flex; flex-direction:column; justify-content:center; gap:26px; overflow:hidden; background:rgba(255,255,255,0); transition:flex-grow .8s cubic-bezier(.2,.7,.2,1), border-color .5s, background .5s; cursor:default; }
+.vc figure::before { content:'“'; position:absolute; top:2px; left:22px; font:400 120px/1 'Cormorant Garamond',serif; color:var(--gold); opacity:.18; transition:opacity .5s; }
+.vc blockquote { margin:0; font:italic 400 clamp(17px,1.55vw,23px)/1.5 'Cormorant Garamond',serif; color:#d6cec1; transition:font-size .7s cubic-bezier(.2,.7,.2,1), color .5s; }
 .vc figcaption b { display:block; font-weight:600; font-size:14px; }
 .vc figcaption span { font-size:12px; color:var(--mute); }
 .vc figcaption { transition:opacity .5s; }
@@ -202,21 +193,13 @@ section { position:relative; }
 .vc figure.on::before { opacity:.4; }
 .vc figure.on blockquote { font-size:clamp(21px,2vw,30px); line-height:1.45; color:#fff; }
 .vc.has-on figure:not(.on) figcaption { opacity:.5; }
+.vc.has-on figure:not(.on) blockquote { font-size:15px; color:#a89f92; }
 @media (max-width:960px){
-  .vc { flex-direction:column; height:auto; min-height:0; }
+  .vc { flex-direction:column; height:auto; }
+  .vc figure { padding:26px 24px; }
   .vc figure { flex:none; }
   .vc figure:not(.on) blockquote { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
 }
-
-/* Film */
-#phim { padding:clamp(80px,12vh,140px) var(--pad); }
-.film { position:relative; display:block; width:100%; aspect-ratio:21/9; border-radius:28px; overflow:hidden; border:0; padding:0; cursor:pointer; background:#000; clip-path:inset(12% 14% round 28px); }
-.film img { width:100%; height:100%; object-fit:cover; }
-.film::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.6),transparent 60%); }
-.film .play { position:absolute; z-index:2; left:50%; top:50%; transform:translate(-50%,-50%); width:88px; height:88px; border-radius:50%; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#fff; display:flex; align-items:center; justify-content:center; animation:pulse 2.8s infinite; transition:background .35s, border-color .35s, color .35s, transform .5s cubic-bezier(.2,.7,.2,1); }
-.film:hover .play { background:rgba(222,155,96,.32); border-color:var(--gold); color:var(--gold); transform:translate(-50%,-50%) scale(1.08); }
-.film .lab { position:absolute; z-index:2; left:28px; bottom:22px; color:#fff; font:italic 500 clamp(20px,2.6vw,32px) 'Cormorant Garamond',serif; }
-@media (max-width:700px){ .film{ aspect-ratio:4/3; } }
 
 /* Contact */
 #lien-he { padding:clamp(80px,12vh,150px) var(--pad); display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,6vw,90px); align-items:start; }
@@ -274,12 +257,6 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
   .zth { flex:none; width:64px; height:46px; }
   #zoom .znav { top:78px !important; left:auto !important; right:var(--pad) !important; bottom:auto !important; }
 }
-/* Film modal */
-#filmModal { position:fixed; inset:0; z-index:400; background:rgba(0,0,0,.94); display:flex; align-items:center; justify-content:center; padding:20px; }
-#filmModal[hidden] { display:none; }
-#filmModal video { width:min(1280px,100%); max-height:86svh; border-radius:14px; }
-#filmModal button { position:absolute; top:14px; right:22px; background:none; border:0; color:#fff; font-size:42px; cursor:pointer; }
-
 @media (prefers-reduced-motion:reduce){ .hot{ animation:none; } }
 p, .lead, .zdesc, .ctx-card p { text-wrap:pretty; }
 h1, h2, h3, .disp { text-wrap:balance; }
@@ -351,11 +328,10 @@ h1, h2, h3, .disp { text-wrap:balance; }
 <!-- 3. JOURNEY -->
 <section id="hanh-trinh">
   <div class="jr-head">
-    <div><span class="mansion-top disp">Mansion</span><h2 class="disp">7 bước</h2></div>
+    <div><span class="mansion-top disp" id="mansionTop" aria-label="Mansion"></span><h2 class="disp">7 bước</h2></div>
     <p>Bấm vào từng bước để phóng to và đọc câu chuyện phía sau.</p>
   </div>
   <div class="jr-pin"><div class="jr-track" id="jrTrack"></div></div>
-  <div class="jr-foot"><div class="jr-letters" id="jrLetters"></div></div>
 </section>
 
 <!-- 4. HOUSE -->
@@ -371,7 +347,6 @@ h1, h2, h3, .disp { text-wrap:balance; }
   <div class="hs-list" id="hsList"></div>
 </section>
 
-<div class="mq"><span class="disp" id="mqText">Di sản độc bản · Viên Villa · Di sản độc bản · Viên Villa · Di sản độc bản · </span></div>
 
 <!-- 5. EXPERTS -->
 <section id="chuyen-gia">
@@ -391,15 +366,6 @@ h1, h2, h3, .disp { text-wrap:balance; }
     <figure><blockquote>“Họ không cạnh tranh với tôi, mà trở thành cánh tay phải, giúp tôi hiểu rõ gia chủ hơn và đồng hành cùng tôi sáng tạo nên những thiết kế hoàn hảo.”</blockquote><figcaption><b>Ms. Hương Đào</b><span>Founder KGM Asia · Tư vấn nội thất House of Legacy</span></figcaption></figure>
     <figure><blockquote>“Họ giúp chủ nhà lựa chọn và kiểm định từng chi tiết, từ vật liệu đến tiến độ, khiến công việc của chúng tôi trở nên dễ dàng hơn.”</blockquote><figcaption><b>Mr. David Larson</b><span>Tổng thầu thi công Viên Villa · Falcon Vietnam</span></figcaption></figure>
   </div>
-</section>
-
-<!-- 7. FILM -->
-<section id="phim">
-  <button type="button" class="film" id="filmBtn" aria-label="Xem phim Viên Villa">
-    <img src="assets/video/vien-villa-film.jpg" alt="" loading="lazy">
-    <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-    <span class="lab">Phim Viên Villa · 4 phút</span>
-  </button>
 </section>
 
 <!-- 8. CONTACT -->
@@ -440,7 +406,6 @@ h1, h2, h3, .disp { text-wrap:balance; }
   <div class="znav" id="zNav"><button type="button" id="zPrev" aria-label="Trước">←</button><button type="button" id="zNext" aria-label="Sau">→</button></div>
   <button type="button" class="zclose" id="zClose" aria-label="Đóng">×</button>
 </div>
-<div id="filmModal" hidden><button type="button" id="filmClose" aria-label="Đóng">×</button><video id="filmVideo" muted playsinline controls preload="none" poster="assets/video/vien-villa-film.jpg"></video></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -607,14 +572,14 @@ document.body.classList.remove('no-js');
   var tr = $('#jrTrack'), html = '', last = -1;
   STEP_META.forEach(function(m, i){
     if (m.chap !== last) { var c = CHAPS[m.chap]; last = m.chap;
-      html += '<div class="jr-chap'+(m.chap === 0 ? ' act' : '')+'"><span class="n">'+c.n+'</span><span class="kick" style="margin-top:22px">Chương '+(m.chap+1)+'</span><h3 class="disp">'+c.t+'</h3><p>'+c.d+'</p></div>'; }
+      html += '<div class="jr-chap"><span class="n">'+c.n+'</span><span class="kick" style="margin-top:22px">Chương '+(m.chap+1)+'</span><h3 class="disp">'+c.t+'</h3><p>'+c.d+'</p></div>'; }
     html += '<button type="button" class="jr-card zoomable" data-kind="step" data-i="'+i+'">'
       + '<video muted loop playsinline preload="metadata" poster="assets/video/'+m.v+'.jpg"><source src="assets/video/'+m.v+'.mp4" type="video/mp4"></video>'
       + '<span class="L" aria-hidden="true">'+m.L+'</span>'
       + '<span class="b"><small>BƯỚC 0'+(i+1)+' / 07</small><h4>'+m.en+'</h4><em>'+m.vi+'</em><span class="open"><i>+</i>Mở câu chuyện</span></span></button>';
   });
   tr.innerHTML = html;
-  $('#jrLetters').innerHTML = STEP_META.map(function(m){ return '<span>'+m.L+'</span>'; }).join('');
+  $('#mansionTop').innerHTML = STEP_META.map(function(m){ return '<span>'+m.L+'</span>'; }).join('');
   $('#hsHots').innerHTML = ROOMS.map(function(r, i){ return '<button type="button" class="hot zoomable" data-kind="room" data-i="'+i+'" style="left:'+r.x+'%;top:'+r.y+'%" aria-label="'+r.t+'">+<span>'+r.t+'</span></button>'; }).join('');
   $('#hsList').innerHTML = ROOMS.map(function(r, i){ return '<button type="button" data-kind="room" data-i="'+i+'" class="hs-chip">'+r.t+'</button>'; }).join('');
   $('#exList').innerHTML = specialistsData.map(function(s, i){ return '<button type="button" class="ex-row zoomable" data-kind="spec" data-i="'+i+'"><span class="n">'+s.number+'</span><span class="t">'+s.title+'<span class="r">'+s.role+'</span></span><span class="open"><i>+</i></span></button>'; }).join('');
@@ -622,7 +587,7 @@ document.body.classList.remove('no-js');
 })();
 
 /* ================= KHÔNG CÓ GSAP: vẫn đọc được ================= */
-if (!window.gsap) { var l = $('#loader'); if (l) l.style.display = 'none'; $$('#quote .w').forEach(function(w){ w.style.opacity = 1; }); $('#la-gi .win').style.clipPath = 'none'; $('.film').style.clipPath = 'none'; }
+if (!window.gsap) { var l = $('#loader'); if (l) l.style.display = 'none'; $$('#quote .w').forEach(function(w){ w.style.opacity = 1; }); $('#la-gi .win').style.clipPath = 'none'; }
 else (function(){
 gsap.registerPlugin(ScrollTrigger);
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -684,37 +649,59 @@ wt.to('#la-gi .win', { clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none' }, 0
 $$('.rv').forEach(function(el, i){ gsap.from(el, { y:50, opacity:0, duration:1, ease:'power3.out', delay:(i%3)*.1, scrollTrigger:{ trigger:el, start:'top 88%' } }); });
 $$('.jr-head, .hs-head, .ex-head, #cam-nhan h2, #lien-he .ct, #ctForm').forEach(function(el){ gsap.from(el.children, { y:40, opacity:0, duration:1, stagger:.1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 85%' } }); });
 
-/* Journey: horizontal pin on desktop */
+/* Journey: ghim trang, thẻ nào tới thì tô màu chữ, thẻ đã qua thu nhỏ còn lại chữ */
 var mm = gsap.matchMedia();
-var cards = $$('.jr-card'), letters = $$('#jrLetters span');
-function setLetter(p){ var k = Math.min(6, Math.floor(p * 7)); letters.forEach(function(s, i){ s.classList.toggle('on', i <= k); }); }
+var cards = $$('.jr-card'), letters = $$('#mansionTop span'), GOLD = 'rgb(222,155,96)';
+function playWhenSeen(){
+  if (!('IntersectionObserver' in window)) { cards.forEach(function(c){ var v = c.querySelector('video'); v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); }); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ var v = e.target; if (e.isIntersecting) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); } else v.pause(); }); }, { threshold:.25 });
+  cards.forEach(function(c){ io.observe(c.querySelector('video')); });
+  return function(){ io.disconnect(); };
+}
 mm.add('(min-width: 900px)', function(){
-  var tr = $('#jrTrack');
-  var dist = function(){ return Math.max(0, tr.scrollWidth - window.innerWidth); };
-  var tw = gsap.to(tr, { x:function(){ return -dist(); }, ease:'none',
-    scrollTrigger:{ trigger:'#hanh-trinh', start:'top top', end:function(){ return '+=' + dist(); }, pin:'#hanh-trinh', pinSpacing:true, scrub:.7, invalidateOnRefresh:true,
-      onUpdate:function(s){ setLetter(s.progress); } } });
-  $$('.jr-chap').forEach(function(ch){
-    ScrollTrigger.create({ trigger:ch, containerAnimation:tw, start:'left 78%', end:'right 22%', onToggle:function(s){ ch.classList.toggle('act', s.isActive); } });
+  var tr = $('#jrTrack'), items = $$('.jr-chap, .jr-card', tr), n = items.length;
+  var S = 104, C = 84, GAP = 22, LEAD = .6, TOTAL = LEAD + (n - 1) + .6;
+  var isCard = function(el){ return el.classList.contains('jr-card'); };
+  var fullW = function(el){ return isCard(el) ? Math.min(window.innerWidth * .8, 420) : Math.min(window.innerWidth * .7, 360); };
+  var finalW = function(){ var pad = parseFloat(getComputedStyle(tr).paddingLeft) || 0, w = 2 * pad + GAP * (n - 1); items.forEach(function(el, i){ w += (i === n - 1) ? fullW(el) : (isCard(el) ? S : C); }); return w; };
+  var cardAt = []; items.forEach(function(el, i){ if (isCard(el)) cardAt.push(i); });
+  var tl = gsap.timeline({ defaults:{ ease:'none' },
+    scrollTrigger:{ trigger:'#hanh-trinh', start:'top top', end:function(){ return '+=' + Math.round(TOTAL * 300); }, pin:true, scrub:.7, invalidateOnRefresh:true,
+      onUpdate:function(){ var tm = tl.time(); cardAt.forEach(function(ci, k){ letters[k].classList.toggle('on', tm >= LEAD + ci - 1 - .05); }); } } });
+  tl.to(tr, { x:function(){ return -Math.max(0, finalW() - window.innerWidth); }, duration:TOTAL }, 0);
+  items.forEach(function(el, i){
+    var card = isCard(el), L = card ? el.querySelector('.L') : null, num = card ? null : el.querySelector('.n'), t0 = LEAD + i;
+    var fill = card ? L : num;
+    if (card) gsap.set(L, { xPercent:-50 });
+    if (i === 0) gsap.set(fill, { color:GOLD });
+    else tl.to(fill, { color:GOLD, duration:.5 }, Math.max(0, t0 - 1));      /* chữ được tô màu khi thẻ này tiến tới */
+    if (i === n - 1) return;                                                   /* thẻ cuối giữ nguyên */
+    tl.fromTo(el, { width:function(){ return fullW(el); } }, { width:card ? S : C, duration:1 }, t0);
+    if (card) {
+      tl.to(el.querySelector('.b'), { opacity:0, duration:.35 }, t0)
+        .to(L, { top:'50%', yPercent:-50, fontSize:78, duration:1 }, t0)
+        .to(el.querySelector('video'), { opacity:.3, duration:1 }, t0);
+    } else {
+      tl.to($$('.kick, h3, p', el), { opacity:0, duration:.35 }, t0)
+        .to(num, { fontSize:34, duration:1 }, t0);
+    }
   });
-  cards.forEach(function(c){
-    gsap.from(c.querySelector('.L'), { xPercent:60, opacity:0, ease:'none', scrollTrigger:{ trigger:c, containerAnimation:tw, start:'left 95%', end:'left 45%', scrub:true } });
-    ScrollTrigger.create({ trigger:c, containerAnimation:tw, start:'left 90%', end:'right 10%', onToggle:function(s){ var v = c.querySelector('video'); if (s.isActive) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); } else v.pause(); } });
-  });
+  var off = playWhenSeen();
+  return function(){ if (off) off(); };
 });
 mm.add('(max-width: 899px)', function(){
-  cards.forEach(function(c){
+  cards.forEach(function(c, k){
+    var L = c.querySelector('.L'); gsap.set(L, { xPercent:-50 });
     gsap.from(c, { y:60, opacity:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:c, start:'top 88%' } });
-    ScrollTrigger.create({ trigger:c, start:'top 80%', end:'bottom 20%', onToggle:function(s){ var v = c.querySelector('video'); if (s.isActive) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); } else v.pause(); } });
+    ScrollTrigger.create({ trigger:c, start:'top 62%', onEnter:function(){ gsap.to(L, { color:GOLD, duration:.6 }); letters[k].classList.add('on'); }, onLeaveBack:function(){ gsap.to(L, { color:'rgba(222,155,96,0)', duration:.4 }); letters[k].classList.remove('on'); } });
   });
+  var off = playWhenSeen();
+  return function(){ if (off) off(); };
 });
 
 /* House */
 gsap.from('#hsStage', { scale:.86, borderRadius:60, ease:'none', scrollTrigger:{ trigger:'#hsStage', start:'top 95%', end:'top 25%', scrub:.6 } });
 gsap.from('.hot', { scale:0, stagger:.12, duration:.7, ease:'back.out(2)', scrollTrigger:{ trigger:'#hsStage', start:'top 45%' } });
-
-/* Marquee */
-gsap.fromTo('#mqText', { xPercent:5 }, { xPercent:-45, ease:'none', scrollTrigger:{ trigger:'.mq', start:'top bottom', end:'bottom top', scrub:.5 } });
 
 /* Experts: rows + floating image */
 gsap.from('.ex-row', { y:40, opacity:0, stagger:.07, duration:.9, ease:'power3.out', scrollTrigger:{ trigger:'#exList', start:'top 82%' } });
@@ -730,9 +717,6 @@ gsap.from('.ex-row', { y:40, opacity:0, stagger:.07, duration:.9, ease:'power3.o
   if (window.matchMedia('(hover:none), (max-width:960px)').matches) set(figs[0]);
   gsap.from(figs, { y:70, opacity:0, duration:1.1, ease:'power3.out', stagger:.14, scrollTrigger:{ trigger:box, start:'top 85%' } });
 })();
-/* Film */
-gsap.to('.film', { clipPath:'inset(0% 0% round 28px)', ease:'none', scrollTrigger:{ trigger:'#phim', start:'top 80%', end:'top 15%', scrub:.6 } });
-
 /* Cursor label on zoomable */
 function curShow(){}
 
@@ -838,14 +822,8 @@ window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
 })();
 
-/* ================= PHIM (luôn tắt tiếng) + FORM ================= */
+/* ================= FORM ================= */
 (function(){
-  var m = document.getElementById('filmModal'), v = document.getElementById('filmVideo');
-  function close(){ m.hidden = true; v.pause(); document.documentElement.style.overflow = ''; }
-  document.getElementById('filmBtn').addEventListener('click', function(){ if (!v.getAttribute('src')) v.setAttribute('src', 'assets/video/vien-villa-film.mp4'); v.muted = true; m.hidden = false; document.documentElement.style.overflow = 'hidden'; var p = v.play(); if (p && p.catch) p.catch(function(){}); });
-  document.getElementById('filmClose').addEventListener('click', close);
-  m.addEventListener('click', function(e){ if (e.target === m) close(); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !m.hidden) close(); });
   document.getElementById('ctForm').addEventListener('submit', function(e){ e.preventDefault(); var b = document.getElementById('fBtn'); b.disabled = true; b.textContent = 'Đang ghi nhận...'; setTimeout(function(){ b.style.display = 'none'; document.getElementById('okNote').style.display = 'block'; }, 900); });
 })();
 </script>
