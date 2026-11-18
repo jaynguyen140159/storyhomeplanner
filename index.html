@@ -27,7 +27,7 @@ section { position:relative; }
 
 /* Loader */
 #loader { position:fixed; inset:0; z-index:500; background:#070605; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
-#loader .disp { font-size:clamp(22px,4vw,44px); letter-spacing:.3em; }
+#loader .disp { font-size:clamp(18px,2.6vw,34px); letter-spacing:.3em; }
 #loader b { font:500 13px 'Montserrat'; letter-spacing:.3em; color:var(--gold); }
 .no-js #loader { display:none; }
 
@@ -35,7 +35,7 @@ section { position:relative; }
 #bar { position:fixed; top:0; left:0; right:0; z-index:90; display:flex; align-items:center; justify-content:space-between; padding:16px var(--pad); background:linear-gradient(to bottom,rgba(6,5,4,.7),rgba(6,5,4,0)); transition:background .4s, padding .4s; }
 #bar.solid { background:rgba(10,8,7,.86); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); padding:10px var(--pad); border-bottom:1px solid var(--line); }
 #bar a { text-decoration:none; }
-#bar .logo { font-family:'SVN-Mightiest',serif; letter-spacing:.2em; font-size:clamp(17px,1.7vw,24px); line-height:1.15; text-transform:uppercase; color:#fff; }
+#bar .logo { font-family:'SVN-Mightiest',serif; letter-spacing:.2em; font-size:clamp(15px,1.4vw,20px); line-height:1.15; text-transform:uppercase; color:#fff; }
 #bar .logo b { font-weight:400; color:var(--gold); }
 #bar .cta { font:700 11px/1 'Montserrat'; letter-spacing:.22em; text-transform:uppercase; background:var(--gold); color:#1a120a; padding:14px 26px; border-radius:999px; box-shadow:0 6px 24px rgba(222,155,96,.35); transition:background .3s, transform .3s; white-space:nowrap; }
 #bar .cta:hover { background:#f2b986; transform:translateY(-1px); }
@@ -54,10 +54,10 @@ section { position:relative; }
 #hero video { width:100%; height:100%; object-fit:cover; }
 #hero .shade { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.92),rgba(8,6,4,.15) 55%,rgba(8,6,4,.45)); }
 #hero .copy { position:relative; padding:0 var(--pad) clamp(70px,11vh,120px); width:100%; }
-#hero h1 { font-size:clamp(46px,10.5vw,170px); margin:14px 0 18px; }
+#hero h1 { font-size:clamp(34px,6.4vw,104px); margin:14px 0 18px; }
 #hero h1 .ln { display:block; overflow:hidden; padding-top:.34em; margin-top:-.26em; }
 #hero h1 .ln > span { display:block; }
-#hero p { max-width:520px; color:#e6dfd3; margin:0 0 26px; }
+#hero p { max-width:500px; color:#e6dfd3; margin:0 0 26px; text-wrap:balance; }
 .scrollcue { position:absolute; right:var(--pad); bottom:38px; font:600 10px 'Montserrat'; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:12px; }
 .scrollcue i { display:block; width:1px; height:54px; background:linear-gradient(var(--gold),transparent); }
 @media (max-width:700px){ .scrollcue{ display:none; } }
@@ -65,10 +65,10 @@ section { position:relative; }
 /* Prologue */
 #mo-dau { min-height:100svh; display:flex; align-items:center; padding:120px var(--pad); }
 #mo-dau .in { max-width:1180px; margin:0 auto; }
-#mo-dau .quote { font-size:clamp(28px,4.6vw,68px); line-height:1.16; margin:22px 0 28px; }
+#mo-dau .quote { font-size:clamp(22px,3.1vw,48px); line-height:1.22; margin:22px 0 28px; text-wrap:balance; }
 #mo-dau .quote .w { opacity:.14; display:inline-block; }
 #mo-dau .who { color:var(--mute); font-size:14px; letter-spacing:.06em; }
-#mo-dau .turn { margin-top:44px; font-size:clamp(20px,2.4vw,32px); color:var(--gold); }
+#mo-dau .turn { margin-top:44px; font-size:clamp(18px,1.9vw,26px); color:var(--gold); }
 
 /* What */
 #la-gi { height:100svh; min-height:620px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
@@ -76,46 +76,47 @@ section { position:relative; }
 #la-gi .win img { width:100%; height:100%; object-fit:cover; transform:scale(1.25); }
 #la-gi .win::after { content:''; position:absolute; inset:0; background:rgba(8,6,4,.5); }
 #la-gi .txt { position:relative; text-align:center; padding:0 var(--pad); max-width:1100px; }
-#la-gi h2 { font-size:clamp(28px,7.4vw,128px); margin:16px 0; white-space:nowrap; }
+#la-gi h2 { font-size:clamp(24px,5vw,84px); margin:16px 0; white-space:nowrap; }
 #la-gi p { max-width:620px; margin:0 auto; color:#eee6da; font-size:clamp(15px,1.5vw,19px); }
 @media (min-width:680px){ #la-gi p { max-width:none; white-space:nowrap; font-size:clamp(12px,1.6vw,19px); } }
 .ctx-wrap { padding:clamp(70px,10vh,120px) var(--pad) clamp(80px,11vh,140px); }
 .ctx-head { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:28px; }
-.ctx-head h2 { font-size:clamp(28px,3.6vw,56px); margin-top:14px; }
+.ctx-head h2 { font-size:clamp(24px,2.8vw,42px); margin-top:14px; }
 .ctx-head p { margin:0; color:var(--mute); font-size:14px; max-width:320px; }
-.ctx { display:flex; gap:14px; height:min(68svh,620px); min-height:420px; }
-.ctx-card { position:relative; flex:1 1 0; min-width:0; border-radius:24px; overflow:hidden; background:#15110e; cursor:pointer; transition:flex-grow .8s cubic-bezier(.2,.7,.2,1), filter .6s; }
-.ctx-card img { position:absolute; inset:0; width:100%; height:100%; max-width:none; object-fit:cover; scale:1.03; transition:scale 1.6s cubic-bezier(.2,.7,.2,1); }
+.ctx { display:flex; gap:16px; height:min(58svh,520px); min-height:380px; }
+.ctx-card { position:relative; flex:1 1 0; min-width:0; border-radius:24px; overflow:hidden; background:#15110e; cursor:pointer; }
+.ctx-card img { position:absolute; inset:0; width:100%; height:100%; max-width:none; object-fit:cover; scale:1.03; transition:scale 1.6s cubic-bezier(.2,.7,.2,1), filter .6s; filter:brightness(.8); }
 .ctx-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.95) 6%,rgba(8,6,4,.3) 55%,rgba(8,6,4,.3)); }
-.ctx-n { position:absolute; z-index:2; top:20px; left:26px; font:400 clamp(54px,6vw,96px)/1 'Cormorant Garamond',serif; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.6); transform-origin:0 0; transition:color .5s, -webkit-text-stroke-color .5s, transform .8s cubic-bezier(.2,.7,.2,1); }
+.ctx-n { position:absolute; z-index:2; top:20px; left:26px; font:400 clamp(48px,5vw,80px)/1 'Cormorant Garamond',serif; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.6); transform-origin:0 0; transition:color .5s, -webkit-text-stroke-color .5s, transform .8s cubic-bezier(.2,.7,.2,1); }
 .ctx-card .c { position:absolute; z-index:2; left:26px; right:26px; bottom:26px; }
 .ctx-card .c::before { content:''; display:block; width:0; height:1px; background:var(--gold); margin-bottom:16px; transition:width .8s cubic-bezier(.2,.7,.2,1); }
-.ctx-card h3 { font-size:clamp(19px,1.9vw,30px); margin:12px 0 0; color:#fff; }
-.ctx-card p { margin:0; color:#e4ddd0; font-size:14px; line-height:1.55; max-width:420px; max-height:0; opacity:0; overflow:hidden; transform:translateY(14px); transition:max-height .7s cubic-bezier(.2,.7,.2,1), opacity .5s, transform .7s cubic-bezier(.2,.7,.2,1), margin-top .7s; }
+.ctx-card h3 { font-size:clamp(18px,1.6vw,26px); margin:12px 0 0; color:#fff; }
+.ctx-card p { margin:0; color:#e4ddd0; font-size:14px; line-height:1.55; max-width:360px; max-height:0; opacity:0; overflow:hidden; transform:translateY(14px); transition:max-height .7s cubic-bezier(.2,.7,.2,1), opacity .5s, transform .7s cubic-bezier(.2,.7,.2,1), margin-top .7s; }
 .ctx-more { position:absolute; z-index:2; top:26px; right:26px; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; transition:transform .7s cubic-bezier(.2,.7,.2,1), background .4s, border-color .4s, color .4s; }
-.ctx.has-on .ctx-card:not(.on) { filter:brightness(.5) saturate(.6); }
-.ctx-card.on { flex-grow:2.4; }
-.ctx-card.on img { scale:1.12; }
+.ctx-card.on img { scale:1.12; filter:brightness(1); }
 .ctx-card.on .ctx-n { color:var(--gold); -webkit-text-stroke-color:var(--gold); transform:translateY(-4px) scale(1.08); }
 .ctx-card.on .c::before { width:64px; }
-.ctx-card.on p { max-height:140px; opacity:1; transform:none; margin-top:12px; }
+.ctx-card.on p { max-height:120px; opacity:1; transform:none; margin-top:12px; }
 .ctx-card.on .ctx-more { transform:rotate(45deg); background:rgba(222,155,96,.32); border-color:var(--gold); color:var(--gold); }
 @media (max-width:860px){
   .ctx-head { flex-direction:column; align-items:flex-start; }
   .ctx { flex-direction:column; height:auto; min-height:0; }
-  .ctx-card { flex:none; height:300px; transition:height .6s cubic-bezier(.2,.7,.2,1), filter .6s; }
-  .ctx-card.on { height:340px; }
+  .ctx-card { flex:none; height:280px; }
 }
 /* Journey */
 #hanh-trinh { background:var(--bg2); }
 .jr-head { padding:clamp(80px,12vh,140px) var(--pad) 40px; display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; }
-.jr-head h2 { font-size:clamp(38px,6.5vw,104px); margin-top:16px; }
+.jr-head h2 { font-size:clamp(28px,4.2vw,64px); margin-top:8px; }
+.mansion-top { display:block; font-size:clamp(18px,2vw,30px); letter-spacing:.55em; color:var(--gold); }
 .jr-head p { max-width:380px; color:var(--mute); margin:0; font-size:15px; }
 .jr-pin { overflow:hidden; }
 .jr-track { display:flex; align-items:stretch; gap:22px; padding:10px var(--pad) 26px; width:max-content; }
-.jr-chap { flex:none; width:min(70vw,360px); display:flex; flex-direction:column; justify-content:center; padding-right:10px; }
-.jr-chap .n { font-family:'SVN-Mightiest',serif; font-size:clamp(90px,13vw,190px); line-height:.8; color:var(--gold); }
-.jr-chap h3 { font-size:clamp(28px,3vw,44px); margin:20px 0 10px; }
+.jr-chap { flex:none; width:min(70vw,360px); display:flex; flex-direction:column; justify-content:center; padding-right:10px; transform-origin:0 50%; transform:scale(.62); opacity:.3; transition:transform .9s cubic-bezier(.2,.7,.2,1), opacity .7s; }
+.jr-chap.act { transform:scale(1); opacity:1; }
+.jr-chap .n { transition:color .6s; }
+.jr-chap:not(.act) .n { color:rgba(255,255,255,.55); }
+.jr-chap .n { font-family:'SVN-Mightiest',serif; font-size:clamp(64px,9vw,130px); line-height:.8; color:var(--gold); }
+.jr-chap h3 { font-size:clamp(22px,2.2vw,34px); margin:20px 0 10px; }
 .jr-chap p { color:var(--mute); margin:0; font-size:15px; }
 .jr-card { position:relative; flex:none; width:min(80vw,420px); height:min(66svh,620px); min-height:440px; border-radius:24px; overflow:hidden; background:#000; border:0; padding:0; text-align:left; cursor:pointer; color:#fff; }
 .jr-card video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.7,.2,1); }
@@ -124,7 +125,7 @@ section { position:relative; }
 .jr-card .L { position:absolute; z-index:2; top:4px; right:20px; font:400 clamp(110px,13vw,180px)/1 'Cormorant Garamond',serif; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.6); }
 .jr-card .b { position:absolute; z-index:2; left:24px; right:24px; bottom:24px; }
 .jr-card .b small { font:700 10px 'Montserrat'; letter-spacing:.26em; color:var(--gold); }
-.jr-card .b h4 { font-family:'SVN-Mightiest',serif; font-weight:400; text-transform:uppercase; font-size:38px; line-height:1.05; margin:8px 0 2px; }
+.jr-card .b h4 { font-family:'SVN-Mightiest',serif; font-weight:400; text-transform:uppercase; font-size:30px; line-height:1.05; margin:8px 0 2px; }
 .jr-card .b em { display:block; font:italic 500 21px 'Cormorant Garamond',serif; color:#ecc9a0; margin-bottom:14px; }
 .open { display:inline-flex; align-items:center; gap:10px; font:600 10px 'Montserrat'; letter-spacing:.24em; text-transform:uppercase; }
 .open i { width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-style:normal; transition:background .3s, color .3s, border-color .3s; }
@@ -132,12 +133,10 @@ section { position:relative; }
 .jr-foot { display:flex; align-items:center; gap:18px; padding:8px var(--pad) clamp(60px,9vh,110px); }
 .jr-letters { display:flex; gap:clamp(8px,1.6vw,22px); font-family:'SVN-Mightiest',serif; font-size:clamp(18px,2.2vw,30px); color:rgba(255,255,255,.25); }
 .jr-letters span.on { color:var(--gold); }
-.jr-line { flex:1; height:1px; background:rgba(255,255,255,.16); position:relative; }
-.jr-line i { position:absolute; inset:0; background:var(--gold); transform-origin:0 50%; transform:scaleX(0); }
 @media (max-width:899px){
   .jr-track { flex-direction:column; width:auto; }
   .jr-chap, .jr-card { width:100%; }
-  .jr-chap { padding:26px 0 4px; }
+  .jr-chap { padding:26px 0 4px; transform:none; opacity:1; }
   .jr-card { height:74svh; }
   .jr-foot { display:none; }
 }
@@ -145,17 +144,16 @@ section { position:relative; }
 @media (min-width:900px){
   #hanh-trinh { height:100svh; min-height:560px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
   .jr-head { padding:64px var(--pad) 18px; }
-  .jr-head h2 { font-size:clamp(30px,4.2vw,68px); }
-  .jr-head h2 br { display:none; }
+  .jr-head h2 { font-size:clamp(26px,3.2vw,50px); }
   .jr-card { height:min(54svh,560px); min-height:300px; }
-  .jr-card .b h4 { font-size:clamp(26px,2.6vw,38px); }
-  .jr-chap .n { font-size:clamp(70px,9vw,150px); }
+  .jr-card .b h4 { font-size:clamp(22px,2vw,30px); }
+  .jr-chap .n { font-size:clamp(56px,7vw,104px); }
   .jr-foot { padding:6px var(--pad) 0; }
 }
 /* House */
 #ngoi-nha { padding:clamp(80px,12vh,140px) 0 0; }
 .hs-head { padding:0 var(--pad) 40px; text-align:center; }
-.hs-head h2 { font-size:clamp(38px,6.5vw,104px); margin:16px 0 14px; }
+.hs-head h2 { font-size:clamp(28px,4.2vw,64px); margin:16px 0 14px; }
 .hs-head p { color:var(--mute); margin:0 auto; max-width:520px; font-size:15px; }
 .hs-stage { position:relative; overflow:hidden; margin:0 var(--pad); border-radius:28px; }
 .hs-stage > .pic { position:relative; will-change:transform; }
@@ -173,47 +171,42 @@ section { position:relative; }
 
 /* Marquee */
 .mq { overflow:hidden; padding:clamp(60px,10vh,120px) 0; white-space:nowrap; }
-.mq .disp { display:inline-block; font-size:clamp(60px,12vw,200px); color:transparent; -webkit-text-stroke:1px rgba(222,155,96,.55); will-change:transform; }
+.mq .disp { display:inline-block; font-size:clamp(46px,8vw,130px); color:transparent; -webkit-text-stroke:1px rgba(222,155,96,.55); will-change:transform; }
 
 /* Experts */
 #chuyen-gia { padding:0 var(--pad) clamp(80px,12vh,140px); }
 .ex-head { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:34px; }
-.ex-head h2 { font-size:clamp(34px,5.4vw,84px); margin-top:16px; }
+.ex-head h2 { font-size:clamp(28px,3.8vw,58px); margin-top:16px; }
 .ex-head p { max-width:380px; color:var(--mute); margin:0; font-size:15px; }
 .ex-row { display:grid; grid-template-columns:70px 1fr auto; align-items:center; gap:20px; width:100%; padding:24px 0; border:0; border-top:1px solid var(--line); background:transparent; text-align:left; cursor:pointer; }
 .ex-row:last-child { border-bottom:1px solid var(--line); }
 .ex-row .n { font:500 13px 'Montserrat'; letter-spacing:.2em; color:var(--gold); }
-.ex-row .t { font-family:'SVN-Mightiest',serif; text-transform:uppercase; font-size:clamp(20px,3vw,42px); line-height:1.1; transition:transform .5s cubic-bezier(.2,.7,.2,1), color .3s; }
+.ex-row .t { font-family:'SVN-Mightiest',serif; text-transform:uppercase; font-size:clamp(18px,2.2vw,32px); line-height:1.1; transition:transform .5s cubic-bezier(.2,.7,.2,1), color .3s; }
 .ex-row .r { display:block; font:300 13px 'Montserrat'; color:var(--mute); text-transform:none; margin-top:6px; letter-spacing:0; }
 .ex-row:hover .t { transform:translateX(18px); color:var(--gold); }
 .ex-row .open span { display:none; }
-.ex-row .th { display:block; width:120px; height:76px; border-radius:12px; overflow:hidden; opacity:.55; filter:saturate(.5); transition:opacity .4s, filter .4s; }
-.ex-row .th img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
-.ex-row:hover .th { opacity:1; filter:none; }
-.ex-row:hover .th img { transform:scale(1.08); }
-.ex-row .end { display:flex; align-items:center; gap:18px; }
-@media (max-width:600px){ .ex-row .th{ width:72px; height:52px; } .ex-row .open{ display:none; } }
+@media (max-width:600px){ .ex-row .open{ display:none; } }
 @media (max-width:600px){ .ex-row{ grid-template-columns:40px 1fr auto; gap:12px; padding:18px 0; } }
 
 /* Voices */
 #cam-nhan { padding:clamp(80px,12vh,140px) var(--pad); background:var(--bg2); }
-#cam-nhan h2 { font-size:clamp(34px,5.4vw,84px); margin:16px 0 44px; }
-.vc { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.vc figure { position:relative; margin:0; padding:34px 30px; border:1px solid var(--line); border-radius:24px; display:flex; flex-direction:column; justify-content:space-between; gap:26px; background:rgba(255,255,255,0); transition:border-color .5s, background .5s, transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s; }
-.vc figure::before { content:'“'; position:absolute; top:6px; right:24px; font:400 110px/1 'Cormorant Garamond',serif; color:var(--gold); opacity:0; transform:translateY(12px); transition:opacity .5s, transform .6s; }
-.vc figure.on { border-color:var(--gold); background:rgba(222,155,96,.07); transform:translateY(-8px); box-shadow:0 24px 60px rgba(0,0,0,.45); }
-.vc figure.on::before { opacity:.35; transform:none; }
-.vc blockquote .w { opacity:.2; transition:color .4s; }
-.vc blockquote .w.hot { color:var(--gold); }
-.vc figcaption { opacity:.45; transition:opacity .5s; }
-.vc figure.on figcaption, .vc figure.done figcaption { opacity:1; }
-.vc-bar { height:1px; background:rgba(255,255,255,.14); margin-top:34px; position:relative; }
-.vc-bar i { position:absolute; inset:0; background:var(--gold); transform-origin:0 50%; transform:scaleX(0); }
-@media (min-width:961px){ #cam-nhan { min-height:100svh; display:flex; flex-direction:column; justify-content:center; } }
-.vc blockquote { margin:0; font:italic 400 clamp(19px,1.7vw,24px)/1.45 'Cormorant Garamond',serif; color:#efe8dc; }
+#cam-nhan h2 { font-size:clamp(28px,3.8vw,58px); margin:16px 0 40px; }
+.vc { display:flex; gap:14px; height:min(60svh,520px); min-height:380px; }
+.vc figure { position:relative; flex:1 1 0; min-width:0; margin:0; padding:30px 28px; border:1px solid var(--line); border-radius:24px; display:flex; flex-direction:column; justify-content:space-between; gap:20px; overflow:hidden; background:rgba(255,255,255,0); transition:flex-grow .8s cubic-bezier(.2,.7,.2,1), border-color .5s, background .5s; cursor:default; }
+.vc figure::before { content:'“'; position:absolute; top:4px; right:22px; font:400 120px/1 'Cormorant Garamond',serif; color:var(--gold); opacity:.18; transition:opacity .5s; }
+.vc blockquote { margin:0; font:italic 400 clamp(16px,1.35vw,19px)/1.5 'Cormorant Garamond',serif; color:#c9c1b4; transition:font-size .7s cubic-bezier(.2,.7,.2,1), color .5s; }
 .vc figcaption b { display:block; font-weight:600; font-size:14px; }
 .vc figcaption span { font-size:12px; color:var(--mute); }
-@media (max-width:960px){ .vc{ grid-template-columns:1fr; } }
+.vc figcaption { transition:opacity .5s; }
+.vc figure.on { flex-grow:2.6; border-color:var(--gold); background:rgba(222,155,96,.07); }
+.vc figure.on::before { opacity:.4; }
+.vc figure.on blockquote { font-size:clamp(21px,2vw,30px); line-height:1.45; color:#fff; }
+.vc.has-on figure:not(.on) figcaption { opacity:.5; }
+@media (max-width:960px){
+  .vc { flex-direction:column; height:auto; min-height:0; }
+  .vc figure { flex:none; }
+  .vc figure:not(.on) blockquote { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+}
 
 /* Film */
 #phim { padding:clamp(80px,12vh,140px) var(--pad); }
@@ -227,7 +220,7 @@ section { position:relative; }
 
 /* Contact */
 #lien-he { padding:clamp(80px,12vh,150px) var(--pad); display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,6vw,90px); align-items:start; }
-#lien-he h2 { font-size:clamp(38px,6vw,96px); margin:16px 0 22px; }
+#lien-he h2 { font-size:clamp(30px,4.4vw,68px); margin:16px 0 22px; }
 #lien-he .lead { color:var(--mute); max-width:460px; margin:0 0 30px; }
 .ct a { display:block; text-decoration:none; font-size:clamp(20px,2.2vw,30px); font-weight:400; margin-bottom:6px; }
 .ct small { display:block; color:var(--mute); font-size:12px; margin-top:22px; max-width:440px; }
@@ -248,10 +241,11 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 #zoom .zbg { position:absolute; inset:0; background:#060504; opacity:0; }
 #zoom .zmedia { position:fixed; overflow:hidden; background:#000; }
 #zoom .zmedia img, #zoom .zmedia video { width:100%; height:100%; object-fit:cover; }
+#zoom .zmedia img.zimg { position:absolute; inset:0; }
 #zoom .zmedia::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(6,5,4,.92) 0%,rgba(6,5,4,.55) 42%,rgba(6,5,4,.1) 75%); opacity:var(--sh,0); }
 #zoom .ztext { position:absolute; left:var(--pad); bottom:clamp(40px,9vh,100px); width:min(560px,calc(100% - 2*var(--pad))); max-height:76svh; overflow:auto; }
 #zoom .ztext > * { opacity:0; }
-#zoom h3 { font-size:clamp(30px,4.4vw,64px); margin:14px 0 6px; }
+#zoom h3 { font-size:clamp(26px,3.2vw,50px); margin:14px 0 6px; }
 #zoom .zsub { font:italic 500 clamp(20px,2vw,26px) 'Cormorant Garamond',serif; color:#ecc9a0; margin:0 0 16px; }
 #zoom .zdesc { margin:0 0 18px; color:#efe8dc; }
 #zoom ul { list-style:none; margin:0 0 18px; padding:0; display:grid; gap:10px; }
@@ -264,6 +258,22 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 #zoom .znav button:hover, #zoom .zclose:hover { background:rgba(222,155,96,.32); border-color:var(--gold); color:var(--gold); }
 @media (max-width:700px){ #zoom .zmedia::after{ background:linear-gradient(to top,rgba(6,5,4,.96) 30%,rgba(6,5,4,.35) 75%); } #zoom .znav{ bottom:auto; top:22px; right:auto; left:var(--pad); } #zoom .znav button{ width:46px; height:46px; } }
 
+#zRooms { position:absolute; z-index:3; top:26px; left:var(--pad); right:calc(var(--pad) + 76px); display:none; flex-wrap:wrap; gap:8px; opacity:0; }
+#zRooms.show, #zThumbs.show { display:flex; }
+.zroom { padding:11px 18px; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#fff; font:600 10px/1 'Montserrat',sans-serif; letter-spacing:.18em; text-transform:uppercase; cursor:pointer; white-space:nowrap; transition:background .3s, border-color .3s, color .3s; }
+.zroom:hover { background:rgba(222,155,96,.25); border-color:var(--gold); }
+.zroom.on { background:rgba(222,155,96,.38); border-color:var(--gold); color:var(--gold); }
+#zThumbs { position:absolute; z-index:3; right:var(--pad); top:50%; transform:translateY(-50%); display:none; flex-direction:column; gap:10px; opacity:0; }
+.zth { width:96px; height:64px; border-radius:10px; overflow:hidden; padding:0; border:1px solid rgba(255,255,255,.5); opacity:.6; cursor:pointer; background:#000; transition:opacity .3s, border-color .3s, transform .3s; }
+.zth img { width:100%; height:100%; object-fit:cover; display:block; }
+.zth:hover { opacity:1; }
+.zth.on { opacity:1; border-color:var(--gold); transform:scale(1.06); }
+@media (max-width:700px){
+  #zRooms { top:22px; right:calc(var(--pad) + 66px); flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; }
+  #zThumbs { top:78px; right:auto; left:var(--pad); transform:none; flex-direction:row; max-width:calc(100% - 2*var(--pad) - 112px); overflow-x:auto; scrollbar-width:none; }
+  .zth { flex:none; width:64px; height:46px; }
+  #zoom .znav { top:78px !important; left:auto !important; right:var(--pad) !important; bottom:auto !important; }
+}
 /* Film modal */
 #filmModal { position:fixed; inset:0; z-index:400; background:rgba(0,0,0,.94); display:flex; align-items:center; justify-content:center; padding:20px; }
 #filmModal[hidden] { display:none; }
@@ -271,6 +281,8 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 #filmModal button { position:absolute; top:14px; right:22px; background:none; border:0; color:#fff; font-size:42px; cursor:pointer; }
 
 @media (prefers-reduced-motion:reduce){ .hot{ animation:none; } }
+p, .lead, .zdesc, .ctx-card p { text-wrap:pretty; }
+h1, h2, h3, .disp { text-wrap:balance; }
 </style>
 </head>
 <body class="no-js">
@@ -302,7 +314,7 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
   <div class="copy">
     <span class="kick">Nghệ thuật cố vấn &amp; kiến tạo dinh thự</span>
     <h1 class="disp"><span class="ln"><span>Kiến tạo</span></span><span class="ln"><span>di sản <span class="gold">độc bản</span></span></span></h1>
-    <p>Từ câu hỏi đầu tiên đến buổi tối đầu tiên trong ngôi nhà — hành trình của Viên Villa.</p>
+    <p>Hành trình của Viên Villa, từ câu hỏi đầu tiên đến buổi tối đầu tiên trong ngôi nhà.</p>
     <a class="btn fill" href="#mo-dau">Bắt đầu câu chuyện ↓</a>
   </div>
   <div class="scrollcue"><span>Cuộn</span><i></i></div>
@@ -312,8 +324,8 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 <section id="mo-dau">
   <div class="in">
     <span class="kick">Mở đầu · Một câu hỏi</span>
-    <p class="disp quote" id="quote">“Chúng tôi từng nghĩ mình biết rõ mình muốn gì — cho đến khi có 13 phiên bản 3D trong tay mà vẫn không tự tin khởi công.”</p>
-    <div class="who">Ms. Vân Anh — Gia chủ Viên Villa</div>
+    <p class="disp quote" id="quote">“Chúng tôi từng nghĩ mình biết rõ mình muốn gì, cho đến khi có 13 phiên bản 3D trong tay mà vẫn không tự tin khởi công.”</p>
+    <div class="who">Ms. Vân Anh · Gia chủ Viên Villa</div>
     <p class="ital turn">Đó là lúc Homestyling bước vào.</p>
   </div>
 </section>
@@ -324,7 +336,7 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
   <div class="txt">
     <span class="kick">Chương mở</span>
     <h2 class="disp">Homestyling <span class="gold">là gì?</span></h2>
-    <p>Nghệ thuật cá nhân hóa không gian sống — biến dinh thự thành di sản độc bản của riêng gia đình bạn.</p>
+    <p>Nghệ thuật cá nhân hóa không gian sống, biến dinh thự thành di sản độc bản của riêng gia đình bạn.</p>
   </div>
 </section>
 <div class="ctx-wrap">
@@ -339,11 +351,11 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 <!-- 3. JOURNEY -->
 <section id="hanh-trinh">
   <div class="jr-head">
-    <div><span class="kick">Hành trình MANSION</span><h2 class="disp">7 bước,<br><span class="gold">3 chương</span></h2></div>
+    <div><span class="mansion-top disp">Mansion</span><h2 class="disp">7 bước</h2></div>
     <p>Bấm vào từng bước để phóng to và đọc câu chuyện phía sau.</p>
   </div>
   <div class="jr-pin"><div class="jr-track" id="jrTrack"></div></div>
-  <div class="jr-foot"><div class="jr-letters" id="jrLetters"></div><div class="jr-line"><i id="jrLine"></i></div></div>
+  <div class="jr-foot"><div class="jr-letters" id="jrLetters"></div></div>
 </section>
 
 <!-- 4. HOUSE -->
@@ -351,7 +363,7 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
   <div class="hs-head">
     <span class="kick">Chương kết · Ngôi nhà</span>
     <h2 class="disp">Bước vào <span class="gold">Viên Villa</span></h2>
-    <p>Chạm vào một điểm trên ngôi nhà để đi vào không gian đó.</p>
+    <p>Chạm vào một điểm trên ngôi nhà, xem nhiều ảnh và đổi sang phòng khác ngay trong đó.</p>
   </div>
   <div class="hs-stage" id="hsStage">
     <div class="pic" id="hsPic"><img src="assets/img/vv-064.jpg" alt="Mặt tiền Viên Villa"><div id="hsHots"></div></div>
@@ -365,7 +377,7 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 <section id="chuyen-gia">
   <div class="ex-head">
     <div><span class="kick">Những người phía sau</span><h2 class="disp">9 nhóm <span class="gold">chuyên gia</span></h2></div>
-    <p>Độc lập 100% — không hoa hồng nhà thầu. Bấm vào từng nhóm để xem vai trò của họ.</p>
+    <p>Độc lập 100%, không nhận hoa hồng từ nhà thầu. Bấm vào từng nhóm để xem vai trò của họ.</p>
   </div>
   <div id="exList"></div>
 </section>
@@ -374,12 +386,11 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 <section id="cam-nhan">
   <span class="kick">Sau hành trình</span>
   <h2 class="disp">Lời của <span class="gold">người trong cuộc</span></h2>
-  <div class="vc">
+  <div class="vc" id="vc">
     <figure><blockquote>“Họ không chỉ lắng nghe, mà còn giúp tôi khám phá những điều chúng tôi chưa từng nghĩ tới. Dinh thự của tôi giờ là một di sản thực thụ cho các thế hệ sau.”</blockquote><figcaption><b>Ms. Vân Anh</b><span>Gia chủ Viên Villa</span></figcaption></figure>
     <figure><blockquote>“Họ không cạnh tranh với tôi, mà trở thành cánh tay phải, giúp tôi hiểu rõ gia chủ hơn và đồng hành cùng tôi sáng tạo nên những thiết kế hoàn hảo.”</blockquote><figcaption><b>Ms. Hương Đào</b><span>Founder KGM Asia · Tư vấn nội thất House of Legacy</span></figcaption></figure>
     <figure><blockquote>“Họ giúp chủ nhà lựa chọn và kiểm định từng chi tiết, từ vật liệu đến tiến độ, khiến công việc của chúng tôi trở nên dễ dàng hơn.”</blockquote><figcaption><b>Mr. David Larson</b><span>Tổng thầu thi công Viên Villa · Falcon Vietnam</span></figcaption></figure>
   </div>
-  <div class="vc-bar"><i id="vcBar"></i></div>
 </section>
 
 <!-- 7. FILM -->
@@ -387,7 +398,7 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
   <button type="button" class="film" id="filmBtn" aria-label="Xem phim Viên Villa">
     <img src="assets/video/vien-villa-film.jpg" alt="" loading="lazy">
     <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-    <span class="lab">Xem trọn câu chuyện — phim Viên Villa, 4 phút</span>
+    <span class="lab">Phim Viên Villa · 4 phút</span>
   </button>
 </section>
 
@@ -415,7 +426,7 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 <footer>
   <div><b>Văn phòng Hà Nội</b>6 Lê Thánh Tông, Quận Hoàn Kiếm, Hà Nội<br>09:00 – 18:00 (theo lịch hẹn trước)</div>
   <div><b>Văn phòng TP. Hồ Chí Minh</b>L17-11, Tầng 17, Vincom Center, 72 Lê Thánh Tôn, Quận 1, TP. HCM<br>09:00 – 18:00 (theo lịch hẹn trước)</div>
-  <div><b>Kênh thượng khách</b>Hotline 24/7: 0904 662 339<br>homestyling@khoiminhcst.vn</div>
+  <div><b>Liên hệ trực tiếp</b>Hotline 24/7: 0904 662 339<br>homestyling@khoiminhcst.vn</div>
   <div class="c">© 2026 Khởi Minh Homestyling. Bảo lưu toàn bộ quyền tác giả &amp; thương hiệu.</div>
 </footer>
 
@@ -424,6 +435,8 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
   <div class="zbg"></div>
   <div class="zmedia" id="zMedia"></div>
   <div class="ztext" id="zText"></div>
+  <div id="zRooms"></div>
+  <div id="zThumbs"></div>
   <div class="znav" id="zNav"><button type="button" id="zPrev" aria-label="Trước">←</button><button type="button" id="zNext" aria-label="Sau">→</button></div>
   <button type="button" class="zclose" id="zClose" aria-label="Đóng">×</button>
 </div>
@@ -444,17 +457,18 @@ var STEP_META = [
   {L:'N', en:'Nourish',  vi:'Bồi đắp',         v:'v-lake',  chap:2}
 ];
 var CHAPS = [
-  {n:'01', t:'Kế hoạch',   d:'Đọc đất, đọc người — hiểu gia chủ và địa thế trước khi có bản vẽ.'},
+  {n:'01', t:'Kế hoạch',   d:'Đọc đất, đọc người. Hiểu gia chủ và địa thế trước khi có bản vẽ.'},
   {n:'02', t:'Ý tưởng',    d:'Vạch trục không gian, chọn từng lớp đá, gỗ và ánh sáng.'},
   {n:'03', t:'Hoàn thiện', d:'Giám sát, điểm trang và đồng hành khi ngôi nhà bắt đầu được sống.'}
 ];
+var IMG = function(a){ return a.map(function(n){ return 'assets/img/vv-'+n+'.jpg'; }); };
 var ROOMS = [
-  {x:53, y:71, t:'Phòng khách', sub:'Nơi cả nhà gặp nhau', img:'assets/img/vv-168.jpg', d:'Trần cao hai tầng, cây xanh và ánh sáng tự nhiên đi suốt chiều dài phòng. Mọi lối đi trong nhà đều dẫn về đây.'},
-  {x:66, y:81, t:'Bàn ăn', sub:'Bữa cơm của ba thế hệ', img:'assets/img/vv-141.jpg', d:'Một bàn dài cho cả gia đình, mở thẳng ra hồ bơi và khu vườn. Bếp ở ngay phía sau.'},
-  {x:24, y:82, t:'Hồ bơi', sub:'Mặt nước tĩnh', video:'v-pool', img:'assets/img/vv-043.jpg', d:'Hồ bơi nằm dưới mái hiên, nối phòng khách với mặt hồ tự nhiên phía xa.'},
-  {x:52, y:50, t:'Phòng ngủ chính', sub:'Khoảng riêng trên cao', img:'assets/img/vv-101.jpg', d:'Trần gỗ, tường đá và một cửa kính lớn nhìn ra tán cây. Phòng tắm mở liền với phòng ngủ.'},
-  {x:76, y:40, t:'Hành lang kính', sub:'Ánh sáng đi qua nhà', img:'assets/img/vv-028.jpg', d:'Khối kính nối hai cánh nhà, để nắng và bóng cây thay đổi theo giờ trong ngày.'},
-  {x:38, y:92, t:'Khu vườn', sub:'Thiên nhiên bao quanh', img:'assets/img/vv-035.jpg', d:'Lối đá, cây bụi và thảm cỏ dẫn từ cổng vào nhà, giữ cho ngôi nhà luôn nằm giữa màu xanh.'}
+  {x:53, y:71, t:'Phòng khách', sub:'Nơi cả nhà gặp nhau', imgs:IMG(['168','172','009','008','010','007']), d:'Trần cao hai tầng, cây xanh và ánh sáng tự nhiên đi suốt chiều dài phòng. Mọi lối đi trong nhà đều dẫn về đây.'},
+  {x:66, y:81, t:'Bàn ăn & bếp', sub:'Bữa cơm của ba thế hệ', imgs:IMG(['141','183','187','143','002','195']), d:'Một bàn dài cho cả gia đình, mở thẳng ra hồ bơi và khu vườn. Bếp ở ngay phía sau.'},
+  {x:24, y:82, t:'Hồ bơi', sub:'Mặt nước tĩnh', imgs:IMG(['043','042','058','049','056','052']), d:'Hồ bơi nằm dưới mái hiên, nối phòng khách với mặt hồ tự nhiên phía xa.'},
+  {x:52, y:50, t:'Phòng ngủ', sub:'Khoảng riêng trên cao', imgs:IMG(['101','108','078','111','073','133']), d:'Trần gỗ, tường đá và cửa kính lớn nhìn ra tán cây. Phòng tắm mở liền với phòng ngủ.'},
+  {x:76, y:40, t:'Hành lang kính', sub:'Ánh sáng đi qua nhà', imgs:IMG(['028','026','021','012','014']), d:'Khối kính nối hai cánh nhà, để nắng và bóng cây thay đổi theo giờ trong ngày.'},
+  {x:38, y:92, t:'Khu vườn', sub:'Thiên nhiên bao quanh', imgs:IMG(['035','031','033','001','045','047']), d:'Lối đá, cây bụi và thảm cỏ dẫn từ cổng vào nhà, giữ cho ngôi nhà luôn nằm giữa màu xanh.'}
 ];
 var specialistsData = [
                 {
@@ -593,7 +607,7 @@ document.body.classList.remove('no-js');
   var tr = $('#jrTrack'), html = '', last = -1;
   STEP_META.forEach(function(m, i){
     if (m.chap !== last) { var c = CHAPS[m.chap]; last = m.chap;
-      html += '<div class="jr-chap"><span class="n">'+c.n+'</span><span class="kick" style="margin-top:22px">Chương '+(m.chap+1)+'</span><h3 class="disp">'+c.t+'</h3><p>'+c.d+'</p></div>'; }
+      html += '<div class="jr-chap'+(m.chap === 0 ? ' act' : '')+'"><span class="n">'+c.n+'</span><span class="kick" style="margin-top:22px">Chương '+(m.chap+1)+'</span><h3 class="disp">'+c.t+'</h3><p>'+c.d+'</p></div>'; }
     html += '<button type="button" class="jr-card zoomable" data-kind="step" data-i="'+i+'">'
       + '<video muted loop playsinline preload="metadata" poster="assets/video/'+m.v+'.jpg"><source src="assets/video/'+m.v+'.mp4" type="video/mp4"></video>'
       + '<span class="L" aria-hidden="true">'+m.L+'</span>'
@@ -603,7 +617,7 @@ document.body.classList.remove('no-js');
   $('#jrLetters').innerHTML = STEP_META.map(function(m){ return '<span>'+m.L+'</span>'; }).join('');
   $('#hsHots').innerHTML = ROOMS.map(function(r, i){ return '<button type="button" class="hot zoomable" data-kind="room" data-i="'+i+'" style="left:'+r.x+'%;top:'+r.y+'%" aria-label="'+r.t+'">+<span>'+r.t+'</span></button>'; }).join('');
   $('#hsList').innerHTML = ROOMS.map(function(r, i){ return '<button type="button" data-kind="room" data-i="'+i+'" class="hs-chip">'+r.t+'</button>'; }).join('');
-  $('#exList').innerHTML = specialistsData.map(function(s, i){ return '<button type="button" class="ex-row zoomable" data-kind="spec" data-i="'+i+'"><span class="n">'+s.number+'</span><span class="t">'+s.title+'<span class="r">'+s.role+'</span></span><span class="end"><span class="th"><img src="'+s.image+'" alt="" loading="lazy"></span><span class="open"><i>+</i></span></span></button>'; }).join('');
+  $('#exList').innerHTML = specialistsData.map(function(s, i){ return '<button type="button" class="ex-row zoomable" data-kind="spec" data-i="'+i+'"><span class="n">'+s.number+'</span><span class="t">'+s.title+'<span class="r">'+s.role+'</span></span><span class="open"><i>+</i></span></button>'; }).join('');
   var q = $('#quote'); q.innerHTML = q.textContent.split(' ').map(function(w){ return '<span class="w">'+w+'</span>'; }).join(' ');
 })();
 
@@ -652,7 +666,7 @@ wt.to('#la-gi .win', { clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none' }, 0
 /* Ba bối cảnh: thẻ giãn nở khi rê chuột / chạm */
 (function(){
   var box = $('#ctx'), cs = $$('.ctx-card');
-  function set(c){ cs.forEach(function(x){ x.classList.toggle('on', x === c); }); box.classList.toggle('has-on', !!c); }
+  function set(c){ cs.forEach(function(x){ x.classList.toggle('on', x === c); }); }
   cs.forEach(function(c){
     c.addEventListener('mouseenter', function(){ set(c); });
     c.addEventListener('focus', function(){ set(c); });
@@ -679,7 +693,10 @@ mm.add('(min-width: 900px)', function(){
   var dist = function(){ return Math.max(0, tr.scrollWidth - window.innerWidth); };
   var tw = gsap.to(tr, { x:function(){ return -dist(); }, ease:'none',
     scrollTrigger:{ trigger:'#hanh-trinh', start:'top top', end:function(){ return '+=' + dist(); }, pin:'#hanh-trinh', pinSpacing:true, scrub:.7, invalidateOnRefresh:true,
-      onUpdate:function(s){ gsap.set('#jrLine', { scaleX:s.progress }); setLetter(s.progress); } } });
+      onUpdate:function(s){ setLetter(s.progress); } } });
+  $$('.jr-chap').forEach(function(ch){
+    ScrollTrigger.create({ trigger:ch, containerAnimation:tw, start:'left 78%', end:'right 22%', onToggle:function(s){ ch.classList.toggle('act', s.isActive); } });
+  });
   cards.forEach(function(c){
     gsap.from(c.querySelector('.L'), { xPercent:60, opacity:0, ease:'none', scrollTrigger:{ trigger:c, containerAnimation:tw, start:'left 95%', end:'left 45%', scrub:true } });
     ScrollTrigger.create({ trigger:c, containerAnimation:tw, start:'left 90%', end:'right 10%', onToggle:function(s){ var v = c.querySelector('video'); if (s.isActive) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); } else v.pause(); } });
@@ -701,33 +718,17 @@ gsap.fromTo('#mqText', { xPercent:5 }, { xPercent:-45, ease:'none', scrollTrigge
 
 /* Experts: rows + floating image */
 gsap.from('.ex-row', { y:40, opacity:0, stagger:.07, duration:.9, ease:'power3.out', scrollTrigger:{ trigger:'#exList', start:'top 82%' } });
-/* Lời của người trong cuộc: chữ sáng dần theo nhịp đọc, thẻ đang đọc nổi lên */
+/* Lời của người trong cuộc: rê chuột / chạm thì thẻ phóng to, các thẻ còn lại thu nhỏ về bên cạnh */
 (function(){
-  var figs = $$('.vc figure');
-  figs.forEach(function(f){ var q = f.querySelector('blockquote'); q.innerHTML = q.textContent.split(' ').map(function(w){ return '<span class="w">'+w+'</span>'; }).join(' '); });
-  function mark(i, done){ figs.forEach(function(f, k){ f.classList.toggle('on', k === i); f.classList.toggle('done', k < i || (k === i && done)); }); }
-  function wordsTween(f){
-    var ws = $$('.w', f), st = { n:0 };
-    return gsap.to(st, { n:ws.length, ease:'none', duration:1, onUpdate:function(){
-      var n = Math.floor(st.n);
-      ws.forEach(function(w, k){ w.style.opacity = k < n ? 1 : .2; w.classList.toggle('hot', k === n - 1 && n < ws.length); });
-    } });
-  }
-  var vm = gsap.matchMedia();
-  vm.add('(min-width: 961px)', function(){
-    var tl = gsap.timeline({ scrollTrigger:{ trigger:'#cam-nhan', start:'top top', end:'+=420%', pin:true, scrub:1.2,
-      onUpdate:function(s){ gsap.set('#vcBar', { scaleX:s.progress }); var i = Math.min(figs.length - 1, Math.floor(s.progress * figs.length)); mark(s.progress <= 0 ? -1 : i, s.progress >= 1); },
-      onLeaveBack:function(){ mark(-1); } } });
-    figs.forEach(function(f){ tl.add(wordsTween(f)); });
-    return function(){ mark(-1); };
+  var box = $('#vc'), figs = $$('.vc figure');
+  function set(f){ figs.forEach(function(x){ x.classList.toggle('on', x === f); }); box.classList.toggle('has-on', !!f); }
+  figs.forEach(function(f){
+    f.addEventListener('mouseenter', function(){ set(f); });
+    f.addEventListener('click', function(){ if (window.matchMedia('(hover:none), (max-width:960px)').matches) set(f.classList.contains('on') ? null : f); });
   });
-  vm.add('(max-width: 960px)', function(){
-    figs.forEach(function(f, i){
-      var tw = wordsTween(f);
-      ScrollTrigger.create({ trigger:f, start:'top 85%', end:'bottom 30%', scrub:1.2, animation:tw,
-        onToggle:function(s){ f.classList.toggle('on', s.isActive); }, onLeave:function(){ f.classList.add('done'); } });
-    });
-  });
+  box.addEventListener('mouseleave', function(){ set(null); });
+  if (window.matchMedia('(hover:none), (max-width:960px)').matches) set(figs[0]);
+  gsap.from(figs, { y:70, opacity:0, duration:1.1, ease:'power3.out', stagger:.14, scrollTrigger:{ trigger:box, start:'top 85%' } });
 })();
 /* Film */
 gsap.to('.film', { clipPath:'inset(0% 0% round 28px)', ease:'none', scrollTrigger:{ trigger:'#phim', start:'top 80%', end:'top 15%', scrub:.6 } });
@@ -736,22 +737,41 @@ gsap.to('.film', { clipPath:'inset(0% 0% round 28px)', ease:'none', scrollTrigge
 function curShow(){}
 
 /* ================= ZOOM: bấm để phóng to và mở câu chuyện ================= */
-var Z = { open:false, kind:null, i:0, src:null, busy:false };
+var Z = { open:false, kind:null, i:0, src:null, busy:false, photos:null, photo:0 };
 var zoom = $('#zoom'), zMedia = $('#zMedia'), zText = $('#zText');
 function item(kind, i){
   if (kind === 'step') { var m = STEP_META[i], s = STEPS[i];
-    return { kick:'Bước 0'+(i+1)+' / 07 · '+CHAPS[m.chap].t, title:m.en, sub:m.vi+' — '+s.kick, desc:s.desc, list:s.bullets, video:m.v, n:7 }; }
+    return { kick:'Bước 0'+(i+1)+' / 07 · '+CHAPS[m.chap].t, title:m.en, sub:m.vi+' · '+s.kick, desc:s.desc, list:s.bullets, video:m.v, n:7 }; }
   if (kind === 'room') { var r = ROOMS[i];
-    return { kick:'Viên Villa · 0'+(i+1)+' / 0'+ROOMS.length, title:r.t, sub:r.sub, desc:r.d, img:r.img, video:r.video, n:ROOMS.length }; }
+    return { kick:'Viên Villa · 0'+(i+1)+' / 0'+ROOMS.length, title:r.t, sub:r.sub, desc:r.d, imgs:r.imgs, n:ROOMS.length }; }
   var sp = specialistsData[i];
   return { kick:'Chuyên gia '+sp.number+' / 09', title:sp.title, sub:sp.role, desc:sp.description, list:sp.deliverables, quote:sp.quote, img:sp.image, n:9 };
 }
+function setPhoto(i, instant){
+  var it = Z.photos; if (!it) return;
+  i = (i + it.length) % it.length; if (i === Z.photo && !instant) return;
+  var old = zMedia.querySelector('.zimg'); Z.photo = i;
+  var nx = new Image(); nx.className = 'zimg'; nx.alt = ''; nx.src = it[i];
+  zMedia.appendChild(nx);
+  if (instant || reduce || !old) { gsap.set(nx, { opacity:1 }); if (old) old.remove(); }
+  else { gsap.fromTo(nx, { opacity:0, scale:1.06 }, { opacity:1, scale:1, duration:.9, ease:'power2.out', onComplete:function(){ if (old && old.parentNode) old.remove(); } }); }
+  $$('.zth').forEach(function(b, k){ b.classList.toggle('on', k === i); });
+  var c = $('#zc'); if (c) c.textContent = ' · ảnh ' + (i + 1) + '/' + it.length;
+}
 function fill(it){
-  zMedia.innerHTML = it.video
-    ? '<video muted loop playsinline autoplay poster="assets/video/'+it.video+'.jpg"><source src="assets/video/'+it.video+'.mp4" type="video/mp4"></video>'
+  var isRoom = !!it.imgs;
+  Z.photos = isRoom ? it.imgs : null; Z.photo = 0;
+  zMedia.innerHTML = isRoom ? '<img class="zimg" src="'+it.imgs[0]+'" alt="">'
+    : it.video ? '<video muted loop playsinline autoplay poster="assets/video/'+it.video+'.jpg"><source src="assets/video/'+it.video+'.mp4" type="video/mp4"></video>'
     : '<img src="'+it.img+'" alt="">';
   var v = zMedia.querySelector('video'); if (v) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); }
-  zText.innerHTML = '<span class="kick">'+it.kick+'</span><h3 class="disp">'+it.title+'</h3><p class="zsub">'+it.sub+'</p><p class="zdesc">'+it.desc+'</p>'
+  var zr = $('#zRooms'), zt = $('#zThumbs');
+  zr.classList.toggle('show', isRoom); zt.classList.toggle('show', isRoom);
+  if (isRoom) {
+    zr.innerHTML = ROOMS.map(function(r, k){ return '<button type="button" class="zroom'+(k === Z.i ? ' on' : '')+'" data-room="'+k+'">'+r.t+'</button>'; }).join('');
+    zt.innerHTML = it.imgs.map(function(src, k){ return '<button type="button" class="zth'+(k === 0 ? ' on' : '')+'" data-ph="'+k+'" aria-label="Ảnh '+(k+1)+'"><img src="'+src+'" alt=""></button>'; }).join('');
+  }
+  zText.innerHTML = '<span class="kick">'+it.kick+(isRoom ? '<span id="zc"> · ảnh 1/'+it.imgs.length+'</span>' : '')+'</span><h3 class="disp">'+it.title+'</h3><p class="zsub">'+it.sub+'</p><p class="zdesc">'+it.desc+'</p>'
     + (it.list ? '<ul>'+it.list.map(function(b){ return '<li><span>'+b+'</span></li>'; }).join('')+'</ul>' : '')
     + (it.quote ? '<p class="zq">“'+it.quote+'”</p>' : '')
     + '<a class="btn fill" href="#lien-he" id="zCta">Đặt lịch cố vấn →</a>';
@@ -766,7 +786,6 @@ function openZoom(el){
   document.documentElement.style.overflow = 'hidden';
   curShow(false);
   var from = srcRect(Z.src);
-  if (Z.kind === 'spec') { from = srcRect(Z.src.querySelector('.th')); }
   var tl = gsap.timeline({ onComplete:function(){ Z.busy = false; } });
   tl.set(zoom, { visibility:'visible' }).set(zMedia, Object.assign({ '--sh':0 }, from));
   if (Z.kind === 'room') { var r = ROOMS[Z.i]; tl.to('.hot', { opacity:0, duration:.25 }, 0); tl.to('#hsPic', { scale:2.6, transformOrigin:r.x+'% '+r.y+'%', duration:.95, ease:'power3.inOut' }, 0); }
@@ -774,38 +793,46 @@ function openZoom(el){
     .to(zMedia, { top:0, left:0, width:'100vw', height:'100vh', borderRadius:0, duration: reduce ? .01 : .95, ease:'power3.inOut' }, 0)
     .to(zMedia, { '--sh':1, duration:.5 }, '-=.35')
     .add(textIn, '-=.3')
-    .to('#zClose, #zNav', { opacity:1, duration:.4 }, '-=.1');
+    .to('#zClose, #zNav, #zRooms, #zThumbs', { opacity:1, duration:.4 }, '-=.1');
 }
 function closeZoom(instant){
   if (!Z.open || Z.busy) return; Z.busy = true;
   var to = srcRect(Z.src);
-  if (Z.kind === 'spec') { to = srcRect(Z.src.querySelector('.th')); }
-  var tl = gsap.timeline({ onComplete:function(){ gsap.set(zoom, { visibility:'hidden' }); gsap.set(zMedia, { opacity:1 }); zMedia.innerHTML = ''; Z.open = false; Z.busy = false; document.documentElement.style.overflow = ''; } });
-  tl.to('#zClose, #zNav', { opacity:0, duration:.2 }, 0)
+  var tl = gsap.timeline({ onComplete:function(){ gsap.set(zoom, { visibility:'hidden' }); gsap.set(zMedia, { opacity:1 }); zMedia.innerHTML = ''; Z.photos = null; Z.open = false; Z.busy = false; document.documentElement.style.overflow = ''; } });
+  tl.to('#zClose, #zNav, #zRooms, #zThumbs', { opacity:0, duration:.2 }, 0)
     .to(zText.children, { opacity:0, y:-16, duration:.25, stagger:.02 }, 0)
     .to(zMedia, { '--sh':0, duration:.25 }, 0)
     .to(zMedia, Object.assign({ duration: instant || reduce ? .01 : .8, ease:'power3.inOut' }, to), .15)
     .to('.zbg', { opacity:0, duration:.5 }, .3);
   if (Z.kind === 'room') { tl.to('#hsPic', { scale:1, duration:.8, ease:'power3.inOut' }, .15); tl.to('.hot', { opacity:1, duration:.4 }, .8); }
 }
-function stepZoom(d){
-  if (!Z.open || Z.busy) return; Z.busy = true;
-  var it0 = item(Z.kind, Z.i); Z.i = (Z.i + d + it0.n) % it0.n;
+function changeItem(ni, d){
+  if (!Z.open || Z.busy || ni === Z.i) return; Z.busy = true;
+  Z.i = ni;
   var list = Z.kind === 'step' ? $$('.jr-card') : Z.kind === 'room' ? $$('.hot') : $$('.ex-row'); Z.src = list[Z.i];
   if (Z.kind === 'room') { var r = ROOMS[Z.i]; gsap.set('#hsPic', { transformOrigin:r.x+'% '+r.y+'%' }); }
   gsap.timeline({ onComplete:function(){ Z.busy = false; } })
     .to(zText.children, { opacity:0, x:-30*d, duration:.25, stagger:.02 })
     .to(zMedia, { clipPath: d > 0 ? 'inset(0 100% 0 0)' : 'inset(0 0 0 100%)', duration:.45, ease:'power3.in' }, 0)
-    .add(function(){ fill(item(Z.kind, Z.i)); })
+    .add(function(){ fill(item(Z.kind, Z.i)); gsap.set('#zRooms, #zThumbs', { opacity:1 }); })
     .fromTo(zMedia, { clipPath: d > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' }, { clipPath:'inset(0 0% 0 0%)', duration:.6, ease:'power3.out' })
     .add(textIn, '-=.35');
 }
-document.addEventListener('click', function(e){ var el = e.target.closest('.zoomable, .hs-chip'); if (el) openZoom(el); });
+function stepZoom(d){
+  if (!Z.open || Z.busy) return;
+  if (Z.kind === 'room') { setPhoto(Z.photo + d); return; }   /* trong phòng: mũi tên đổi ảnh, nút tên phòng đổi phòng */
+  var n = item(Z.kind, Z.i).n; changeItem((Z.i + d + n) % n, d);
+}
+document.addEventListener('click', function(e){
+  var rb = e.target.closest('.zroom'); if (rb) { var k = +rb.dataset.room; changeItem(k, k > Z.i ? 1 : -1); return; }
+  var tb = e.target.closest('.zth'); if (tb) { setPhoto(+tb.dataset.ph); return; }
+  var el = e.target.closest('.zoomable, .hs-chip'); if (el) openZoom(el);
+});
 $('#zClose').addEventListener('click', function(){ closeZoom(); });
 $('#zPrev').addEventListener('click', function(){ stepZoom(-1); });
 $('#zNext').addEventListener('click', function(){ stepZoom(1); });
 document.addEventListener('keydown', function(e){ if (!Z.open) return; if (e.key === 'Escape') closeZoom(); if (e.key === 'ArrowRight') stepZoom(1); if (e.key === 'ArrowLeft') stepZoom(-1); });
-window.__zoom = { open:openZoom, close:closeZoom, step:stepZoom, state:Z };
+window.__zoom = { open:openZoom, close:closeZoom, step:stepZoom, change:changeItem, photo:setPhoto, state:Z };
 
 window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
