@@ -112,7 +112,7 @@ section { position:relative; }
 .mansion-top span { color:rgba(255,255,255,.22); transition:color .6s; }
 .mansion-top span.on { color:var(--gold); }
 .jr-head p { max-width:380px; color:var(--mute); margin:0; font-size:14px; }
-.jr-side { display:flex; flex-direction:column; align-items:flex-end; gap:12px; text-align:right; }
+.jr-foot { display:flex; justify-content:flex-end; padding:2px var(--pad) clamp(18px,3vh,36px); }
 .jr-legend { display:grid; grid-template-columns:auto auto; column-gap:16px; row-gap:6px; align-content:start; justify-content:end; min-height:84px; }
 .jr-legend .lg { display:contents; font:600 11px/1.4 'Montserrat',sans-serif; letter-spacing:.22em; text-transform:uppercase; color:#e4ddd0; }
 .jr-legend .lg b, .jr-legend .lg span { opacity:0; text-align:left; }
@@ -141,7 +141,7 @@ section { position:relative; }
 @media (max-width:899px){
   .jr-track { flex-direction:column; width:auto; gap:22px; }
   .jr-track > .jr-chap, .jr-track > .jr-card { margin-right:0; }
-  .jr-legend { display:none !important; }
+  .jr-foot { display:none !important; }
   .jr-chap, .jr-card { width:100%; }
   .jr-chap { padding:26px 0 4px; width:100%; }
   .jr-chap .n { color:var(--gold); }
@@ -341,9 +341,10 @@ h1, h2, h3, .disp { text-wrap:balance; }
 <section id="hanh-trinh">
   <div class="jr-head">
     <div><span class="mansion-top disp" id="mansionTop" aria-label="Mansion"></span><h2 class="disp">7 bước</h2></div>
-    <div class="jr-side"><div class="jr-legend" id="jrLegend"></div><p>Bấm vào từng bước để phóng to và đọc câu chuyện phía sau.</p></div>
+    <p>Bấm vào từng bước để phóng to và đọc câu chuyện phía sau.</p>
   </div>
   <div class="jr-pin"><div class="jr-track" id="jrTrack"></div></div>
+  <div class="jr-foot"><div class="jr-legend" id="jrLegend"></div></div>
 </section>
 
 <!-- 4. HOUSE -->
