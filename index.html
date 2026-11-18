@@ -275,6 +275,7 @@ footer .c { grid-column:1/-1; font-size:11px; opacity:.7; }
 @media (prefers-reduced-motion:reduce){ .hot{ animation:none; } }
 p, .lead, .zdesc, .ctx-card p { text-wrap:pretty; }
 h1, h2, h3, .disp { text-wrap:balance; }
+picture { display:contents; }
 </style>
 </head>
 <body class="no-js">
@@ -300,7 +301,7 @@ h1, h2, h3, .disp { text-wrap:balance; }
 <!-- 0. HERO -->
 <section id="hero">
   <div class="media">
-    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg"><source src="hero-villa.mp4" type="video/mp4"></video>
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.webp"><source src="hero-villa.mp4" type="video/mp4"></video>
     <div class="shade"></div>
   </div>
   <div class="copy">
@@ -320,12 +321,12 @@ h1, h2, h3, .disp { text-wrap:balance; }
     <div class="who">Ms. Vân Anh · Gia chủ Viên Villa</div>
     <p class="ital turn">Đó là lúc Homestyling bước vào.</p>
   </div>
-  <figure class="mo-img"><img src="assets/img/vv-170.jpg" alt="Một không gian còn trống, chưa có câu chuyện" loading="lazy"></figure>
+  <figure class="mo-img"><picture><source type="image/avif" srcset="assets/img/vv-170-800.avif 800w, assets/img/vv-170-1280.avif 1280w, assets/img/vv-170-1920.avif 1920w" sizes="(max-width:860px) 100vw, 32vw"><img src="assets/img/vv-170-1280.webp" srcset="assets/img/vv-170-800.webp 800w, assets/img/vv-170-1280.webp 1280w, assets/img/vv-170-1920.webp 1920w" sizes="(max-width:860px) 100vw, 32vw" alt="Một không gian còn trống, chưa có câu chuyện" loading="lazy" decoding="async"></picture></figure>
 </section>
 
 <!-- 2. WHAT -->
 <section id="la-gi">
-  <div class="win"><img src="assets/img/vv-009.jpg" alt="Phòng khách Viên Villa"></div>
+  <div class="win"><picture><source type="image/avif" srcset="assets/img/vv-009-800.avif 800w, assets/img/vv-009-1280.avif 1280w, assets/img/vv-009-1920.avif 1920w" sizes="100vw"><img src="assets/img/vv-009-1280.webp" srcset="assets/img/vv-009-800.webp 800w, assets/img/vv-009-1280.webp 1280w, assets/img/vv-009-1920.webp 1920w" sizes="100vw" alt="Phòng khách Viên Villa" loading="lazy" decoding="async"></picture></div>
   <div class="txt">
     <span class="kick">Chương mở</span>
     <h2 class="disp">Homestyling <span class="gold">là gì?</span></h2>
@@ -335,9 +336,9 @@ h1, h2, h3, .disp { text-wrap:balance; }
 <div class="ctx-wrap">
   <div class="ctx-head"><div><span class="kick">Ba bối cảnh</span><h2 class="disp">Vì sao cần <span class="gold">Homestylist</span></h2></div><p>Rê chuột hoặc chạm vào từng thẻ.</p></div>
   <div class="ctx" id="ctx">
-    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-044.jpg" alt="" loading="lazy"><span class="ctx-n">01</span><div class="c"><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Ở New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư.</p></div></article>
-    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-021.jpg" alt="" loading="lazy"><span class="ctx-n">02</span><div class="c"><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Thường chỉ được mời ở bước cuối, và thiếu tiếng nói độc lập.</p></div></article>
-    <article class="ctx-card" tabindex="0"><img src="assets/img/vv-047.jpg" alt="" loading="lazy"><span class="ctx-n">03</span><div class="c"><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ từ ý tưởng đến vận hành.</p></div></article>
+    <article class="ctx-card" tabindex="0"><picture><source type="image/avif" srcset="assets/img/vv-044-800.avif 800w, assets/img/vv-044-1280.avif 1280w, assets/img/vv-044-1920.avif 1920w" sizes="(max-width:860px) 100vw, 34vw"><img src="assets/img/vv-044-1280.webp" srcset="assets/img/vv-044-800.webp 800w, assets/img/vv-044-1280.webp 1280w, assets/img/vv-044-1920.webp 1920w" sizes="(max-width:860px) 100vw, 34vw" alt="" loading="lazy" decoding="async"></picture><span class="ctx-n">01</span><div class="c"><span class="kick">Trên thế giới</span><h3 class="disp">Người đầu tiên gia chủ gặp</h3><p>Ở New York, London hay Dubai, Homestylist định hình ý tưởng trước cả kiến trúc sư.</p></div></article>
+    <article class="ctx-card" tabindex="0"><picture><source type="image/avif" srcset="assets/img/vv-021-800.avif 800w, assets/img/vv-021-1280.avif 1280w, assets/img/vv-021-1920.avif 1920w" sizes="(max-width:860px) 100vw, 34vw"><img src="assets/img/vv-021-1280.webp" srcset="assets/img/vv-021-800.webp 800w, assets/img/vv-021-1280.webp 1280w, assets/img/vv-021-1920.webp 1920w" sizes="(max-width:860px) 100vw, 34vw" alt="" loading="lazy" decoding="async"></picture><span class="ctx-n">02</span><div class="c"><span class="kick">Tại Việt Nam</span><h3 class="disp">Mảnh ghép còn thiếu</h3><p>Thường chỉ được mời ở bước cuối, và thiếu tiếng nói độc lập.</p></div></article>
+    <article class="ctx-card" tabindex="0"><picture><source type="image/avif" srcset="assets/img/vv-047-800.avif 800w, assets/img/vv-047-1280.avif 1280w, assets/img/vv-047-1920.avif 1920w" sizes="(max-width:860px) 100vw, 34vw"><img src="assets/img/vv-047-1280.webp" srcset="assets/img/vv-047-800.webp 800w, assets/img/vv-047-1280.webp 1280w, assets/img/vv-047-1920.webp 1920w" sizes="(max-width:860px) 100vw, 34vw" alt="" loading="lazy" decoding="async"></picture><span class="ctx-n">03</span><div class="c"><span class="kick">Khởi Minh</span><h3 class="disp">Gia chủ là trung tâm</h3><p>Cố vấn độc lập, đứng về phía gia chủ từ ý tưởng đến vận hành.</p></div></article>
   </div>
 </div>
 
@@ -359,7 +360,7 @@ h1, h2, h3, .disp { text-wrap:balance; }
     <p>Chạm vào một điểm trên ngôi nhà, xem nhiều ảnh và đổi sang phòng khác ngay trong đó.</p>
   </div>
   <div class="hs-stage" id="hsStage">
-    <div class="pic" id="hsPic"><img src="assets/img/vv-064.jpg" alt="Mặt tiền Viên Villa"><div id="hsHots"></div></div>
+    <div class="pic" id="hsPic"><picture><source type="image/avif" srcset="assets/img/vv-064-800.avif 800w, assets/img/vv-064-1280.avif 1280w, assets/img/vv-064-1920.avif 1920w" sizes="(max-width:700px) 100vw, 92vw"><img src="assets/img/vv-064-1280.webp" srcset="assets/img/vv-064-800.webp 800w, assets/img/vv-064-1280.webp 1280w, assets/img/vv-064-1920.webp 1920w" sizes="(max-width:700px) 100vw, 92vw" alt="Mặt tiền Viên Villa" loading="lazy" decoding="async"></picture><div id="hsHots"></div></div>
   </div>
   <div class="hs-list" id="hsList"></div>
 </section>
@@ -443,7 +444,13 @@ var CHAPS = [
   {n:'02', t:'Ý tưởng',    d:'Vạch trục không gian, chọn từng lớp đá, gỗ và ánh sáng.'},
   {n:'03', t:'Hoàn thiện', d:'Giám sát, điểm trang và đồng hành khi ngôi nhà bắt đầu được sống.'}
 ];
-var IMG = function(a){ return a.map(function(n){ return 'assets/img/vv-'+n+'.jpg'; }); };
+var IMG = function(a){ return a; };
+var IW = [800, 1280, 1920];
+function idOf(p){ var m = String(p).match(/vv-(\d+)/); return m ? m[1] : String(p); }
+function pic(p, sizes, cls, alt, eager){
+  var n = idOf(p), mk = function(ext){ return IW.map(function(w){ return 'assets/img/vv-'+n+'-'+w+'.'+ext+' '+w+'w'; }).join(', '); };
+  return '<picture><source type="image/avif" srcset="'+mk('avif')+'" sizes="'+sizes+'"><img'+(cls ? ' class="'+cls+'"' : '')+' src="assets/img/vv-'+n+'-1280.webp" srcset="'+mk('webp')+'" sizes="'+sizes+'" alt="'+(alt || '')+'"'+(eager ? '' : ' loading="lazy"')+' decoding="async"></picture>';
+}
 var ROOMS = [
   {x:53, y:71, t:'Phòng khách', sub:'Nơi cả nhà gặp nhau', imgs:IMG(['168','172','009','008','010','007']), d:'Trần cao hai tầng, cây xanh và ánh sáng tự nhiên đi suốt chiều dài phòng. Mọi lối đi trong nhà đều dẫn về đây.'},
   {x:66, y:81, t:'Bàn ăn & bếp', sub:'Bữa cơm của ba thế hệ', imgs:IMG(['141','183','187','143','002','195']), d:'Một bàn dài cho cả gia đình, mở thẳng ra hồ bơi và khu vườn. Bếp ở ngay phía sau.'},
@@ -458,7 +465,7 @@ var specialistsData = [
                     number: "01",
                     title: "Kiến trúc sư & Homestylist",
                     role: "Định hình phong cách & Cấu trúc cảm xúc",
-                    image: "assets/img/vv-040.jpg",
+                    image: "040",
                     description: "Không chỉ dừng lại ở bản vẽ phối cảnh 3D khô khan, chúng tôi nghiên cứu nhịp thở và nếp sống của từng thành viên để định hình phong cách không gian đồng điệu với khí chất và vị thế của chủ nhân.",
                     deliverables: [
                         "Cân bằng hoàn hảo giữa khối kiến trúc nguyên bản và nghệ thuật homestyling",
@@ -472,7 +479,7 @@ var specialistsData = [
                     number: "02",
                     title: "Chuyên gia Tâm lý học Không gian",
                     role: "Thấu hiểu chiều sâu & Gắn kết 3 thế hệ",
-                    image: "assets/img/vv-111.jpg",
+                    image: "111",
                     description: "Khảo sát sâu sắc thói quen tâm lý, nhịp sinh hoạt và nhu cầu riêng tư của từng thế hệ trong gia đình: từ không gian thiền định của ông bà, phòng làm việc tĩnh lặng của gia chủ, đến khu vực sáng tạo tự do cho con trẻ.",
                     deliverables: [
                         "Hóa giải xung đột luồng di chuyển và tối ưu hóa cách âm giữa các thế hệ",
@@ -486,7 +493,7 @@ var specialistsData = [
                     number: "03",
                     title: "Thiết kế Ánh sáng & Âm thanh",
                     role: "Đánh thức giác quan & Nhịp sinh học",
-                    image: "assets/img/vv-008.jpg",
+                    image: "008",
                     description: "Ánh sáng không chỉ để thắp sáng mà là một thứ nghệ thuật điêu khắc không gian. Chúng tôi kết hợp ánh sáng Circadian rhythm (nhịp sinh học tự nhiên) cùng hệ thống âm thanh vòm ẩn tường mang đến trải nghiệm thính giác thượng đỉnh.",
                     deliverables: [
                         "Kịch bản chiếu sáng thích ứng linh hoạt theo từng khung giờ và sự kiện",
@@ -500,7 +507,7 @@ var specialistsData = [
                     number: "04",
                     title: "Nghệ nhân Thủ công & Vật liệu Hiếm",
                     role: "Chế tác độc bản & Giá trị truyền đời",
-                    image: "assets/img/vv-164.jpg",
+                    image: "164",
                     description: "Tìm kiếm và kết nối trực tiếp với các xưởng nghệ nhân thủ công hàng đầu tại Florence, Paris hay làng nghề sơn mài truyền thống Việt Nam để tạo tác những món đồ nội thất chỉ dành riêng cho bạn.",
                     deliverables: [
                         "Khắc họa gia huy, chữ ký gia chủ trên chất liệu đồng, da bò tót hoặc gỗ quý",
@@ -514,7 +521,7 @@ var specialistsData = [
                     number: "05",
                     title: "Giám tuyển Nghệ thuật (Art Curator)",
                     role: "Lựa chọn tinh hoa & Khẳng định vị thế",
-                    image: "assets/img/vv-125.jpg",
+                    image: "125",
                     description: "Hợp tác cùng Khởi Minh Arts & Crafts để tư vấn sưu tầm tranh ảnh, điêu khắc, cổ vật phù hợp với phong cách kiến trúc và gu thẩm mỹ riêng của gia đình, gia tăng giá trị tài sản qua năm tháng.",
                     deliverables: [
                         "Sắp đặt vị trí tác phẩm nghệ thuật chuẩn bảo tàng quốc tế",
@@ -528,7 +535,7 @@ var specialistsData = [
                     number: "06",
                     title: "Stylist Tủ đồ & Không gian Thời trang",
                     role: "Tôn vinh cá nhân & Bảo quản chuyên nghiệp",
-                    image: "assets/img/vv-047.jpg",
+                    image: "047",
                     description: "Quy hoạch không gian Walk-in Closet như một boutique Haute Couture cá nhân. Thiết kế chuẩn mực về độ ẩm, ánh sáng, hệ thống tủ trưng bày đồng hồ, túi xách quý giá.",
                     deliverables: [
                         "Kiểm soát độ ẩm và nhiệt độ chuyên biệt bảo quản da và lụa cao cấp",
@@ -542,7 +549,7 @@ var specialistsData = [
                     number: "07",
                     title: "Chuyên gia Cảnh quan & Vi khí hậu",
                     role: "Hơi thở thiên nhiên & Phong thủy an lành",
-                    image: "assets/img/vv-035.jpg",
+                    image: "035",
                     description: "Kiến tạo cảnh quan sân vườn, hồ cảnh quan và điều hòa vi khí hậu để thiên nhiên len lỏi vào từng gian phòng, mang lại năng lượng trong lành và vượng khí phong thủy.",
                     deliverables: [
                         "Lựa chọn cây đại thụ bản địa có tuổi thọ cao và dáng thế vượng khí",
@@ -556,7 +563,7 @@ var specialistsData = [
                     number: "08",
                     title: "Chuyên gia Ẩm thực & Catering Độc bản",
                     role: "Trải nghiệm ẩm thực & Yến tiệc tư gia",
-                    image: "assets/img/vv-143.jpg",
+                    image: "143",
                     description: "Tư vấn quy hoạch khu bếp biểu diễn (show kitchen) và bếp ướt (heavy kitchen) tiêu chuẩn sao Michelin, đáp ứng mọi quy mô yến tiệc riêng tư hay tiếp đón nguyên thủ, đối tác.",
                     deliverables: [
                         "Thiết kế hầm rượu vang kiểm soát nhiệt độ và độ ẩm tiêu chuẩn Sommelier",
@@ -570,7 +577,7 @@ var specialistsData = [
                     number: "09",
                     title: "Đạo diễn Trải nghiệm & Lễ hội Gia tộc",
                     role: "Khoảnh khắc đáng nhớ & Di sản ký ức",
-                    image: "assets/img/vv-141.jpg",
+                    image: "141",
                     description: "Đồng hành tổ chức các sự kiện khánh thành dinh thự, lễ kỷ niệm gia tộc hoặc tiệc thưởng tranh kín, biến mỗi khoảnh khắc tại dinh thự trở thành ký ức vô giá.",
                     deliverables: [
                         "Kịch bản đón khách và dạ tiệc riêng tư tôn vinh phong cách gia chủ",
@@ -591,7 +598,7 @@ document.body.classList.remove('no-js');
     if (m.chap !== last) { var c = CHAPS[m.chap]; last = m.chap;
       html += '<div class="jr-chap"><span class="n">'+c.n+'</span><span class="kick" style="margin-top:22px">Chương '+(m.chap+1)+'</span><h3 class="disp">'+c.t+'</h3><p>'+c.d+'</p></div>'; }
     html += '<button type="button" class="jr-card zoomable" data-kind="step" data-i="'+i+'">'
-      + '<video muted loop playsinline preload="metadata" poster="assets/video/'+m.v+'.jpg"><source src="assets/video/'+m.v+'.mp4" type="video/mp4"></video>'
+      + '<video muted loop playsinline preload="metadata" poster="assets/video/'+m.v+'.webp"><source src="assets/video/'+m.v+'.mp4" type="video/mp4"></video>'
       + '<span class="L" aria-hidden="true">'+m.L+'</span>'
       + '<span class="b"><small>BƯỚC 0'+(i+1)+' / 07</small><h4>'+m.en+'</h4><em>'+m.vi+'</em><span class="open"><i>+</i>Mở câu chuyện</span></span></button>';
   });
@@ -774,26 +781,27 @@ function item(kind, i){
 function setPhoto(i, instant){
   var it = Z.photos; if (!it) return;
   i = (i + it.length) % it.length; if (i === Z.photo && !instant) return;
-  var old = zMedia.querySelector('.zimg'); Z.photo = i;
-  var nx = new Image(); nx.className = 'zimg'; nx.alt = ''; nx.src = it[i];
-  zMedia.appendChild(nx);
-  if (instant || reduce || !old) { gsap.set(nx, { opacity:1 }); if (old) old.remove(); }
-  else { gsap.fromTo(nx, { opacity:0, scale:1.06 }, { opacity:1, scale:1, duration:.9, ease:'power2.out', onComplete:function(){ if (old && old.parentNode) old.remove(); } }); }
+  var old = zMedia.querySelector('.zimg'), oldPic = old ? (old.parentNode.tagName === 'PICTURE' ? old.parentNode : old) : null; Z.photo = i;
+  var holder = document.createElement('div'); holder.innerHTML = pic(it[i], '100vw', 'zimg', '', true);
+  var nxPic = holder.firstChild, nx = nxPic.querySelector('img');
+  zMedia.appendChild(nxPic);
+  if (instant || reduce || !old) { gsap.set(nx, { opacity:1 }); if (oldPic) oldPic.remove(); }
+  else { gsap.fromTo(nx, { opacity:0, scale:1.06 }, { opacity:1, scale:1, duration:.9, ease:'power2.out', onComplete:function(){ if (oldPic && oldPic.parentNode) oldPic.remove(); } }); }
   $$('.zth').forEach(function(b, k){ b.classList.toggle('on', k === i); });
   var c = $('#zc'); if (c) c.textContent = ' · ảnh ' + (i + 1) + '/' + it.length;
 }
 function fill(it){
   var isRoom = !!it.imgs;
   Z.photos = isRoom ? it.imgs : null; Z.photo = 0;
-  zMedia.innerHTML = isRoom ? '<img class="zimg" src="'+it.imgs[0]+'" alt="">'
-    : it.video ? '<video muted loop playsinline autoplay poster="assets/video/'+it.video+'.jpg"><source src="assets/video/'+it.video+'.mp4" type="video/mp4"></video>'
-    : '<img src="'+it.img+'" alt="">';
+  zMedia.innerHTML = isRoom ? pic(it.imgs[0], '100vw', 'zimg', '', true)
+    : it.video ? '<video muted loop playsinline autoplay poster="assets/video/'+it.video+'.webp"><source src="assets/video/'+it.video+'.mp4" type="video/mp4"></video>'
+    : pic(it.img, '100vw', 'zimg', '', true);
   var v = zMedia.querySelector('video'); if (v) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function(){}); }
   var zr = $('#zRooms'), zt = $('#zThumbs');
   zr.classList.toggle('show', isRoom); zt.classList.toggle('show', isRoom);
   if (isRoom) {
     zr.innerHTML = ROOMS.map(function(r, k){ return '<button type="button" class="zroom'+(k === Z.i ? ' on' : '')+'" data-room="'+k+'">'+r.t+'</button>'; }).join('');
-    zt.innerHTML = it.imgs.map(function(src, k){ return '<button type="button" class="zth'+(k === 0 ? ' on' : '')+'" data-ph="'+k+'" aria-label="Ảnh '+(k+1)+'"><img src="'+src+'" alt=""></button>'; }).join('');
+    zt.innerHTML = it.imgs.map(function(src, k){ return '<button type="button" class="zth'+(k === 0 ? ' on' : '')+'" data-ph="'+k+'" aria-label="Ảnh '+(k+1)+'"><img src="assets/img/vv-'+idOf(src)+'-800.webp" alt="" loading="lazy"></button>'; }).join('');
   }
   zText.innerHTML = '<span class="kick">'+it.kick+(isRoom ? '<span id="zc"> · ảnh 1/'+it.imgs.length+'</span>' : '')+'</span><h3 class="disp">'+it.title+'</h3><p class="zsub">'+it.sub+'</p><p class="zdesc">'+it.desc+'</p>'
     + (it.list ? '<ul>'+it.list.map(function(b){ return '<li><span>'+b+'</span></li>'; }).join('')+'</ul>' : '')
