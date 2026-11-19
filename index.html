@@ -131,7 +131,7 @@ section { position:relative; }
 .jr-card:hover video { transform:scale(1.07); }
 .jr-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.94) 6%,rgba(8,6,4,.18) 55%,rgba(8,6,4,.35)); opacity:calc(1 - var(--sh,0)); }
 .jr-card { box-shadow:inset 0 0 0 1px rgba(222,155,96,.16); }
-.jr-card .L { position:absolute; z-index:2; top:4px; right:20px; left:auto; font:400 clamp(110px,12vw,160px)/1 'Cormorant Garamond',serif; color:rgba(222,155,96,0); -webkit-text-stroke:1px var(--gold); paint-order:stroke fill; white-space:nowrap; }
+.jr-card .L { position:absolute; z-index:2; top:4px; right:20px; left:auto; font:400 clamp(110px,12vw,160px)/1 'Cormorant Garamond',serif; color:rgba(255,255,255,.3); white-space:nowrap; }
 .jr-card .b { position:absolute; z-index:2; left:24px; right:24px; bottom:24px; }
 .jr-card .b small { font:700 10px 'Montserrat'; letter-spacing:.26em; color:var(--gold); }
 .jr-card .b h4 { font-family:'SVN-Mightiest',serif; font-weight:400; text-transform:uppercase; font-size:30px; line-height:1.05; margin:8px 0 2px; }
@@ -710,7 +710,8 @@ mm.add('(min-width: 900px)', function(){
     var card = isCard(el), L = card ? el.querySelector('.L') : null, num = card ? null : el.querySelector('.n'), t0 = LEAD + i;
     var fill = card ? L : num;
     var cornerX = function(){ return fullW(el) / 2 - 20 - L.offsetWidth; };   /* góc phải thẻ khi còn mở */
-    if (i === 0) gsap.set(fill, { color:GOLD });
+    if (card) tl.to(fill, { color:GOLD, duration:.9 }, t0);                    /* thẻ còn mở: chữ xám mờ; thu lại mới ngả vàng */
+    else if (i === 0) gsap.set(fill, { color:GOLD });
     else tl.to(fill, { color:GOLD, duration:.5 }, Math.max(0, t0 - 1));      /* chữ được tô màu khi thẻ này tiến tới */
     if (i === n - 1) {                                                         /* thẻ cuối: chữ N thu về cùng cỡ, cùng hàng để đọc được MANSION */
       tl.fromTo(L, { x:cornerX, xPercent:0 }, { x:0, xPercent:-50, fontSize:78, left:(S / 2) + 'px', duration:1 }, t0 - .3);
@@ -741,7 +742,6 @@ mm.add('(max-width: 899px)', function(){
       var on = c.getBoundingClientRect().left < vw * .82;
       if (state[k] === on) return; state[k] = on;
       letters[k].classList.toggle('on', on);
-      gsap.to(c.querySelector('.L'), { color:on ? GOLD : 'rgba(222,155,96,0)', duration:.5, overwrite:true });
     });
   }
   var onScroll = function(){ if (!ticking) { ticking = true; requestAnimationFrame(upd); } };
