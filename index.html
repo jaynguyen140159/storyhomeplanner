@@ -129,8 +129,9 @@ section { position:relative; }
 .jr-card { position:relative; flex:none; width:min(80vw,420px); height:min(66svh,620px); min-height:440px; border-radius:24px; overflow:hidden; background:#000; border:0; padding:0; text-align:left; cursor:pointer; color:#fff; }
 .jr-card video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.4s cubic-bezier(.2,.7,.2,1); }
 .jr-card:hover video { transform:scale(1.07); }
-.jr-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.94) 6%,rgba(8,6,4,.18) 55%,rgba(8,6,4,.35)); }
-.jr-card .L { position:absolute; z-index:2; top:4px; right:20px; left:auto; font:400 clamp(110px,12vw,160px)/1 'Cormorant Garamond',serif; color:rgba(222,155,96,0); -webkit-text-stroke:1px rgba(255,255,255,.6); white-space:nowrap; }
+.jr-card::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(8,6,4,.94) 6%,rgba(8,6,4,.18) 55%,rgba(8,6,4,.35)); opacity:calc(1 - var(--sh,0)); }
+.jr-card { box-shadow:inset 0 0 0 1px rgba(222,155,96,.16); }
+.jr-card .L { position:absolute; z-index:2; top:4px; right:20px; left:auto; font:400 clamp(110px,12vw,160px)/1 'Cormorant Garamond',serif; color:rgba(222,155,96,0); -webkit-text-stroke:1px var(--gold); paint-order:stroke fill; white-space:nowrap; }
 .jr-card .b { position:absolute; z-index:2; left:24px; right:24px; bottom:24px; }
 .jr-card .b small { font:700 10px 'Montserrat'; letter-spacing:.26em; color:var(--gold); }
 .jr-card .b h4 { font-family:'SVN-Mightiest',serif; font-weight:400; text-transform:uppercase; font-size:30px; line-height:1.05; margin:8px 0 2px; }
@@ -719,7 +720,9 @@ mm.add('(min-width: 900px)', function(){
       tl.fromTo(el, { width:function(){ return fullW(el); } }, { width:S, duration:1 }, t0)
         .to(el.querySelector('.b'), { opacity:0, duration:.35 }, t0)
         .fromTo(L, { x:cornerX, xPercent:0 }, { x:0, xPercent:-50, fontSize:78, duration:1 }, t0)
-        .to(el.querySelector('video'), { opacity:.12, duration:1 }, t0);
+        .to(el.querySelector('video'), { opacity:0, duration:1 }, t0)
+        .to(el, { backgroundColor:'#17120E', duration:1 }, t0)
+        .to(el, { '--sh':1, duration:1 }, t0);
     } else {
       var lgLine = lg[chapNo++];                                               /* chương đã qua: rời hàng thẻ, xuất hiện ở bảng chương phía trên */
       tl.fromTo(el, { width:function(){ return fullW(el); }, marginRight:GAP }, { width:0, marginRight:0, duration:1 }, t0)
