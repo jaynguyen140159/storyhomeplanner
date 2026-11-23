@@ -639,8 +639,17 @@ intro.to(cnt, { v:100, duration: reduce ? 0.1 : 1.1, ease:'power1.inOut', onUpda
 
 /* Progress + chapter dots */
 gsap.to('#prog', { scaleX:1, ease:'none', scrollTrigger:{ start:0, end:'max', scrub:.3 } });
-$$('#chapNav a').forEach(function(a){ var t = $(a.getAttribute('href')); if (!t) return;
-  ScrollTrigger.create({ trigger:t, start:'top center', end:'bottom center', onToggle:function(s){ a.classList.toggle('on', s.isActive); } }); });
+/* Chấm chương: chương hiện tại = chương cuối cùng có đỉnh đã lên tới giữa màn hình (tính theo vùng ghim nếu có) */
+(function(){
+  var links = $$('#chapNav a'), tgs = links.map(function(a){ return $(a.getAttribute('href')); }), cur = -1, tick = false;
+  function upd(){
+    tick = false; var mid = window.innerHeight * .5, k = 0;
+    tgs.forEach(function(el, i){ if (!el) return; var h = el.parentNode && el.parentNode.classList.contains('pin-spacer') ? el.parentNode : el; if (h.getBoundingClientRect().top <= mid) k = i; });
+    if (k !== cur) { cur = k; links.forEach(function(a, i){ a.classList.toggle('on', i === k); }); }
+  }
+  window.addEventListener('scroll', upd, { passive:true });
+  window.addEventListener('resize', upd); ScrollTrigger.addEventListener('refresh', upd); upd();
+})();
 
 /* Hero parallax out */
 gsap.to('#hero .media', { yPercent:18, scale:1.08, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true } });
